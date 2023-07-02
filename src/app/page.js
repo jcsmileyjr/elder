@@ -7,7 +7,7 @@ export default function Home() {
     <div className={styles.page}>
       <header className={styles.header}>
         <div className={styles.navbar}>
-          <p>Keepin Up</p>
+          <p className={styles.appTitle}>Keepin Up</p>
           <p className={styles.elderName}>TJ Smiley</p>
         </div>
         <div className={styles.entryContainer}>
@@ -19,7 +19,15 @@ export default function Home() {
         </div>
       </header>
       <main className={styles.main}>
-        <p>content</p>
+        <p className={styles.contentTitle}>Previous Interactions</p>
+        <section>
+          <div className={styles.interactions}>
+            <p className={styles.interactionDate}>6/1/2023</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            <p>Random Loved One</p>
+            <h1/>
+          </div>
+        </section>
       </main>
     </div>
   )
