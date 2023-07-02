@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import styles from './page.module.css'
+import List from '../../public/list-icon.png'
 
 export default function Home() {
   return (
@@ -10,8 +11,11 @@ export default function Home() {
           <p className={styles.elderName}>TJ Smiley</p>
         </div>
         <div className={styles.entryContainer}>
-          <button className={styles.entryButton} type="button">New Entry</button>
-          <p>Add a new entry briefly describing your interaction with TJ Smiley</p>
+          <button className={styles.entryButton} type="button">
+            <Image className={styles.entryButtonImageStyle} src={List} ></Image>
+            New Entry
+            </button>
+          <p className={styles.entryButtonMessage}>Add a new entry briefly describing your interaction with TJ Smiley</p>
         </div>
       </header>
       <main className={styles.main}>

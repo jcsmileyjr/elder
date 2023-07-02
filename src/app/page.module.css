@@ -10,6 +10,7 @@
   flex-direction: column;
   padding: 2rem;
   min-height: 100vh;
+  background-color: white;
 }
 
 .header {
@@ -38,4 +39,16 @@
   width: 50%;
   align-self: center;
   padding: 0.5rem;
+  display: flex;
+  justify-content: space-around;
+  font-weight: bold;
+}
+
+.entryButtonImageStyle {
+  height: 1rem;
+  width: 1rem;
+}
+
+.entryButtonMessage {
+  font-size: 14px;
 }
