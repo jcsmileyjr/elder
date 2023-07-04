@@ -97,3 +97,9 @@
 .writerName {
   font-style: italic;
 }
+
+@media screen and (min-width: 600px) {
+  .interactions h1 {
+    width: 80%;
+  }
+}
