@@ -1,6 +1,19 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 import List from '../../public/list-icon.png'
+const dummyData = [{date:"6/1/2023", message:"Visit doctor office, pharmacy, and grocery store.", writer:"Daugher Meme"},{date: "5/27/2023", message:"Visited for breakfast and to yardwork", writer:"Cousin Mane"}]
+
+const Interaction = ({entry}) => {
+  console.log(entry)
+  return (
+    <div className={styles.interactions}>
+      <p className={styles.interactionDate}>{entry.date}</p>
+      <p>{entry.message}</p>
+      <p className={styles.writerName}>{entry.writer}</p>
+      <h1/>
+    </div>
+  )
+}
 
 export default function Home() {
   return (
@@ -12,7 +25,7 @@ export default function Home() {
         </div>
         <div className={styles.entryContainer}>
           <button className={styles.entryButton} type="button">
-            <Image className={styles.entryButtonImageStyle} src={List} ></Image>
+            <Image className={styles.entryButtonImageStyle} src={List} alt="list icon" ></Image>
             New Entry
             </button>
           <p className={styles.entryButtonMessage}>Add a new entry briefly describing your interaction with TJ Smiley</p>
@@ -21,12 +34,11 @@ export default function Home() {
       <main className={styles.main}>
         <p className={styles.contentTitle}>Previous Interactions</p>
         <section>
-          <div className={styles.interactions}>
-            <p className={styles.interactionDate}>6/1/2023</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-            <p className={styles.writerName}>Abraham Lincoln</p>
-            <h1/>
-          </div>
+          {            
+            dummyData.map((interaction) => (              
+              <Interaction entry={interaction} />
+            )
+          )}
         </section>
       </main>
     </div>
