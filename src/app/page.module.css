@@ -53,6 +53,20 @@
   font-style: italic;
 }
 
+@media screen and (min-width: 600px) {
+  .entryButton {
+    align-self: flex-start;
+    width: 20%;
+    max-width: 175px;
+    min-width: 150px;
+  }
+
+  .entryContainer {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
 /*Content Styles*/
 .main {
   display: flex;
@@ -78,4 +92,8 @@
   border: 1px solid darkgray;
   width: 50%;
   margin: auto;
+}
+
+.writerName {
+  font-style: italic;
 }
