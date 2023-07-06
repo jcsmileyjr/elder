@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 import List from '../../public/list-icon.png'
-const dummyData = [{date:"6/1/2023", message:"Visit doctor office, pharmacy, and grocery store.", writer:"Daugher Meme"},{date: "5/27/2023", message:"Visited for breakfast and to yardwork", writer:"Cousin Mane"}]
+import dummyData from './libs/dummyData.json'
 
 const Interaction = ({entry}) => {
   console.log(entry)
