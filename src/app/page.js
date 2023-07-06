@@ -33,7 +33,7 @@ export default function Home() {
       </header>
       <main className={styles.main}>
         <p className={styles.contentTitle}>Previous Interactions</p>
-        <section>
+        <section className={styles.content}>
           {            
             dummyData.map((interaction) => (              
               <Interaction entry={interaction} />

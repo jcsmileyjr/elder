@@ -2,7 +2,7 @@
 .page {
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  padding: 2rem 2rem 0 2rem;
   min-height: 100vh;
   background-color: white;
 }
@@ -71,6 +71,16 @@
 .main {
   display: flex;
   flex-direction: column;
+}
+
+.contentTitle {
+  font-weight: bold;
+  text-decoration: underline;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.content {
   height: 75vh;
   overflow-y: auto;
   overflow: scroll;
@@ -78,21 +88,13 @@
 }
 
 /*Works on Chrome, Edge, and Safari*/
-.main::-webkit-scrollbar {
+.content::-webkit-scrollbar {
   width: 10px;
 }
 
 /*Works on Chrome, Edge, and Safari*/
-.main::-webkit-scrollbar-thumb {
+.content::-webkit-scrollbar-thumb {
   background-color: black;
-}
-
-
-.contentTitle {
-  font-weight: bold;
-  text-decoration: underline;
-  margin-bottom: 1rem;
-  text-align: center;
 }
 
 .interactionDate {
@@ -118,3 +120,4 @@
     width: 80%;
   }
 }
+
