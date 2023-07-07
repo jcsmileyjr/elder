@@ -1,10 +1,11 @@
-import Image from 'next/image'
-import styles from './page.module.css'
-import List from '../../public/list-icon.png'
-import dummyData from './libs/dummyData.json'
+"use client"
+import Image from 'next/image';
+import styles from './page.module.css';
+import List from '../../public/list-icon.png';
+import dummyData from './libs/dummyData.json';
+import { useState, useEffect } from 'react';
 
 const Interaction = ({entry}) => {
-  console.log(entry)
   return (
     <div className={styles.interactions}>
       <p className={styles.interactionDate}>{entry.date}</p>
@@ -16,6 +17,12 @@ const Interaction = ({entry}) => {
 }
 
 export default function Home() {
+  const [entries, setEntries] = useState([]);
+
+  useEffect(() => {
+    setEntries(dummyData);
+  }, [])
+
   return (
     <div className={styles.page}>
       <header className={styles.header}>
@@ -35,8 +42,8 @@ export default function Home() {
         <p className={styles.contentTitle}>Previous Interactions</p>
         <section className={styles.content}>
           {            
-            dummyData.map((interaction) => (              
-              <Interaction entry={interaction} />
+            entries.map((interaction) => (              
+              <Interaction key={interaction.entryID} entry={interaction} />
             )
           )}
         </section>
