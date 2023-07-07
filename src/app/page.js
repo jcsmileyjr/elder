@@ -4,6 +4,7 @@ import styles from './page.module.css';
 import List from '../../public/list-icon.png';
 import dummyData from './libs/dummyData.json';
 import { useState, useEffect } from 'react';
+import Link from 'next/link'
 
 const Interaction = ({entry}) => {
   return (
@@ -33,7 +34,7 @@ export default function Home() {
         <div className={styles.entryContainer}>
           <button className={styles.entryButton} type="button">
             <Image className={styles.entryButtonImageStyle} src={List} alt="list icon" ></Image>
-            New Entry
+        <Link className={styles.buttonLink} href="/createEntry">New Entry</Link>
             </button>
           <p className={styles.entryButtonMessage}>Add a new entry briefly describing your interaction with TJ Smiley</p>
         </div>
