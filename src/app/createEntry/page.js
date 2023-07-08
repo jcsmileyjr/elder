@@ -1,6 +1,20 @@
+"use client"
 import styles from './createEntry.module.css';
+import { useReducer } from 'react';
+import dummyData from '../libs/dummyData.json';
+import entryReducer from '../reducers/entryReducer';
 
 const CreateEntry = () => {
+    const [entry, dispatch] = useReducer(entryReducer, dummyData);
+
+    const handleAddEntry = (entry) => {
+        entry.type = "add"
+        dispatch(entry);
+    }
+
+    const test = () => {
+        alert("Done");
+    }
     return (
         <div className={styles.page}>
         <header className={styles.header}>
@@ -22,6 +36,10 @@ const CreateEntry = () => {
             <div className={styles.section}>
                 <label className={styles.label}>Your Name</label>
                 <input type="text" className={styles.inputfield}></input>
+            </div>
+            <div className={styles.section}>
+                <label>Click when Finished</label>
+                <button type="button" onClick={()=> test()} className={styles.inputfield}>Done</button>
             </div>
         </main>
       </div>
