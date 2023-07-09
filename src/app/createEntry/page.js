@@ -3,6 +3,7 @@ import styles from './createEntry.module.css';
 import { useState, useEffect } from 'react';
 import Link from 'next/link'
 import {v4 as uuidv4} from 'uuid';
+import moment from 'moment';
 
 const CreateEntry = () => {
     const [newEntry, setNewEntry] = useState({});
@@ -15,7 +16,7 @@ const CreateEntry = () => {
 
 
     const updateDate = (e) => {
-        newEntry.date = e.target.value;
+        newEntry.date = moment(e.target.value).format('MMMM Do YYYY');
         enableButton();
     }
 
