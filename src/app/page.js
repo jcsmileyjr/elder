@@ -20,7 +20,20 @@ export default function Home() {
   const [entries, setEntries] = useState([]);
 
   useEffect(() => {
-    setEntries(dummyData);
+    // Load either pas enter actions or dummy data (testing)
+    const loadPastInteractions = () => {
+      let previousSavedData = localStorage.getItem("Elder-data");
+      if(previousSavedData === null){
+        setEntries(dummyData);
+        localStorage.setItem("Elder-data", JSON.stringify(dummyData));
+      } else {
+        const parseData = JSON.parse(previousSavedData)
+        setEntries(parseData);
+      }
+    }
+
+    loadPastInteractions();
+    console.log(`End of useEffect: `, entries)
   }, [])
 
   return (
