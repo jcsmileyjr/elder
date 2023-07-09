@@ -49,6 +49,11 @@
   width: 1rem;
 }
 
+.buttonLink {
+  text-decoration: none;
+  color: black;
+}
+
 .entryButtonMessage {
   font-size: 14px;
   font-style: italic;

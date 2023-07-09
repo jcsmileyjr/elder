@@ -4,6 +4,8 @@ import styles from './page.module.css';
 import List from '../../public/list-icon.png';
 import dummyData from './libs/dummyData.json';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const Interaction = ({entry}) => {
   return (
@@ -17,10 +19,23 @@ const Interaction = ({entry}) => {
 }
 
 export default function Home() {
+  const router = useRouter()
   const [entries, setEntries] = useState([]);
 
   useEffect(() => {
-    setEntries(dummyData);
+    // Load either pas enter actions or dummy data (testing)
+    const loadPastInteractions = () => {
+      let previousSavedData = localStorage.getItem("Elder-data");
+      if(previousSavedData === null){
+        setEntries(dummyData);
+        localStorage.setItem("Elder-data", JSON.stringify(dummyData));
+      } else {
+        const parseData = JSON.parse(previousSavedData)
+        setEntries(parseData);
+      }
+    }
+
+    loadPastInteractions();
   }, [])
 
   return (
@@ -31,7 +46,7 @@ export default function Home() {
           <p className={styles.elderName}>TJ Smiley</p>
         </div>
         <div className={styles.entryContainer}>
-          <button className={styles.entryButton} type="button">
+          <button onClick={() => router.push("/createEntry")} className={styles.entryButton} type="button">
             <Image className={styles.entryButtonImageStyle} src={List} alt="list icon" ></Image>
             New Entry
             </button>
