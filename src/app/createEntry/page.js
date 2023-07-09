@@ -1,11 +1,14 @@
 "use client"
 import styles from './createEntry.module.css';
 import { useState, useEffect } from 'react';
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import {v4 as uuidv4} from 'uuid';
 import moment from 'moment';
+import Link from 'next/link'
 
 const CreateEntry = () => {
+    const router = useRouter()
+
     const [newEntry, setNewEntry] = useState({});
     const [showDoneButton, setShowDoneButton] = useState(false);
     const [newID, setNewID] = useState(200);
@@ -36,6 +39,7 @@ const CreateEntry = () => {
         let parseSavedData = JSON.parse(previousSavedData);
         parseSavedData.unshift(newEntry);
         localStorage.setItem("Elder-data", JSON.stringify(parseSavedData));
+        router.push('/')
     }
 
     const enableButton = () => {
@@ -75,7 +79,7 @@ const CreateEntry = () => {
                 {showDoneButton &&
                     <>
                         <label className={styles.label}>Click when Finished</label>
-                        <button onClick={() => saveInteraction()} type="button" className={styles.entryButton}><Link className={styles.buttonLink} href={"/"} >DONE</Link></button>
+                        <button onClick={() => saveInteraction()} type="button" className={styles.entryButton}>DONE</button>
                     </>
                 }
 

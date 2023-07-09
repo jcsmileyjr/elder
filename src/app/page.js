@@ -5,6 +5,7 @@ import List from '../../public/list-icon.png';
 import dummyData from './libs/dummyData.json';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const Interaction = ({entry}) => {
   return (
@@ -18,6 +19,7 @@ const Interaction = ({entry}) => {
 }
 
 export default function Home() {
+  const router = useRouter()
   const [entries, setEntries] = useState([]);
 
   useEffect(() => {
@@ -44,9 +46,9 @@ export default function Home() {
           <p className={styles.elderName}>TJ Smiley</p>
         </div>
         <div className={styles.entryContainer}>
-          <button className={styles.entryButton} type="button">
+          <button onClick={() => router.push("/createEntry")} className={styles.entryButton} type="button">
             <Image className={styles.entryButtonImageStyle} src={List} alt="list icon" ></Image>
-            <Link className={styles.buttonLink} href="/createEntry">New Entry</Link>
+            New Entry
             </button>
           <p className={styles.entryButtonMessage}>Add a new entry briefly describing your interaction with TJ Smiley</p>
         </div>
