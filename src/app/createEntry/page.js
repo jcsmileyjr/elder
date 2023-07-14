@@ -6,12 +6,15 @@ import {v4 as uuidv4} from 'uuid';
 import moment from 'moment';
 import Link from 'next/link'
 
+/**
+ * Page use to create an entry. When finished, the user is relocated to the main page
+ * @returns 
+ */
 const CreateEntry = () => {
-    const router = useRouter()
+    const router = useRouter() //  Use to relocate user to another page
 
-    const [newEntry, setNewEntry] = useState({});
-    const [showDoneButton, setShowDoneButton] = useState(false);
-    const [newID, setNewID] = useState(200);
+    const [newEntry, setNewEntry] = useState({}); // Object to be updated and added to the array of objects displayed on the main page
+    const [showDoneButton, setShowDoneButton] = useState(false); // Boolean to display either the "Done" button or "Not Completed" button
 
     useEffect(() => {
         setShowDoneButton(false)
@@ -44,9 +47,6 @@ const CreateEntry = () => {
 
     const enableButton = () => {
         if(newEntry.date && newEntry.message && newEntry.writer){
-            newEntry.entryID = newID
-            setNewEntry(newEntry)
-            setNewID(newID + 1);
             setShowDoneButton(true)
         }else {
             setShowDoneButton(false)

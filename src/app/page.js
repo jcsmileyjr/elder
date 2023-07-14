@@ -6,6 +6,10 @@ import dummyData from './libs/dummyData.json';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
+/**
+ * Componenet that displays an user's app enrty.
+ * @param {object} entry = object with properties: date, writer, message, and entryID
+ */
 const Interaction = ({entry}) => {
   return (
     <div className={styles.interactions}>
@@ -17,12 +21,16 @@ const Interaction = ({entry}) => {
   )
 }
 
+/**
+ * First page the user sees that displays a list of past entries and a button to add another entry.
+ * @returns 
+ */
 export default function Home() {
-  const router = useRouter()
-  const [entries, setEntries] = useState([]);
+  const router = useRouter() // Routes a user to another page
+  const [entries, setEntries] = useState([]); // App's state that holds an array of entries
 
   useEffect(() => {
-    // Load either pas enter actions or dummy data (testing)
+    // Load either past enter actions or dummy data (testing)
     const loadPastInteractions = () => {
       let previousSavedData = localStorage.getItem("Elder-data");
       if(previousSavedData === null){
