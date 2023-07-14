@@ -64,11 +64,11 @@ const CreateEntry = () => {
         <main className={styles.main}>
             <p className={styles.title}>Create New Entry</p>
             <div className={styles.section}>
-                <label for="inputDate" className={styles.label}>Date of newEntry</label>
+                <label for="inputDate" className={styles.label}>Date of new Entry</label>
                 <input id="inputDate" type="date" className={styles.inputfield} onChange={(e) => updateDate(e)}></input>                
             </div>
             <div className={styles.section}>
-                <label for="inputMessage" className={styles.label}>Brief description of newEntry</label>
+                <label for="inputMessage" className={styles.label}>Brief description of new Entry</label>
                 <textarea id="inputMessage" rows={10} className={styles.inputfield} onChange={(e) =>updateMessage(e)}></textarea>
             </div>
             <div className={styles.section}>
