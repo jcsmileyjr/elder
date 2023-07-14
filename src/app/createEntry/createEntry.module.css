@@ -4,7 +4,7 @@
     flex-direction: column;
     padding: 2rem 2rem 0 2rem;
     min-height: 100vh;
-    background-color: #e1dcd6;
+    background-color: white;
     color: #201E20;
   }
   
@@ -41,7 +41,7 @@
     font-weight: bold;
     margin-bottom: 1rem;
     text-decoration: underline;
-    text-decoration-color: #B85042;
+    text-decoration-color: #527992;
   }
 
   .section {
@@ -97,17 +97,17 @@
     justify-content: space-around;
     font-weight: bold;
     background-color: transparent;
-    border: 2px solid #B85042;
+    border: 2px solid #527992;
     border-radius: 15px;
     cursor: pointer;
     transition: all 300ms cubic-bezier(.23, 1. 0.32,1);
     -webkit-user-select: none;
     touch-action: manipulation;
-    color: #B85042;
+    color: #527992;
   }
   
   .buttonLink {
-    color: #B85042;
+    color: #527992;
     text-decoration: none;
   }
 
