@@ -85,7 +85,7 @@ const CreateEntry = () => {
 
                 {!showDoneButton &&
                     <div className={styles.doneButtonContainer}>
-                        <button type="button" className={styles.entryButton}> <Link className={styles.buttonLink} href={"/"}>Go back</Link></button>
+                        <button type="button" className={styles.entryButton} onClick={() => router.push("/")}> Go back</button>
                         <p className={styles.noInfoMessage}>No information has been added. Must fill out the entire form to show the <span className={styles.noBreakWord}>"DONE" button.</span> </p>
                     </div>
                 }

@@ -88,7 +88,7 @@
 
   /*Done Button*/
   .entryButton {
-    width: 50%;    
+    min-width: 150px;
     margin-top: .5rem;
     font-size: 1rem;
     margin: auto;
@@ -117,14 +117,16 @@
     box-shadow: none;
     transform: translateY(0);
   }
+
+  @media screen and (min-width: 600px) {
+    .entryButton {
+      min-width: 200px;
+    }
+  }
   
   .buttonLink {
     color: #527992;
     text-decoration: none;
-  }
-
-  .doneButtonStyle {
-    width: 100%;
   }
 
   .noInfoMessage {
