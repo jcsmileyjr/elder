@@ -77,10 +77,10 @@ const CreateEntry = () => {
             </div>
             <div className={styles.section}>
                 {showDoneButton &&
-                    <>
-                        <label className={styles.label}>Click when Finished</label>
+                    <div className={styles.doneButtonContainer}>
                         <button onClick={() => saveInteraction()} type="button" className={styles.entryButton}>DONE</button>
-                    </>
+                        <label className={styles.doneLabel}>Click when Finished</label>
+                    </div>
                 }
 
                 {!showDoneButton &&

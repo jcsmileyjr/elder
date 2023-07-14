@@ -4,8 +4,8 @@
     flex-direction: column;
     padding: 2rem 2rem 0 2rem;
     min-height: 100vh;
-    background-color: white;
-    color: black;
+    background-color: #e1dcd6;
+    color: #201E20;
   }
   
   /* Header Styles */
@@ -41,6 +41,7 @@
     font-weight: bold;
     margin-bottom: 1rem;
     text-decoration: underline;
+    text-decoration-color: #B85042;
   }
 
   .section {
@@ -55,8 +56,18 @@
     width: 100%;
   }
 
-  .label {
+  .label, .doneLabel {
     font-weight: bold;
+  }
+
+  .doneLabel {
+    margin: auto;
+  }
+
+  .doneButtonContainer {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
   }
 
   @media screen and (min-width: 600px) {
@@ -77,24 +88,32 @@
 
   /*Done Button*/
   .entryButton {
-    width: 100%;
+    width: 50%;    
     margin-top: .5rem;
     font-size: 1rem;
-    align-self: center;
+    margin: auto;
     padding: 0.5rem;
     display: flex;
     justify-content: space-around;
     font-weight: bold;
+    background-color: transparent;
+    border: 2px solid #B85042;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 300ms cubic-bezier(.23, 1. 0.32,1);
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    color: #B85042;
   }
   
   .buttonLink {
+    color: #B85042;
     text-decoration: none;
-    color: black;
   }
 
   .noInfoMessage {
     text-align: center;
-    color: red;
+    color: #B85042;
   }
 
   .noBreakWord {
