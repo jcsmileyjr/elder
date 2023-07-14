@@ -64,16 +64,16 @@ const CreateEntry = () => {
         <main className={styles.main}>
             <p className={styles.title}>Create New Entry</p>
             <div className={styles.section}>
-                <label className={styles.label}>Date of newEntry</label>
-                <input type="date" className={styles.inputfield} onChange={(e) => updateDate(e)}></input>                
+                <label for="inputDate" className={styles.label}>Date of newEntry</label>
+                <input id="inputDate" type="date" className={styles.inputfield} onChange={(e) => updateDate(e)}></input>                
             </div>
             <div className={styles.section}>
-                <label className={styles.label}>Brief description of newEntry</label>
-                <textarea rows={10} className={styles.inputfield} onChange={(e) =>updateMessage(e)}></textarea>
+                <label for="inputMessage" className={styles.label}>Brief description of newEntry</label>
+                <textarea id="inputMessage" rows={10} className={styles.inputfield} onChange={(e) =>updateMessage(e)}></textarea>
             </div>
             <div className={styles.section}>
-                <label className={styles.label}>Your Name</label>
-                <input type="text" className={styles.inputfield} onChange={(e) =>updateWriter(e)}></input>
+                <label for="inputWriter" className={styles.label}>Your Name</label>
+                <input id="inputWriter" type="text" className={styles.inputfield} onChange={(e) =>updateWriter(e)}></input>
             </div>
             <div className={styles.section}>
                 {showDoneButton &&
