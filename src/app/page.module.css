@@ -87,10 +87,10 @@
     width: 20%;
     max-width: 175px;
     min-width: 150px;
+    margin: auto;
   }
 
   .entryContainer {
-    flex-direction: row;
     align-items: center;
   }
 }
