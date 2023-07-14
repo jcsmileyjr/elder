@@ -6,7 +6,11 @@ import { useRouter } from 'next/navigation';
 
 /**
  * Componenet that displays an user's app enrty.
- * @param {object} entry = object with properties: date, writer, message, and entryID
+ * @param {object} entry = entry object added by a user to describe the event
+ * @param {string} entry.date = Date of the entry in a 'MMMM Do YYYY' format.
+ * @param {string} entry.message = User's activity description of the event.
+ * @param {string} entry.writter = Name of the user for the event.
+ * @param {string} entry.entryID = random number assign to the event.
  */
 const Interaction = ({entry}) => {
   return (
@@ -20,12 +24,12 @@ const Interaction = ({entry}) => {
 }
 
 /**
- * First page the user sees that displays a list of past entries and a button to add another entry.
+ * First page the user sees that displays a list of past entries and a button to add another entry. 
  * @returns 
  */
 export default function Home() {
   const router = useRouter() // Routes a user to another page
-  const [entries, setEntries] = useState([]); // App's state that holds an array of entries
+  const [entries, setEntries] = useState([]); // App's state that holds an array of entries (objects)
 
   useEffect(() => {
     // Load either past enter actions or dummy data (testing)
