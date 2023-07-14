@@ -23,6 +23,7 @@
   
   .elderName {
     font-weight: bold;
+    color: #000046;
   }
   
   .appTitle {
@@ -42,6 +43,16 @@
     margin-bottom: 1rem;
     text-decoration: underline;
     text-decoration-color: #527992;
+  }
+
+  .appNamePrimary {
+    color: #000046;
+    font-weight: bold;
+  }
+  
+  .appNameSecondary {
+    color: #1CB5E0;
+    font-weight: bold;
   }
 
   .section {
