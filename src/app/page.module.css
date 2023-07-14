@@ -90,6 +90,7 @@
 .entryButtonMessage {
   font-size: 14px;
   font-style: italic;
+  text-align: center;
 }
 
 @media screen and (min-width: 600px) {
