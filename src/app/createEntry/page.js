@@ -57,7 +57,7 @@ const CreateEntry = () => {
         <div className={styles.page}>
         <header className={styles.header}>
           <div className={styles.navbar}>
-            <p className={styles.appTitle}>Keepin Up</p>
+            <p className={styles.appTitle}><span className={styles.appNamePrimary}> Keeping </span><span className={styles.appNameSecondary}> Up </span></p>
             <p className={styles.elderName}>TJ Smiley</p>
           </div>
         </header>
