@@ -1,3 +1,9 @@
+/*
+* #6697B6 Light Sky Blue
+* #527992 Medium Sky Blue
+*/
+
+
 .page {
   display: flex;
   flex-direction: column;
@@ -6,17 +12,7 @@
   background-color: white;
   color: #201E20;
 }
-/*
-* #E1D5C8 Beige
-* #e3d7c9 Beige alternate
-* #e1dcd6 more whiter beige
-* #DDC3A5 Brown black
-* #201E20 light Beige
-* #B85042 Scarlet red
 
-* #6697B6
-* #527992
-*/
 /* Header Styles */
 .header {
   display: flex;
