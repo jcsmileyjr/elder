@@ -1,9 +1,9 @@
 "use client"
 import styles from './createEntry.module.css';
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { useRouter } from 'next/navigation'
-import {v4 as uuidv4} from 'uuid';
-import moment from 'moment';
+import {v4 as uuidv4} from 'uuid'; // NPM module that creates a random ID number
+import moment from 'moment'; // NPM module that converts date objects to strings
 import Link from 'next/link'
 
 /**
@@ -16,26 +16,25 @@ const CreateEntry = () => {
     const [newEntry, setNewEntry] = useState({}); // Object to be updated and added to the array of objects displayed on the main page
     const [showDoneButton, setShowDoneButton] = useState(false); // Boolean to display either the "Done" button or "Not Completed" button
 
-    useEffect(() => {
-        setShowDoneButton(false)
-    }, [])
-
-
+    // Updates the date property of the user's new entry from a input field
     const updateDate = (e) => {
         newEntry.date = moment(e.target.value).format('MMMM Do YYYY');
         enableButton();
     }
 
+    // Updates the message property of the user's new entry from the textbox field
     const updateMessage = (e) => {
         newEntry.message = e.target.value;
         enableButton();
     }
 
+    // Updates the writer property of the user's new entry from a input field
     const updateWriter = (e) => {
         newEntry.writer = e.target.value;
         enableButton();
     }
 
+    // Adds a random ID to the entryID property, saves the "entry" object to the database (array of entries), then relocate the user to the main page
     const saveInteraction = () => {
         newEntry.entryID = uuidv4();
         let previousSavedData = localStorage.getItem("Elder-data");
@@ -45,6 +44,7 @@ const CreateEntry = () => {
         router.push('/')
     }
 
+    // Check if all require properties of the new entry object is fill before enableing the "Done" button
     const enableButton = () => {
         if(newEntry.date && newEntry.message && newEntry.writer){
             setShowDoneButton(true)
