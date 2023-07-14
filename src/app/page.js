@@ -1,7 +1,5 @@
 "use client"
-import Image from 'next/image';
 import styles from './page.module.css';
-import List from '../../public/list-icon.png';
 import dummyData from './libs/dummyData.json';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
@@ -54,7 +52,6 @@ export default function Home() {
         </div>
         <div className={styles.entryContainer}>
           <button onClick={() => router.push("/createEntry")} className={styles.entryButton} type="button">
-            <Image className={styles.entryButtonImageStyle} src={List} alt="list icon" ></Image>
             New Entry
             </button>
           <p className={styles.entryButtonMessage}>Add a new entry briefly describing your interaction with TJ Smiley</p>
