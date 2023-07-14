@@ -78,16 +78,16 @@ const CreateEntry = () => {
             <div className={styles.section}>
                 {showDoneButton &&
                     <div className={styles.doneButtonContainer}>
-                        <button onClick={() => saveInteraction()} type="button" className={styles.entryButton}>DONE</button>
+                        <button onClick={() => saveInteraction()} type="button" className={`${styles.entryButton} ${styles.doneButtonStyle}`}>DONE</button>
                         <label className={styles.doneLabel}>Click when Finished</label>
                     </div>
                 }
 
                 {!showDoneButton &&
-                    <>
+                    <div className={styles.doneButtonContainer}>
                         <button type="button" className={styles.entryButton}> <Link className={styles.buttonLink} href={"/"}>Go back</Link></button>
                         <p className={styles.noInfoMessage}>No information has been added. Must fill out the entire form to show the <span className={styles.noBreakWord}>"DONE" button.</span> </p>
-                    </>
+                    </div>
                 }
             </div>
         </main>

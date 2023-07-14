@@ -4,7 +4,6 @@ import styles from './page.module.css';
 import List from '../../public/list-icon.png';
 import dummyData from './libs/dummyData.json';
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 const Interaction = ({entry}) => {

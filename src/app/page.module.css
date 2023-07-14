@@ -61,6 +61,18 @@
   touch-action: manipulation;
 }
 
+.entryButton:hover {
+  color: white;
+  background-color: #527992;
+  box-shadow: rgba(0,0,0,0) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.entryButton:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
 .entryButtonImageStyle {
   height: 1rem;
   width: 1rem;

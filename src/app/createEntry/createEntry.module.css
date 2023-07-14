@@ -105,10 +105,26 @@
     touch-action: manipulation;
     color: #527992;
   }
+
+  .entryButton:hover, .buttonLink:hover {
+    color: white;
+    background-color: #527992;
+    box-shadow: rgba(0,0,0,0) 0 8px 15px;
+    transform: translateY(-2px);
+  }
+  
+  .entryButton:active, .buttonLink:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
   
   .buttonLink {
     color: #527992;
     text-decoration: none;
+  }
+
+  .doneButtonStyle {
+    width: 100%;
   }
 
   .noInfoMessage {
