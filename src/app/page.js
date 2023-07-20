@@ -92,8 +92,8 @@ export default function Home() {
       </header>
       <main className={styles.main}>
         <ul className={styles.contentTitleContainer}>
-          <li className={`${styles.contentTitle}`} onClick={() => {setDisplayedContent("interactions")}}>Previous <span className={styles.titleFormatting}>Interactions</span></li>
-          <li className={`${styles.contentTitle}`} onClick={() => {setDisplayedContent("essentials")}}>Essential <span className={styles.titleFormatting}>Tasks</span></li>
+          <li className={`${styles.contentTitle} ${displayedContent=== 'interactions'? styles.highlight:''}`} onClick={() => {setDisplayedContent("interactions")}}>Previous <span className={styles.titleFormatting}>Interactions</span></li>
+          <li className={`${styles.contentTitle} ${displayedContent=== 'essentials'? styles.highlight:''}`} onClick={() => {setDisplayedContent("essentials")}}>Essential <span className={styles.titleFormatting}>Tasks</span></li>
         </ul>
         <section className={styles.content}>
           {displayedContent === "interactions" &&            
