@@ -85,8 +85,9 @@ const CreateEntry = () => {
 
                 {showDoneButton &&
                     <div className={styles.doneButtonContainer}>
+                        
+                        <button type="button" className={`${styles.entryButton} ${styles.goBackLink}`} onClick={() => router.push("/")}> Go back</button>
                         <button onClick={() => saveInteraction()} type="button" className={`${styles.entryButton} ${styles.doneButtonStyle}`}>DONE</button>
-                        <button type="button" className={`${styles.entryButton} ${styles.goBackButonSyle}`} onClick={() => router.push("/")}> Go back</button>
                         <label className={styles.doneLabel}>Click <span className={styles.entrybuttonMessage}>DONE</span> when Finished</label>
                     </div>
                 }

@@ -141,10 +141,17 @@
     border: 2px solid rgba(175,70,0,1);
   }
 
+  .goBackLink {
+    color: red;
+    border: none;
+    font-size: x-large;
+  }
+
+  
   .goBackButtonFullWidth {
     min-width: 150px;
   }
-
+  
   .entryButton:hover, .buttonLink:hover {
     color: white;
     background-color: #527992;
@@ -152,15 +159,22 @@
     background: linear-gradient(45deg, black, lightgray);
   }
   
+  .goBackLink:hover {
+    color: #000046;
+    background-color: transparent;
+    box-shadow: none;
+    background: none;
+  }
+
   .entryButton:active, .buttonLink:active {
     box-shadow: none;
     transform: translateY(0);
   }
 
   @media screen and (min-width: 600px) {
-    .doneButtonContainer {
+    /* .doneButtonContainer {
       gap: 1.5rem;
-    }
+    } */
 
     .backButtonContainer {
       margin: 0 2rem;
