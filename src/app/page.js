@@ -4,6 +4,33 @@ import dummyData from './libs/dummyData.json';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
+const essentialTasks = [
+  {
+    "type":"Daily",
+    "tasks":[
+      "Medication",
+      "Meals",
+      "Feed and Water Pets"
+    ]
+  },
+  {
+    "type":"Weekly",
+    "tasks":[
+      "Yard clean up",
+      "Dishes",
+      "Wash and Dry Clothes"
+    ]
+  },
+  {
+    "type":"Monthly",
+    "tasks":[
+      "Doctor visits",
+      "Pharmacy visits",
+      "Sunday Church Service"
+    ]
+  }
+]
+
 /**
  * Componenet that displays an user's app enrty.
  * @param {object} entry = entry object added by a user to describe the event
@@ -30,6 +57,7 @@ const Interaction = ({entry}) => {
 export default function Home() {
   const router = useRouter() // Routes a user to another page
   const [entries, setEntries] = useState([]); // App's state that holds an array of entries (objects)
+  const [displayedContent, setDisplayedContent] = useState("interactions");
 
   useEffect(() => {
     // Load either past enter actions or dummy data (testing)
@@ -62,13 +90,20 @@ export default function Home() {
         </div>
       </header>
       <main className={styles.main}>
-        <p className={styles.contentTitle}>Previous Interactions</p>
+        <ul className={styles.contentTitleContainer}>
+          <li className={`${styles.contentTitle}`} onClick={() => {alert("Yeah"); setDisplayedContent("interactions")}}>Previous <span className={styles.titleFormatting}>Interactions</span></li>
+          <li className={`${styles.contentTitle}`} onClick={() => {alert("Woohooo"); setDisplayedContent("essentials")}}>Essential <span className={styles.titleFormatting}>Tasks</span></li>
+        </ul>
         <section className={styles.content}>
-          {            
+          {displayedContent === "interactions" &&            
             entries.map((interaction) => (              
               <Interaction key={interaction.entryID} entry={interaction} />
             )
           )}
+
+          {displayedContent === "essentials" &&
+            <>Hello World</>
+          }
         </section>
       </main>
     </div>

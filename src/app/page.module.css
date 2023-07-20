@@ -113,12 +113,22 @@
   flex-direction: column;
 }
 
+.contentTitleContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .contentTitle {
   font-weight: bold;
   text-decoration: underline;
   margin-bottom: 1rem;
   text-align: center;
   text-decoration-color: #527992;
+  list-style: none;
+}
+
+.contentTitle:hover {
+  color: #1CB5E0;
 }
 
 .content {
@@ -155,6 +165,11 @@
 
 .writerName {
   font-style: italic;
+}
+
+.titleFormatting::before {
+  content: "\a";
+  white-space: pre;
 }
 
 @media screen and (min-width: 600px) {
