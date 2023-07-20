@@ -176,4 +176,24 @@
   .interactions h1 {
     width: 80%;
   }
+
+  .content {
+    min-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+.taskHeader {
+  font-weight: bold;
+  color: #1CB5E0;
+}
+
+.tasks {
+  padding-left: 1rem;
+}
+
+.tasks::before {
+  content:"❤";
+  margin-right: .5rem;
+  color: #B85042;
 }

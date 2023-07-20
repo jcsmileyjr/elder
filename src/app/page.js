@@ -8,15 +8,15 @@ const essentialTasks = [
   {
     "type":"Daily",
     "tasks":[
-      "Medication",
-      "Meals",
-      "Feed and Water Pets"
+      "Medication: high blood pressure, gout, Proziac",
+      "Meals: lactose intolerance, alcohol inflames gout",
+      "Feed and Water: dog food is on shelf in backyard shed"
     ]
   },
   {
     "type":"Weekly",
     "tasks":[
-      "Yard clean up",
+      "Yard clean up: lawn mower, weeding, flower bed, sweep porch",
       "Dishes",
       "Wash and Dry Clothes"
     ]
@@ -25,8 +25,8 @@ const essentialTasks = [
     "type":"Monthly",
     "tasks":[
       "Doctor visits",
-      "Pharmacy visits",
-      "Sunday Church Service"
+      "Pharmacy visits: Walgreens on Shelby and Dodge Bullets street",
+      "Sunday Church Service (keep her away from Sister Johnson, they fight)"
     ]
   }
 ]
@@ -75,6 +75,7 @@ export default function Home() {
     loadPastInteractions();
   }, [])
 
+  console.log(essentialTasks);
   return (
     <div className={styles.page}>
       <header className={styles.header}>
@@ -91,8 +92,8 @@ export default function Home() {
       </header>
       <main className={styles.main}>
         <ul className={styles.contentTitleContainer}>
-          <li className={`${styles.contentTitle}`} onClick={() => {alert("Yeah"); setDisplayedContent("interactions")}}>Previous <span className={styles.titleFormatting}>Interactions</span></li>
-          <li className={`${styles.contentTitle}`} onClick={() => {alert("Woohooo"); setDisplayedContent("essentials")}}>Essential <span className={styles.titleFormatting}>Tasks</span></li>
+          <li className={`${styles.contentTitle}`} onClick={() => {setDisplayedContent("interactions")}}>Previous <span className={styles.titleFormatting}>Interactions</span></li>
+          <li className={`${styles.contentTitle}`} onClick={() => {setDisplayedContent("essentials")}}>Essential <span className={styles.titleFormatting}>Tasks</span></li>
         </ul>
         <section className={styles.content}>
           {displayedContent === "interactions" &&            
@@ -102,7 +103,18 @@ export default function Home() {
           )}
 
           {displayedContent === "essentials" &&
-            <>Hello World</>
+            essentialTasks.map( (frequncy) => (
+              <div>
+                <p className={styles.taskHeader}>{frequncy.type}</p>
+                <ul>
+                  {
+                    frequncy.tasks.map((task) => (
+                      <li className={styles.tasks}>{task}</li>
+                    ))
+                  }
+                </ul>
+              </div>
+            ))            
           }
         </section>
       </main>
