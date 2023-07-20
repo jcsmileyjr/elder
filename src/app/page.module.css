@@ -190,10 +190,15 @@
 
 .tasks {
   padding-left: 1rem;
+  margin-bottom: .5rem;
 }
 
 .tasks::before {
   content:"❤";
   margin-right: .5rem;
   color: #B85042;
+}
+
+.essentials {
+  margin-bottom: .5rem;
 }

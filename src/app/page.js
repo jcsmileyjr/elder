@@ -8,8 +8,8 @@ const essentialTasks = [
   {
     "type":"Daily",
     "tasks":[
-      "Medication: high blood pressure, gout, Proziac",
-      "Meals: lactose intolerance, alcohol inflames gout",
+      "Medication: high blood pressure, gout, Prozac",
+      "Meals: lactose intolerance, alcohol & excessive sugar inflames gout",
       "Feed and Water: dog food is on shelf in backyard shed"
     ]
   },
@@ -104,7 +104,7 @@ export default function Home() {
 
           {displayedContent === "essentials" &&
             essentialTasks.map( (frequncy) => (
-              <div>
+              <div className={styles.essentials}>
                 <p className={styles.taskHeader}>{frequncy.type}</p>
                 <ul>
                   {
