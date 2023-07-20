@@ -76,19 +76,23 @@ const CreateEntry = () => {
                 <input id="inputWriter" type="text" className={styles.inputfield} onChange={(e) =>updateWriter(e)}></input>
             </div>
             <div className={styles.section}>
-                {showDoneButton &&
-                    <div className={styles.doneButtonContainer}>
-                        <button onClick={() => saveInteraction()} type="button" className={`${styles.entryButton} ${styles.doneButtonStyle}`}>DONE</button>
-                        <label className={styles.doneLabel}>Click when Finished</label>
-                    </div>
-                }
-
                 {!showDoneButton &&
-                    <div className={styles.doneButtonContainer}>
-                        <button type="button" className={styles.entryButton} onClick={() => router.push("/")}> Go back</button>
+                    <div className={styles.backButtonContainer}>
+                        <button type="button" className={`${styles.entryButton} ${styles.goBackButonSyle} ${styles.goBackButtonFullWidth}`} onClick={() => router.push("/")}> Go back</button>
                         <p className={styles.noInfoMessage}>No information has been added. Must fill out the entire form to show the <span className={styles.noBreakWord}>"DONE" button.</span> </p>
                     </div>
                 }
+
+                {showDoneButton &&
+                    <div className={styles.doneButtonContainer}>
+                        <button onClick={() => saveInteraction()} type="button" className={`${styles.entryButton} ${styles.doneButtonStyle}`}>DONE</button>
+                        <button type="button" className={`${styles.entryButton} ${styles.goBackButonSyle}`} onClick={() => router.push("/")}> Go back</button>
+                        <label className={styles.doneLabel}>Click <span className={styles.entrybuttonMessage}>DONE</span> when Finished</label>
+                    </div>
+                }
+
+                
+                
             </div>
         </main>
       </div>

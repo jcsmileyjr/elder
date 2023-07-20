@@ -2,7 +2,7 @@
 .page {
     display: flex;
     flex-direction: column;
-    padding: 2rem 2rem 0 2rem;
+    padding: 1rem 2rem 0 2rem;
     min-height: 100vh;
     background-color: white;
     color: #201E20;
@@ -75,10 +75,17 @@
     margin: auto;
   }
 
-  .doneButtonContainer {
+  .backButtonContainer {
     display: flex;
     flex-direction: column;
     gap: .5rem;
+  }
+
+  .doneButtonContainer {
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    flex-wrap: wrap;
   }
 
   @media screen and (min-width: 600px) {
@@ -99,7 +106,8 @@
 
   /*Done Button*/
   .entryButton {
-    min-width: 150px;
+    flex: 1;
+    min-width: 40%;
     margin-top: .5rem;
     font-size: 1rem;
     margin: auto;
@@ -108,16 +116,32 @@
     justify-content: space-around;
     font-weight: bold;
     background-color: transparent;
-    border: 2px solid #527992;
     border-radius: 15px;
     cursor: pointer;
     transition: all 300ms cubic-bezier(.23, 1. 0.32,1);
     -webkit-user-select: none;
     touch-action: manipulation;
     color: white;
+  }
+  
+  .doneButtonStyle {
     background: #000046;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #1CB5E0, #000046);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #1CB5E0, #000046); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border: 2px solid #527992;
+  }
+
+  .goBackButonSyle {
+    background: rgb(175,70,0);
+    background: -moz-linear-gradient(90deg, rgba(175,70,0,1) 1%, rgba(207,46,21,1) 47%, rgba(175,70,0,1) 96%);
+    background: -webkit-linear-gradient(90deg, rgba(175,70,0,1) 1%, rgba(207,46,21,1) 47%, rgba(175,70,0,1) 96%);
+    background: linear-gradient(90deg, rgba(175,70,0,1) 1%, rgba(207,46,21,1) 47%, rgba(175,70,0,1) 96%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#af4600",endColorstr="#af4600",GradientType=1);
+    border: 2px solid rgba(175,70,0,1);
+  }
+
+  .goBackButtonFullWidth {
+    min-width: 150px;
   }
 
   .entryButton:hover, .buttonLink:hover {
@@ -133,8 +157,12 @@
   }
 
   @media screen and (min-width: 600px) {
-    .entryButton {
-      min-width: 200px;
+    .doneButtonContainer {
+      gap: 1.5rem;
+    }
+
+    .backButtonContainer {
+      margin: 0 2rem;
     }
   }
   
@@ -146,6 +174,10 @@
   .noInfoMessage {
     text-align: center;
     color: #B85042;
+  }
+
+  .entrybuttonMessage {
+    color: #1CB5E0;
   }
 
   .noBreakWord {
