@@ -129,6 +129,7 @@
 
 .contentTitle:hover {
   color: #1CB5E0;
+  cursor: pointer;
 }
 
 .content {
