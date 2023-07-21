@@ -26,6 +26,13 @@
   justify-content: space-around;
 }
 
+@media screen and (min-width: 600px) {
+  .navbar {
+    justify-content: center;
+    gap:25rem;
+  }
+}
+
 .elderName {
   font-weight: bold;
   color: #000046;
@@ -181,6 +188,11 @@
   .content {
     min-width: 600px;
     margin: 0 auto;
+  }
+
+  .contentTitleContainer {
+    justify-content: center;
+    gap: 15rem;
   }
 }
 
