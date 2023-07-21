@@ -83,12 +83,14 @@ export default function Home() {
         <p className={styles.appTitle}><span className={styles.appNamePrimary}> Keeping </span><span className={styles.appNameSecondary}> Up </span></p>
           <p className={styles.elderName}>TJ Smiley</p>
         </div>
-        <div className={styles.entryContainer}>
-          <button onClick={() => router.push("/createEntry")} className={styles.entryButton} type="button">
-            New Entry
-            </button>
-          <p className={styles.entryButtonMessage}>Add a new entry briefly describing your interaction with TJ Smiley</p>
-        </div>
+        {displayedContent === "interactions" &&
+          <div className={styles.entryContainer}>
+            <button onClick={() => router.push("/createEntry")} className={styles.entryButton} type="button">
+              New Entry
+              </button>
+            <p className={styles.entryButtonMessage}>Add a new entry briefly describing your interaction with TJ Smiley</p>
+          </div>
+        }
       </header>
       <main className={styles.main}>
         <ul className={styles.contentTitleContainer}>
