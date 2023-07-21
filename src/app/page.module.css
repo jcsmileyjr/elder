@@ -71,6 +71,7 @@
   cursor: pointer;
   transition: all 300ms cubic-bezier(.23, 1. 0.32,1);
   -webkit-user-select: none;
+  margin-bottom: 0.5rem;
   touch-action: manipulation;
   background: #000046;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #1CB5E0, #000046);  /* Chrome 10-25, Safari 5.1-6 */
