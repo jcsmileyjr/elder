@@ -1,0 +1,223 @@
+/*
+* #6697B6 Light Sky Blue
+* #527992 Medium Sky Blue
+*/
+
+
+.page {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 2rem 0 2rem;
+    min-height: 100vh;
+    background-color: white;
+    color: #201E20;
+  }
+  
+  /* Header Styles */
+  .header {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  @media screen and (min-width: 600px) {
+    .navbar {
+      justify-content: center;
+      gap:25rem;
+    }
+  }
+  
+  .elderName {
+    font-weight: bold;
+    color: #000046;
+  }
+  
+  .appTitle {
+    font-style: italic;
+  }
+  
+  .appNamePrimary {
+    color: #000046;
+    font-weight: bold;
+  }
+  
+  .appNameSecondary {
+    color: #1CB5E0;
+    font-weight: bold;
+  }
+  
+  .entryContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .entryButton {
+    width: 50%;
+    align-self: center;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-around;
+    font-weight: bold;
+    border: 2px solid #527992;
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 300ms cubic-bezier(.23, 1. 0.32,1);
+    -webkit-user-select: none;
+    margin-bottom: 0.5rem;
+    touch-action: manipulation;
+    background: #000046;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #1CB5E0, #000046);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #1CB5E0, #000046); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+  
+  .entryButton:hover {
+    color: white;
+    background-color: #527992;
+    box-shadow: rgba(0,0,0,0) 0 8px 15px;
+    background: linear-gradient(45deg, black, lightgray);
+  }
+  
+  .entryButton:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
+  
+  .entryButtonImageStyle {
+    height: 1rem;
+    width: 1rem;
+  }
+  
+  .entryButtonMessage {
+    font-size: 14px;
+    font-style: italic;
+    text-align: center;
+  }
+  
+  @media screen and (min-width: 600px) {
+    .entryButton {
+      align-self: flex-start;
+      width: 20%;
+      max-width: 175px;
+      min-width: 150px;
+      margin: auto;
+    }
+  
+    .entryContainer {
+      align-items: center;
+    }
+  }
+  
+  /*Content Styles*/
+  .main {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .contentTitleContainer {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .contentTitle {
+    font-weight: bold;
+    text-decoration: underline;
+    margin-bottom: 1rem;
+    text-align: center;
+    text-decoration-color: #527992;
+    list-style: none;
+  }
+  
+  .contentTitle:hover {
+    color: #1CB5E0;
+    cursor: pointer;
+  }
+  
+  .content {
+    height: 75vh;
+    overflow-y: auto;
+    overflow: scroll;
+    scrollbar-color: black; /*Works on firefox*/
+  }
+  
+  /*Works on Chrome, Edge, and Safari*/
+  .content::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /*Works on Chrome, Edge, and Safari*/
+  .content::-webkit-scrollbar-thumb {
+    background-color: #527992;
+  }
+  
+  .interactionDate {
+    font-weight: bold;
+  }
+  
+  .interactions > p {
+    margin: .5rem 0;
+  }
+  
+  .interactions h1 {
+    border: 1px solid #527992;
+    width: 50%;
+    margin: auto;
+    opacity: .4;
+  }
+  
+  .writerName {
+    font-style: italic;
+  }
+  
+  .titleFormatting::before {
+    content: "\a";
+    white-space: pre;
+  }
+  
+  @media screen and (min-width: 600px) {
+    .interactions h1 {
+      width: 80%;
+    }
+  
+    .content {
+      min-width: 600px;
+      margin: 0 auto;
+    }
+  
+    .contentTitleContainer {
+      justify-content: center;
+      gap: 15rem;
+    }
+  }
+  
+  .taskHeader {
+    font-weight: bold;
+    color: #1CB5E0;
+  }
+  
+  .tasks {
+    padding-left: 1rem;
+    margin-bottom: .5rem;
+  }
+  
+  .tasks::before {
+    content:"❤";
+    margin-right: .5rem;
+    color: #B85042;
+  }
+  
+  .essentials {
+    margin-bottom: .5rem;
+  }
+  
+  .highlight {
+    color: #1CB5E0;
+    text-decoration-color: #1CB5E0;
+  }

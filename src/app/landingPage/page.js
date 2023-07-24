@@ -12,7 +12,7 @@ const LandingPage = () => {
             <main className={styles.main}>
                 <p className={styles.CTAMessage}>We care for the Beloved</p>
                 <div className={styles.phoneNumberContainer}>
-                    <label for="phoneNumber" className={styles.label}>Phone Number of the Beloved</label>
+                    <label htmlFor="phoneNumber" className={styles.label}>Phone Number of the Beloved</label>
                     <input type="tel" id="phoneNumber" className={styles.inputfield}></input>
                     <button onClick={() => router.push("/")} className={styles.entryButton} type="button">
                         Load
