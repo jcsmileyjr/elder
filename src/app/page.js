@@ -2,7 +2,7 @@
 import styles from './page.module.css';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import SmileyHeart from "./smiley-heart.png"
+import OldCouple1 from "./elderly-couple-1.png";
 
 const Home = () => {
   const router = useRouter() // Routes a user to another page
@@ -15,9 +15,7 @@ const Home = () => {
             </header>
             <main className={styles.main}>
                 <div className={styles.logos}>
-                  <Image src={SmileyHeart} width={75} height={75} alt="Smiley Face with hearts" />
-                  <Image src={SmileyHeart} width={75} height={75} alt="Smiley Face with hearts" />
-                  <Image src={SmileyHeart} width={75} height={75} alt="Smiley Face with hearts" />
+                  <Image src={OldCouple1} width={250} height={150} alt="Smiley Face with hearts" />
                 </div>
                 <div className={styles.phoneNumberContainer}>
                     <label htmlFor="phoneNumber" className={styles.label}>Phone Number of the Beloved</label>
