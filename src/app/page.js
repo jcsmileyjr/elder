@@ -1,6 +1,8 @@
 "use client"
 import styles from './page.module.css';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+import SmileyHeart from "./smiley-heart.png"
 
 const Home = () => {
   const router = useRouter() // Routes a user to another page
@@ -12,7 +14,11 @@ const Home = () => {
             </div>
             </header>
             <main className={styles.main}>
-                <p className={styles.CTAMessage}>We care for the Beloved</p>
+                <div className={styles.logos}>
+                  <Image src={SmileyHeart} width={75} height={75} alt="Smiley Face with hearts" />
+                  <Image src={SmileyHeart} width={75} height={75} alt="Smiley Face with hearts" />
+                  <Image src={SmileyHeart} width={75} height={75} alt="Smiley Face with hearts" />
+                </div>
                 <div className={styles.phoneNumberContainer}>
                     <label htmlFor="phoneNumber" className={styles.label}>Phone Number of the Beloved</label>
                     <input type="tel" id="phoneNumber" className={styles.inputfield}></input>
@@ -20,7 +26,6 @@ const Home = () => {
                         Load
                     </button>
                 </div>
-
                 <p className={styles.emotionalMessage}>Taking care of our elders is a privilage and a way to stay conneccted. It's an opportunity to capture memories of their legacy. </p>
             </main>
         </div>

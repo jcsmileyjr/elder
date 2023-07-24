@@ -35,6 +35,14 @@
   font-weight: bold;
 }
 
+.logos {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 2rem;
+}
+
 /*Main Content*/
 .main {
   display: flex;
