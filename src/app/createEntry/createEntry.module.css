@@ -55,6 +55,10 @@
     font-weight: bold;
   }
 
+  .link {
+    text-decoration: none;
+  }
+
   .section {
     margin-bottom: 1rem;
   }

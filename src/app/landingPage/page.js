@@ -1,12 +1,13 @@
 "use client"
 import styles from './landingPage.module.css';
+import Link from 'next/link'
 
 const LandingPage = () => {
     return(
         <div className={styles.page}>
             <header className={styles.header}>
             <div className={styles.navbar}>
-                <h1 className={styles.appTitle}><span className={styles.appNamePrimary}> Keeping </span><span className={styles.appNameSecondary}> Up </span></h1>
+                <h1 className={styles.appTitle}><Link href="/"></Link><span className={styles.appNamePrimary}> Keeping </span><span className={styles.appNameSecondary}> Up </span></h1>
             </div>
             </header>
             <main className={styles.main}>
