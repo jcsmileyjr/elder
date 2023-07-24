@@ -87,7 +87,7 @@ export default function Home() {
           <div className={styles.entryContainer}>
             <button onClick={() => router.push("/createEntry")} className={styles.entryButton} type="button">
               New Entry
-              </button>
+            </button>
             <p className={styles.entryButtonMessage}>Add a new entry briefly describing your interaction with TJ Smiley</p>
           </div>
         }
