@@ -79,6 +79,7 @@
   color: #000046;
   font-style: italic;
   flex: 1;
+  letter-spacing: .5px;
 }
 
 .entryButton {

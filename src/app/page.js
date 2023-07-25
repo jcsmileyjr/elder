@@ -24,7 +24,7 @@ const Home = () => {
                         Load
                     </button>
                 </div>
-                <p className={styles.emotionalMessage}>Taking care of our elders is a privilage and a way to stay conneccted. It's an opportunity to capture memories of their legacy. </p>
+                <p className={styles.emotionalMessage}>Taking care of our elders is a <b>privilege</b> and a way to stay <b>connected</b>. It's an opportunity to capture memories of their legacy. </p>
             </main>
         </div>
     )
