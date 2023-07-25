@@ -57,6 +57,11 @@
   flex: 1;
 }
 
+.numbersOnly {
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
 .inputfield {
   display: block;
   margin-top: .5rem;

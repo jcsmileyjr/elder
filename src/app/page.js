@@ -19,7 +19,8 @@ const Home = () => {
                 </div>
                 <div className={styles.phoneNumberContainer}>
                     <label htmlFor="phoneNumber" className={styles.label}>Phone Number of the Beloved</label>
-                    <input type="tel" id="phoneNumber" className={styles.inputfield} pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required placeholder="(Area code) Number"></input>
+                    <input type="tel" id="phoneNumber" className={styles.inputfield} pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxLength={"10"} required placeholder="Area code Number" onInput={(e)=> e.target.value = e.target.value.replace(/[^0-9]/g, '')} ></input>
+                    <p className={styles.numbersOnly}>Numbers Only </p>
                     <button onClick={() => router.push("/viewEntries")} className={styles.entryButton} type="button">
                         Load
                     </button>
