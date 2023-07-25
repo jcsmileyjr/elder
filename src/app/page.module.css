@@ -111,3 +111,15 @@
   box-shadow: none;
   transform: translateY(0);
 }
+
+@media screen and (max-height: 650px) {
+  .emotionalMessage {
+    margin-top: 2rem;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .emotionalMessage {
+    max-width: 300px;
+  }
+}
