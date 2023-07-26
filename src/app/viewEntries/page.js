@@ -5,33 +5,6 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from "next/link";
 
-const essentialTasks = [
-  {
-    "type":"Daily",
-    "tasks":[
-      "Medication: high blood pressure, gout, Prozac",
-      "Meals: lactose intolerance, alcohol & excessive sugar inflames gout",
-      "Feed and Water: dog food is on shelf in backyard shed"
-    ]
-  },
-  {
-    "type":"Weekly",
-    "tasks":[
-      "Yard clean up: lawn mower, weeding, flower bed, sweep porch",
-      "Dishes",
-      "Wash and Dry Clothes"
-    ]
-  },
-  {
-    "type":"Monthly",
-    "tasks":[
-      "Doctor visits",
-      "Pharmacy visits: Walgreens on Shelby and Dodge Bullets street",
-      "Sunday Church Service (keep her away from Sister Johnson, they fight)"
-    ]
-  }
-]
-
 /**
  * Componenet that displays an user's app enrty.
  * @param {object} entry = entry object added by a user to describe the event
@@ -52,21 +25,19 @@ const Interaction = ({entry}) => {
 }
 
 /**
- * First page the user sees that displays a list of past entries and a button to add another entry. 
- * @returns 
+ * After a user's log in, displays a list of past entries/essential tasks and a button to add another entry. 
  */
 export default function ViewEntries() {
   const router = useRouter() // Routes a user to another page
   const [entries, setEntries] = useState([]); // App's state that holds an array of entries (objects)
-  const [displayedContent, setDisplayedContent] = useState("interactions");
+  const [displayedContent, setDisplayedContent] = useState("interactions"); // App's state to display either interactions or essential tasks
 
   useEffect(() => {
-    // Load either past enter actions or dummy data (testing)
+    // Load either the log in account's data or route the user back to the logIn screen
     const loadPastInteractions = () => {
       let previousSavedData = localStorage.getItem("Elder-data");
       if(previousSavedData === null){
-        setEntries(dummyData);
-        localStorage.setItem("Elder-data", JSON.stringify(dummyData));
+        router.push("/")
       } else {
         const parseData = JSON.parse(previousSavedData)
         setEntries(parseData);
@@ -76,13 +47,12 @@ export default function ViewEntries() {
     loadPastInteractions();
   }, [])
 
-  console.log(essentialTasks);
   return (
     <div className={styles.page}>
       <header className={styles.header}>
         <div className={styles.navbar}>
         <p className={styles.appTitle}><Link className={styles.link} href="/"><span className={styles.appNamePrimary}> Keeping </span><span className={styles.appNameSecondary}> Up </span></Link></p>
-          <p className={styles.elderName}>TJ Smiley</p>
+          <p className={styles.elderName}>{entries.elderName}</p>
         </div>
         {displayedContent === "interactions" &&
           <div className={styles.entryContainer}>
@@ -99,20 +69,23 @@ export default function ViewEntries() {
           <li className={`${styles.contentTitle} ${displayedContent=== 'essentials'? styles.highlight:''}`} onClick={() => {setDisplayedContent("essentials")}}>Essential <span className={styles.titleFormatting}>Tasks</span></li>
         </ul>
         <section className={styles.content}>
-          {displayedContent === "interactions" &&            
-            entries.map((interaction) => (              
+          {entries === undefined &&
+            <h1>Loading</h1>
+          }
+          {displayedContent === "interactions"  &&  entries.length !== 0 &&       
+            entries.activities.map((interaction) => (              
               <Interaction key={interaction.entryID} entry={interaction} />
             )
           )}
 
-          {displayedContent === "essentials" &&
-            essentialTasks.map( (frequncy) => (
-              <div className={styles.essentials}>
+          {displayedContent === "essentials" &&  entries.length !== 0 &&
+            entries.essentialTasks.map( (frequncy, index) => (
+              <div key={index} className={styles.essentials}>
                 <p className={styles.taskHeader}>{frequncy.type}</p>
                 <ul>
                   {
-                    frequncy.tasks.map((task) => (
-                      <li className={styles.tasks}>{task}</li>
+                    frequncy.tasks.map((task, index) => (
+                      <li key={index}  className={styles.tasks}>{task}</li>
                     ))
                   }
                 </ul>

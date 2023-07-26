@@ -62,6 +62,15 @@
   text-align: center;
 }
 
+.logInError {
+  color: red;
+  font-weight: bold;
+}
+
+.entryButton:disabled {
+  opacity: .5;
+}
+
 .inputfield {
   display: block;
   margin-top: .5rem;

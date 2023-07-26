@@ -1,11 +1,32 @@
 "use client"
 import styles from './page.module.css';
 import { useRouter } from 'next/navigation';
+import { useState} from 'react';
 import Image from 'next/image';
 import OldCouple1 from "./elderly-couple-1.png";
+import { getElder } from './libs/logIn';
 
+// Log in page
 const Home = () => {
   const router = useRouter() // Routes a user to another page
+
+  const [logInData, setLogInData] = useState(""); // App's state to save the phone number entered by the user
+  const [logInError, setLogInError] = useState(false); // App's state to show/hide the error message
+
+  /**
+   * When the "Load" button is press, check if the entered phone number is registered to an account. If found, 
+   * then route user to the viewEntries screen. If not found, display error message.
+   */
+  const logIn = () => {
+    if(getElder(logInData)) {
+      setLogInError(false);
+      setLogInData("");
+      router.push("/viewEntries")
+    } else {
+      setLogInError(true);
+    }
+  }
+
     return(
         <div className={styles.page}>
             <header className={styles.header}>
@@ -15,13 +36,19 @@ const Home = () => {
             </header>
             <main className={styles.main}>
                 <div className={styles.logos}>
-                  <Image src={OldCouple1} width={250} height={150} alt="Smiley Face with hearts" />
+                  <Image src={OldCouple1} width={250} height={150} alt="Elderly man and woman siting on a couch with floating hearts" />
                 </div>
                 <div className={styles.phoneNumberContainer}>
                     <label htmlFor="phoneNumber" className={styles.label}>Phone Number of the Beloved</label>
-                    <input type="tel" id="phoneNumber" className={styles.inputfield} pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxLength={"10"} required placeholder="Example: 9012223333" onInput={(e)=> e.target.value = e.target.value.replace(/[^0-9]/g, '')} ></input>
-                    <p className={styles.numbersOnly}>Numbers Only </p>
-                    <button onClick={() => router.push("/viewEntries")} className={styles.entryButton} type="button">
+                    <input type="tel" id="phoneNumber" className={styles.inputfield} pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxLength={"10"} required placeholder="Example: 9012223333" onChange={(e)=> setLogInData(e.target.value)} onInput={(e)=> e.target.value = e.target.value.replace(/[^0-9]/g, '')} ></input>
+                    {!logInError && 
+                      <p className={styles.numbersOnly}>Numbers Only </p>
+                    }
+
+                    {logInError && 
+                      <p className={`${styles.numbersOnly} ${logInError ? styles.logInError:''}`}>No account Found</p>
+                    }
+                    <button aria-disabled={logInData === ""} disabled={logInData === ""} onClick={() => logIn()} className={`${styles.entryButton} ${logInData === "" ? styles.disableButton : ''} `} type="button">
                         Load
                     </button>
                 </div>

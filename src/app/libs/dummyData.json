@@ -1,12 +1,62 @@
 [
-    {"date":"June 1st 2023", "message":"Visit doctor office, pharmacy, and grocery store.", "writer":"Daugher Meme", "entryID":101},
-    {"date": "May 27th 2023", "message":"Visited for breakfast and to yardwork", "writer":"Cousin Mane", "entryID":102},
-    {"date": "May 22th 2023", "message":"Dinner and several Star Trek tv shows", "writer":"Uncle Vernum", "entryID":103},
-    {"date": "May 20th 2023", "message":"Wellness visit, check on medications, clean house, and lunch", "writer":"Aunt Mae", "entryID":104},
-    {"date": "April 27th 2023", "message":"Dinner and several Star Trek tv shows", "writer":"Uncle Vernum", "entryID":105},
-    {"date":"March 1st 2023", "message":"Visit doctor office, pharmacy", "writer":"Daugher Meme", "entryID":106},
-    {"date": "February 27th 2023", "message":"Yardwork", "writer":"Cousin Mane", "entryID":107},
-    {"date": "February 18th 2023", "message":"Dinner and several Star Trek tv shows", "writer":"Uncle Vernum", "entryID":108},
-    {"date": "February 16th 2023", "message":"Wellness visit, check on medications, clean house, and breakfast", "writer":"Aunt Mae", "entryID":109},
-    {"date": "January 27th 2023", "message":"Dinner and several Star Trek tv shows", "writer":"Uncle Vernum", "entryID":110}
+    {
+        "elderName" : "Jane Smith",
+        "phoneNumber" : "4445556666",
+        "activities" : [
+            {"date":"June 1st 2023", "message":"Visit doctor office, pharmacy, and grocery store.", "writer":"Daugher Meme", "entryID":101},
+            {"date": "May 27th 2023", "message":"Visited for breakfast and to yardwork", "writer":"Cousin Mane", "entryID":102}
+        ],
+        "essentialTasks" : [
+            {
+              "type":"Daily",
+              "tasks":[
+                "Medication: high blood pressure, gout, Prozac",
+                "Meals: lactose intolerance, alcohol & excessive sugar inflames gout",
+                "Feed and Water: dog food is on shelf in backyard shed"
+              ]
+            }
+        ]
+    },
+    {
+        "elderName" : "TJ Smiley",
+        "phoneNumber" : "1112223333",
+        "activities" : [
+            {"date":"June 1st 2023", "message":"Visit doctor office, pharmacy, and grocery store.", "writer":"Daugher Meme", "entryID":101},
+            {"date": "May 27th 2023", "message":"Visited for breakfast and to yardwork", "writer":"Cousin Mane", "entryID":102},
+            {"date": "May 22th 2023", "message":"Dinner and several Star Trek tv shows", "writer":"Uncle Vernum", "entryID":103},
+            {"date": "May 20th 2023", "message":"Wellness visit, check on medications, clean house, and lunch", "writer":"Aunt Mae", "entryID":104},
+            {"date": "April 27th 2023", "message":"Dinner and several Star Trek tv shows", "writer":"Uncle Vernum", "entryID":105},
+            {"date":"March 1st 2023", "message":"Visit doctor office, pharmacy", "writer":"Daugher Meme", "entryID":106},
+            {"date": "February 27th 2023", "message":"Yardwork", "writer":"Cousin Mane", "entryID":107},
+            {"date": "February 18th 2023", "message":"Dinner and several Star Trek tv shows", "writer":"Uncle Vernum", "entryID":108},
+            {"date": "February 16th 2023", "message":"Wellness visit, check on medications, clean house, and breakfast", "writer":"Aunt Mae", "entryID":109},
+            {"date": "January 27th 2023", "message":"Dinner and several Star Trek tv shows", "writer":"Uncle Vernum", "entryID":110}
+        ],
+        "essentialTasks" : [
+            {
+              "type":"Daily",
+              "tasks":[
+                "Medication: high blood pressure, gout, Prozac",
+                "Meals: lactose intolerance, alcohol & excessive sugar inflames gout",
+                "Feed and Water: dog food is on shelf in backyard shed"
+              ]
+            },
+            {
+              "type":"Weekly",
+              "tasks":[
+                "Yard clean up: lawn mower, weeding, flower bed, sweep porch",
+                "Dishes",
+                "Wash and Dry Clothes"
+              ]
+            },
+            {
+              "type":"Monthly",
+              "tasks":[
+                "Doctor visits",
+                "Pharmacy visits: Walgreens on Shelby and Dodge Bullets street",
+                "Sunday Church Service (keep her away from Sister Johnson, they fight)"
+              ]
+            }
+          ]
+    }
 ]
