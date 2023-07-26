@@ -31,7 +31,7 @@
 }
 
 .appNameSecondary {
-  color: #1CB5E0;
+  color: #379bb7; /*Alternate for better color contrast*/
   font-weight: bold;
 }
 
