@@ -62,43 +62,40 @@ const CreateEntry = () => {
 
     return (
         <div className={styles.page}>
-        <Header elderName={entries.elderName} />
-        <main className={styles.main}>
-            <p className={styles.title}>Create New Entry</p>
-            <div className={styles.section}>
-                <label htmlFor="inputDate" className={styles.label}>Date of new Entry</label>
-                <input id="inputDate" type="date" className={styles.inputfield} onChange={(e) => updateDate(e)}></input>                
-            </div>
-            <div className={styles.section}>
-                <label htmlFor="inputMessage" className={styles.label}>Brief description of new Entry</label>
-                <textarea id="inputMessage" rows={10} className={styles.inputfield} onChange={(e) =>updateMessage(e)}></textarea>
-            </div>
-            <div className={styles.section}>
-                <label htmlFor="inputWriter" className={styles.label}>Your Name</label>
-                <input id="inputWriter" type="text" className={styles.inputfield} onChange={(e) =>updateWriter(e)}></input>
-            </div>
-            <div className={styles.section}>
-                {!showDoneButton &&
-                    <div className={styles.backButtonContainer}>
-                        <button type="button" className={`${styles.entryButton} ${styles.goBackButonSyle} ${styles.goBackButtonFullWidth}`} onClick={() => router.push("/viewEntries")}> Go back</button>
-                        <p className={styles.noInfoMessage}>No information has been added. Must fill out the entire form to show the <span className={styles.noBreakWord}>"DONE" button.</span> </p>
-                    </div>
-                }
+            <Header elderName={entries.elderName} />
+            <main className={styles.main}>
+                <p className={styles.title}>Create New Entry</p>
+                <div className={styles.section}>
+                    <label htmlFor="inputDate" className={styles.label}>Date of new Entry</label>
+                    <input id="inputDate" type="date" className={styles.inputfield} onChange={(e) => updateDate(e)}></input>                
+                </div>
+                <div className={styles.section}>
+                    <label htmlFor="inputMessage" className={styles.label}>Brief description of new Entry</label>
+                    <textarea id="inputMessage" rows={10} className={styles.inputfield} onChange={(e) =>updateMessage(e)}></textarea>
+                </div>
+                <div className={styles.section}>
+                    <label htmlFor="inputWriter" className={styles.label}>Your Name</label>
+                    <input id="inputWriter" type="text" className={styles.inputfield} onChange={(e) =>updateWriter(e)}></input>
+                </div>
+                <div className={styles.section}>
+                    {!showDoneButton &&
+                        <div className={styles.backButtonContainer}>
+                            <button type="button" className={`${styles.entryButton} ${styles.goBackButonSyle} ${styles.goBackButtonFullWidth}`} onClick={() => router.push("/viewEntries")}> Go back</button>
+                            <p className={styles.noInfoMessage}>No information has been added. Must fill out the entire form to show the <span className={styles.noBreakWord}>"DONE" button.</span> </p>
+                        </div>
+                    }
 
-                {showDoneButton &&
-                    <div className={styles.doneButtonContainer}>
-                        
-                        <button type="button" className={`${styles.entryButton} ${styles.goBackLink}`} onClick={() => router.push("/viewEntries")}> Go back</button>
-                        <button onClick={() => saveInteraction()} type="button" className={`${styles.entryButton} ${styles.doneButtonStyle}`}>DONE</button>
-                        <label className={styles.doneLabel}>Click <span className={styles.entrybuttonMessage}>DONE</span> when Finished</label>
-                    </div>
-                }
-
-                
-                
-            </div>
-        </main>
-      </div>
+                    {showDoneButton &&
+                        <div className={styles.doneButtonContainer}>
+                            
+                            <button type="button" className={`${styles.entryButton} ${styles.goBackLink}`} onClick={() => router.push("/viewEntries")}> Go back</button>
+                            <button onClick={() => saveInteraction()} type="button" className={`${styles.entryButton} ${styles.doneButtonStyle}`}>DONE</button>
+                            <label className={styles.doneLabel}>Click <span className={styles.entrybuttonMessage}>DONE</span> when Finished</label>
+                        </div>
+                    }    
+                </div>
+            </main>
+        </div>
     )
 }
 

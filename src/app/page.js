@@ -5,6 +5,7 @@ import { useState} from 'react';
 import Image from 'next/image';
 import OldCouple1 from "./elderly-couple-1.png";
 import { getElder } from './libs/logIn';
+import Header from "./components/header/header";
 
 // Log in page
 const Home = () => {
@@ -29,11 +30,7 @@ const Home = () => {
 
     return(
         <div className={styles.page}>
-            <header className={styles.header}>
-              <div className={styles.navbar}>
-                  <h1 className={styles.appTitle}><span className={styles.appNamePrimary}> Keeping </span><span className={styles.appNameSecondary}> Up </span></h1>
-              </div>
-            </header>
+            <Header />
             <main className={styles.main}>
                 <div className={styles.logos}>
                   <Image src={OldCouple1} width={250} height={150} alt="Elderly man and woman siting on a couch with floating hearts" />
