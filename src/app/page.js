@@ -38,7 +38,7 @@ const Home = () => {
                 <div className={styles.logos}>
                   <Image src={OldCouple1} width={250} height={150} alt="Elderly man and woman siting on a couch with floating hearts" />
                 </div>
-                <div className={styles.phoneNumberContainer}>
+                <div className={`${styles.phoneNumberContainer} ${styles.entryButtonBorder}`}>
                     <label htmlFor="phoneNumber" className={styles.label}>Phone Number of the Beloved</label>
                     <input type="tel" id="phoneNumber" className={styles.inputfield} pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxLength={"10"} required placeholder="Example: 9012223333" onChange={(e)=> setLogInData(e.target.value)} onInput={(e)=> e.target.value = e.target.value.replace(/[^0-9]/g, '')} ></input>
                     {!logInError && 
@@ -48,10 +48,11 @@ const Home = () => {
                     {logInError && 
                       <p className={`${styles.numbersOnly} ${logInError ? styles.logInError:''}`}>No account Found</p>
                     }
-                    <button aria-disabled={logInData === ""} disabled={logInData === ""} onClick={() => logIn()} className={`${styles.entryButton} ${logInData === "" ? styles.disableButton : ''} `} type="button">
+                    <button aria-disabled={logInData === ""} disabled={logInData === ""} onClick={() => logIn()} className={` ${styles.entryButton} ${logInData === "" ? styles.disableButton : ''} `} type="button">
                         Load
                     </button>
                 </div>
+                <button className={styles.accountButton} type="button" onClick={() => router.push("/accountCreation")}>Elder Account Setup</button>
                 <p className={styles.emotionalMessage}>Taking care of our elders is a <b>privilege</b> and a way to stay <b>connected</b>. It's an opportunity to capture memories of their legacy. </p>
             </main>
         </div>
