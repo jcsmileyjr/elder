@@ -30,9 +30,9 @@ const Home = () => {
     return(
         <div className={styles.page}>
             <header className={styles.header}>
-            <div className={styles.navbar}>
-                <h1 className={styles.appTitle}><span className={styles.appNamePrimary}> Keeping </span><span className={styles.appNameSecondary}> Up </span></h1>
-            </div>
+              <div className={styles.navbar}>
+                  <h1 className={styles.appTitle}><span className={styles.appNamePrimary}> Keeping </span><span className={styles.appNameSecondary}> Up </span></h1>
+              </div>
             </header>
             <main className={styles.main}>
                 <div className={styles.logos}>

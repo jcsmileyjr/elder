@@ -1,6 +1,7 @@
 "use client"
 import styles from './viewEntries.module.css';
 import dummyData from '../libs/dummyData.json';
+import Header from '../components/header/header';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from "next/link";
@@ -49,11 +50,7 @@ export default function ViewEntries() {
 
   return (
     <div className={styles.page}>
-      <header className={styles.header}>
-        <div className={styles.navbar}>
-        <p className={styles.appTitle}><Link className={styles.link} href="/"><span className={styles.appNamePrimary}> Keeping </span><span className={styles.appNameSecondary}> Up </span></Link></p>
-          <p className={styles.elderName}>{entries.elderName}</p>
-        </div>
+      <Header elderName={entries.elderName}>
         {displayedContent === "interactions" &&
           <div className={styles.entryContainer}>
             <button onClick={() => router.push("/createEntry")} className={styles.entryButton} type="button">
@@ -62,7 +59,7 @@ export default function ViewEntries() {
             <p className={styles.entryButtonMessage}>Add a new entry briefly describing your interaction with TJ Smiley</p>
           </div>
         }
-      </header>
+      </Header>
       <main className={styles.main}>
         <ul className={styles.contentTitleContainer}>
           <li className={`${styles.contentTitle} ${displayedContent=== 'interactions'? styles.highlight:''}`} onClick={() => {setDisplayedContent("interactions")}}>Previous <span className={styles.titleFormatting}>Interactions</span></li>

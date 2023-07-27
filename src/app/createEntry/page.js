@@ -1,10 +1,10 @@
 "use client"
 import styles from './createEntry.module.css';
-import { useState} from 'react';
+import { useState, useEffect} from 'react';
 import { useRouter } from 'next/navigation'
 import {v4 as uuidv4} from 'uuid'; // NPM module that creates a random ID number
 import moment from 'moment'; // NPM module that converts date objects to strings
-import Link from 'next/link'
+import Header from '../components/header/header';
 
 /**
  * Page use to create an entry. When finished, the user is relocated to the main page
@@ -15,6 +15,13 @@ const CreateEntry = () => {
 
     const [newEntry, setNewEntry] = useState({}); // Object to be updated and added to the array of objects displayed on the main page
     const [showDoneButton, setShowDoneButton] = useState(false); // Boolean to display either the "Done" button or "Not Completed" button
+    const [entries, setEntries] = useState([]); // App's state that holds an array of entries (objects)
+
+    useEffect(() => {
+        let previousSavedData = localStorage.getItem("Elder-data");
+        const parseData = JSON.parse(previousSavedData)
+        setEntries(parseData);
+    }, [])
 
     // Updates the date property of the user's new entry from a input field
     const updateDate = (e) => {
@@ -55,12 +62,7 @@ const CreateEntry = () => {
 
     return (
         <div className={styles.page}>
-        <header className={styles.header}>
-          <div className={styles.navbar}>
-          <p className={styles.appTitle}><Link className={styles.link} href="/"><span className={styles.appNamePrimary}> Keeping </span><span className={styles.appNameSecondary}> Up </span></Link></p>
-            <p className={styles.elderName}>TJ Smiley</p>
-          </div>
-        </header>
+        <Header elderName={entries.elderName} />
         <main className={styles.main}>
             <p className={styles.title}>Create New Entry</p>
             <div className={styles.section}>
