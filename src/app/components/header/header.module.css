@@ -33,3 +33,10 @@
   .link {
     text-decoration: none;
   }
+
+  @media screen and (min-width: 600px) {
+    .navbar {
+      justify-content: center;
+      gap:25rem;
+    }
+  }

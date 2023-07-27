@@ -14,46 +14,13 @@
   }
   
   /* Header Styles */
-  .header {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .navbar {
-    display: flex;
-    justify-content: space-around;
-  }
+
   
   @media screen and (min-width: 600px) {
     .navbar {
       justify-content: center;
       gap:25rem;
     }
-  }
-  
-  .elderName {
-    font-weight: bold;
-    color: #000046;
-  }
-  
-  .appTitle {
-    font-style: italic;
-  }
-  
-  .appNamePrimary {
-    color: #000046;
-    font-weight: bold;
-  }
-  
-  .appNameSecondary {
-    color: #379bb7; /*Alternate for better color contrast*/
-    font-weight: bold;
-  }
-
-  .link {
-    text-decoration: none;
   }
   
   .entryContainer {
