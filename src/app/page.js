@@ -1,125 +1,61 @@
 "use client"
 import styles from './page.module.css';
-import dummyData from './libs/dummyData.json';
-import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useState} from 'react';
+import Image from 'next/image';
+import OldCouple1 from "./elderly-couple-1.png";
+import { getElder } from './libs/logIn';
 
-const essentialTasks = [
-  {
-    "type":"Daily",
-    "tasks":[
-      "Medication: high blood pressure, gout, Prozac",
-      "Meals: lactose intolerance, alcohol & excessive sugar inflames gout",
-      "Feed and Water: dog food is on shelf in backyard shed"
-    ]
-  },
-  {
-    "type":"Weekly",
-    "tasks":[
-      "Yard clean up: lawn mower, weeding, flower bed, sweep porch",
-      "Dishes",
-      "Wash and Dry Clothes"
-    ]
-  },
-  {
-    "type":"Monthly",
-    "tasks":[
-      "Doctor visits",
-      "Pharmacy visits: Walgreens on Shelby and Dodge Bullets street",
-      "Sunday Church Service (keep her away from Sister Johnson, they fight)"
-    ]
-  }
-]
-
-/**
- * Componenet that displays an user's app enrty.
- * @param {object} entry = entry object added by a user to describe the event
- * @param {string} entry.date = Date of the entry in a 'MMMM Do YYYY' format.
- * @param {string} entry.message = User's activity description of the event.
- * @param {string} entry.writter = Name of the user for the event.
- * @param {string} entry.entryID = random number assign to the event.
- */
-const Interaction = ({entry}) => {
-  return (
-    <div className={styles.interactions}>
-      <p className={styles.interactionDate}>{entry.date}</p>
-      <p>{entry.message}</p>
-      <p className={styles.writerName}>{entry.writer}</p>
-      <h1/>
-    </div>
-  )
-}
-
-/**
- * First page the user sees that displays a list of past entries and a button to add another entry. 
- * @returns 
- */
-export default function Home() {
+// Log in page
+const Home = () => {
   const router = useRouter() // Routes a user to another page
-  const [entries, setEntries] = useState([]); // App's state that holds an array of entries (objects)
-  const [displayedContent, setDisplayedContent] = useState("interactions");
 
-  useEffect(() => {
-    // Load either past enter actions or dummy data (testing)
-    const loadPastInteractions = () => {
-      let previousSavedData = localStorage.getItem("Elder-data");
-      if(previousSavedData === null){
-        setEntries(dummyData);
-        localStorage.setItem("Elder-data", JSON.stringify(dummyData));
-      } else {
-        const parseData = JSON.parse(previousSavedData)
-        setEntries(parseData);
-      }
+  const [logInData, setLogInData] = useState(""); // App's state to save the phone number entered by the user
+  const [logInError, setLogInError] = useState(false); // App's state to show/hide the error message
+
+  /**
+   * When the "Load" button is press, check if the entered phone number is registered to an account. If found, 
+   * then route user to the viewEntries screen. If not found, display error message.
+   */
+  const logIn = () => {
+    if(getElder(logInData)) {
+      setLogInError(false);
+      setLogInData("");
+      router.push("/viewEntries")
+    } else {
+      setLogInError(true);
     }
+  }
 
-    loadPastInteractions();
-  }, [])
+    return(
+        <div className={styles.page}>
+            <header className={styles.header}>
+            <div className={styles.navbar}>
+                <h1 className={styles.appTitle}><span className={styles.appNamePrimary}> Keeping </span><span className={styles.appNameSecondary}> Up </span></h1>
+            </div>
+            </header>
+            <main className={styles.main}>
+                <div className={styles.logos}>
+                  <Image src={OldCouple1} width={250} height={150} alt="Elderly man and woman siting on a couch with floating hearts" />
+                </div>
+                <div className={styles.phoneNumberContainer}>
+                    <label htmlFor="phoneNumber" className={styles.label}>Phone Number of the Beloved</label>
+                    <input type="tel" id="phoneNumber" className={styles.inputfield} pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxLength={"10"} required placeholder="Example: 9012223333" onChange={(e)=> setLogInData(e.target.value)} onInput={(e)=> e.target.value = e.target.value.replace(/[^0-9]/g, '')} ></input>
+                    {!logInError && 
+                      <p className={styles.numbersOnly}>Numbers Only </p>
+                    }
 
-  console.log(essentialTasks);
-  return (
-    <div className={styles.page}>
-      <header className={styles.header}>
-        <div className={styles.navbar}>
-        <p className={styles.appTitle}><span className={styles.appNamePrimary}> Keeping </span><span className={styles.appNameSecondary}> Up </span></p>
-          <p className={styles.elderName}>TJ Smiley</p>
+                    {logInError && 
+                      <p className={`${styles.numbersOnly} ${logInError ? styles.logInError:''}`}>No account Found</p>
+                    }
+                    <button aria-disabled={logInData === ""} disabled={logInData === ""} onClick={() => logIn()} className={`${styles.entryButton} ${logInData === "" ? styles.disableButton : ''} `} type="button">
+                        Load
+                    </button>
+                </div>
+                <p className={styles.emotionalMessage}>Taking care of our elders is a <b>privilege</b> and a way to stay <b>connected</b>. It's an opportunity to capture memories of their legacy. </p>
+            </main>
         </div>
-        {displayedContent === "interactions" &&
-          <div className={styles.entryContainer}>
-            <button onClick={() => router.push("/createEntry")} className={styles.entryButton} type="button">
-              New Entry
-              </button>
-            <p className={styles.entryButtonMessage}>Add a new entry briefly describing your interaction with TJ Smiley</p>
-          </div>
-        }
-      </header>
-      <main className={styles.main}>
-        <ul className={styles.contentTitleContainer}>
-          <li className={`${styles.contentTitle} ${displayedContent=== 'interactions'? styles.highlight:''}`} onClick={() => {setDisplayedContent("interactions")}}>Previous <span className={styles.titleFormatting}>Interactions</span></li>
-          <li className={`${styles.contentTitle} ${displayedContent=== 'essentials'? styles.highlight:''}`} onClick={() => {setDisplayedContent("essentials")}}>Essential <span className={styles.titleFormatting}>Tasks</span></li>
-        </ul>
-        <section className={styles.content}>
-          {displayedContent === "interactions" &&            
-            entries.map((interaction) => (              
-              <Interaction key={interaction.entryID} entry={interaction} />
-            )
-          )}
-
-          {displayedContent === "essentials" &&
-            essentialTasks.map( (frequncy) => (
-              <div className={styles.essentials}>
-                <p className={styles.taskHeader}>{frequncy.type}</p>
-                <ul>
-                  {
-                    frequncy.tasks.map((task) => (
-                      <li className={styles.tasks}>{task}</li>
-                    ))
-                  }
-                </ul>
-              </div>
-            ))            
-          }
-        </section>
-      </main>
-    </div>
-  )
+    )
 }
+
+export default Home;
