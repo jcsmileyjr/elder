@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import {v4 as uuidv4} from 'uuid'; // NPM module that creates a random ID number
 import moment from 'moment'; // NPM module that converts date objects to strings
 import Header from '../components/header/header';
+import { updateDatabase} from '../libs/updateDatabase';
 
 /**
  * Page use to create an entry. When finished, the user is relocated to the main page
@@ -41,13 +42,23 @@ const CreateEntry = () => {
         enableButton();
     }
 
-    // Adds a random ID to the entryID property, saves the "entry" object to the database (array of entries), then relocate the user to the main page
+    // Save the user enter interation to the current elder object in localstorage
     const saveInteraction = () => {
+        // new random ID
         newEntry.entryID = uuidv4();
+
+        // Get the current elder info
         let previousSavedData = localStorage.getItem("Elder-data");
         let parseSavedData = JSON.parse(previousSavedData);
-        parseSavedData.unshift(newEntry);
+
+        // Add the interaction to the activities property (array) for the current elder
+        parseSavedData.activities.unshift(newEntry);
+
+        // Update the current elder information
         localStorage.setItem("Elder-data", JSON.stringify(parseSavedData));
+
+        // Update the pretend database (Elder-test-data) with the now updated current elder
+        updateDatabase(parseSavedData);
         router.push('/viewEntries')
     }
 

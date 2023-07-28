@@ -3,6 +3,7 @@ import styles from './accountCreation.module.css';
 import Header from '../components/header/header';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect} from 'react';
+import { updateDatabase } from '../libs/updateDatabase';
 
 const AccountCreation = () => {
     const router = useRouter() //  Use to relocate user to another page
@@ -10,6 +11,7 @@ const AccountCreation = () => {
     const [name, setName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
 
+    // Creates a new elder account and relocate the user to the viewEntries page
     const createAccount = () => {
         const newElder = {
             "elderName": name,
@@ -18,8 +20,11 @@ const AccountCreation = () => {
             "essentialTasks" : []
         }
 
-        localStorage.setItem("Elder-data", JSON.stringify(newElder));
-        // TODO: Save permanently to database
+        localStorage.setItem("Elder-data", JSON.stringify(newElder)); // Save for current use in app
+
+        // Get the pretend database (Elder-test-data), add the new account, and save it.
+        updateDatabase(newElder);
+
         setName("");
         setPhoneNumber("");
         router.push('/viewEntries')
