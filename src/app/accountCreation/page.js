@@ -4,12 +4,14 @@ import Header from '../components/header/header';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect} from 'react';
 import { updateDatabase } from '../libs/updateDatabase';
+import { ifDuplicatePhoneNumber } from '../libs/duplicatePhoneNumber';
 
 const AccountCreation = () => {
     const router = useRouter() //  Use to relocate user to another page
 
     const [name, setName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
+    const [duplicateNumberError, setDuplicateNumberError] = useState(false);
 
     // Creates a new elder account and relocate the user to the viewEntries page
     const createAccount = () => {
@@ -20,14 +22,23 @@ const AccountCreation = () => {
             "essentialTasks" : []
         }
 
-        localStorage.setItem("Elder-data", JSON.stringify(newElder)); // Save for current use in app
+        // Check if the number is already use. If so, throw an error. If not, proceed to save in app state and the pretend database
+        if (ifDuplicatePhoneNumber(phoneNumber)) {
+            setDuplicateNumberError(true);
+            setPhoneNumber("");
+            return;
+        } else {
+            setDuplicateNumberError(false);
+            localStorage.setItem("Elder-data", JSON.stringify(newElder)); // Save for current use in app
+    
+            // Get the pretend database (Elder-test-data), add the new account, and save it.
+            updateDatabase(newElder);
+    
+            setName("");
+            setPhoneNumber("");
+            router.push('/viewEntries')
+        }
 
-        // Get the pretend database (Elder-test-data), add the new account, and save it.
-        updateDatabase(newElder);
-
-        setName("");
-        setPhoneNumber("");
-        router.push('/viewEntries')
     }
 
     // Disable the Done button if there isn't 10 numbers for the phone number and at least one for name
@@ -50,9 +61,16 @@ const AccountCreation = () => {
                 </div>
                 <div className={styles.section}>
                     <label htmlFor='phoneNumberInput' className={styles.label}>Elder's phone number</label>
-                    <input className={styles.inputfield} id='phoneNumberInput' type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxLength={"10"} required placeholder="Example: 9012223333" onChange={(e)=> setPhoneNumber(e.target.value)} onInput={(e)=> e.target.value = e.target.value.replace(/[^0-9]/g, '')} />
-                    <p className={styles.informationText}>Used to load the account.</p>
-                    <p className={styles.informationText}>Numbers only.</p>
+                    <input value={phoneNumber} className={styles.inputfield} id='phoneNumberInput' type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxLength={"10"} required placeholder="Example: 9012223333" onChange={(e)=> setPhoneNumber(e.target.value)} onInput={(e)=> e.target.value = e.target.value.replace(/[^0-9]/g, '')} />
+                    {!duplicateNumberError &&
+                        <>
+                            <p className={styles.informationText}>Used to load the account.</p>
+                            <p className={styles.informationText}>Numbers only.</p>                        
+                        </>
+                    }
+                    {duplicateNumberError &&
+                        <p className={`${styles.informationText} ${styles.errorMessage}`}>Number already used. Choose another</p>
+                    }
                 </div>
                 <div className={styles.doneButtonContainer}>
                     <button type="button" className={`${styles.entryButton} ${styles.goBackLink}`} onClick={() => router.push("/")}> Go back</button>

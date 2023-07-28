@@ -32,6 +32,12 @@
     font-size: .9rem;
 }
 
+.errorMessage {
+    color: red;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
 /*Done Button*/
 .entryButton {
     flex: 1;
