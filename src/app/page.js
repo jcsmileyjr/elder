@@ -5,6 +5,7 @@ import { useState} from 'react';
 import Image from 'next/image';
 import OldCouple1 from "./elderly-couple-1.png";
 import { getElder } from './libs/logIn';
+import Header from "./components/header/header";
 
 // Log in page
 const Home = () => {
@@ -29,16 +30,12 @@ const Home = () => {
 
     return(
         <div className={styles.page}>
-            <header className={styles.header}>
-            <div className={styles.navbar}>
-                <h1 className={styles.appTitle}><span className={styles.appNamePrimary}> Keeping </span><span className={styles.appNameSecondary}> Up </span></h1>
-            </div>
-            </header>
+            <Header />
             <main className={styles.main}>
                 <div className={styles.logos}>
                   <Image src={OldCouple1} width={250} height={150} alt="Elderly man and woman siting on a couch with floating hearts" />
                 </div>
-                <div className={styles.phoneNumberContainer}>
+                <div className={`${styles.phoneNumberContainer} ${styles.entryButtonBorder}`}>
                     <label htmlFor="phoneNumber" className={styles.label}>Phone Number of the Beloved</label>
                     <input type="tel" id="phoneNumber" className={styles.inputfield} pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxLength={"10"} required placeholder="Example: 9012223333" onChange={(e)=> setLogInData(e.target.value)} onInput={(e)=> e.target.value = e.target.value.replace(/[^0-9]/g, '')} ></input>
                     {!logInError && 
@@ -48,10 +45,11 @@ const Home = () => {
                     {logInError && 
                       <p className={`${styles.numbersOnly} ${logInError ? styles.logInError:''}`}>No account Found</p>
                     }
-                    <button aria-disabled={logInData === ""} disabled={logInData === ""} onClick={() => logIn()} className={`${styles.entryButton} ${logInData === "" ? styles.disableButton : ''} `} type="button">
+                    <button aria-disabled={logInData === ""} disabled={logInData === ""} onClick={() => logIn()} className={` ${styles.entryButton} ${logInData === "" ? styles.disableButton : ''} `} type="button">
                         Load
                     </button>
                 </div>
+                <button className={styles.accountButton} type="button" onClick={() => router.push("/accountCreation")}>Elder Account Setup</button>
                 <p className={styles.emotionalMessage}>Taking care of our elders is a <b>privilege</b> and a way to stay <b>connected</b>. It's an opportunity to capture memories of their legacy. </p>
             </main>
         </div>
