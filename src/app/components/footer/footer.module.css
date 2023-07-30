@@ -1,28 +1,20 @@
-.entryButton {
+  .entryButton {
     width: 50%;
     align-self: center;
     padding: 0.5rem;
     display: flex;
     justify-content: space-around;
     font-weight: bold;
-    border: 2px solid #527992;
-    color: white;
     border-radius: 15px;
     cursor: pointer;
     transition: all 300ms cubic-bezier(.23, 1. 0.32,1);
     -webkit-user-select: none;
     margin-bottom: 0.5rem;
     touch-action: manipulation;
-    background: #000046;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #1CB5E0, #000046);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #1CB5E0, #000046); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
   
   .entryButton:hover {
-    color: white;
-    background-color: #527992;
-    box-shadow: rgba(0,0,0,0) 0 8px 15px;
-    background: linear-gradient(45deg, black, lightgray);
+    color: rgb(141, 3, 3);
   }
   
   .entryButton:active {
@@ -30,11 +22,17 @@
     transform: translateY(0);
   }
 
-.logOff {
+  .logOff {
     color: red;
     border: none;
     font-size: x-large;
     background: transparent;
+  }
+
+  @media screen and (min-width: 600px) {
+    .logOff {
+      width: 15%;
+    }
   }
 
   .footer {
