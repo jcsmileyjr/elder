@@ -19,7 +19,7 @@
 }
 
 .section {
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
 }
 
 .inputfield {
@@ -45,6 +45,37 @@
     color: red;
     font-weight: bold;
     text-transform: uppercase;
+}
+
+/*Essential Tasks*/
+.tasksTitle {
+    margin-bottom: .5rem;
+}
+
+.tasksTime {
+    color: #1CB5E0;
+    margin-top: 1.25rem;
+}
+
+.inputContainer {
+    display: flex;
+    gap:1rem;
+    align-items: center;
+}
+
+.taskInputs {
+    
+}
+
+.taskStyles {
+    margin-bottom: 0.25rem;
+    font-size: .9rem;
+    margin-left: 3.8rem;
+}
+
+.buttonImage {
+    border: none;
+    background-color: transparent;
 }
 
 /*Done Button*/
