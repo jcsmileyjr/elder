@@ -1,9 +1,9 @@
 "use client"
 import styles from './viewEntries.module.css';
-import dummyData from '../libs/dummyData.json';
 import Header from '../components/header/header';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Footer from '../components/footer/page';
 import Link from "next/link";
 
 /**
@@ -91,6 +91,7 @@ export default function ViewEntries() {
           }
         </section>
       </main>
+      <Footer />
     </div>
   )
 }

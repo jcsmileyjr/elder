@@ -1,0 +1,41 @@
+  .entryButton {
+    width: 50%;
+    align-self: center;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-around;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 300ms cubic-bezier(.23, 1. 0.32,1);
+    -webkit-user-select: none;
+    margin-bottom: 0.5rem;
+    touch-action: manipulation;
+  }
+  
+  .entryButton:hover {
+    color: rgb(141, 3, 3);
+  }
+  
+  .entryButton:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
+
+  .logOff {
+    color: red;
+    border: none;
+    font-size: x-large;
+    background: transparent;
+  }
+
+  @media screen and (min-width: 600px) {
+    .logOff {
+      width: 15%;
+    }
+  }
+
+  .footer {
+    display: flex;
+    justify-content: center;
+  }
