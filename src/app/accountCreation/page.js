@@ -53,7 +53,7 @@ const AccountCreation = () => {
     return (
         <div className={styles.page}>
             <Header />
-            <main>
+            <main className={styles.main}>
                 <div className={styles.section}>
                     <label htmlFor='nameInput' className={styles.label}>Elder's name</label>
                     <input onChange={(e) => setName(e.target.value)} className={styles.inputfield} id='nameInput' type="text" />

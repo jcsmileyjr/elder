@@ -9,6 +9,15 @@
 
 
 /*Main content*/
+
+
+@media screen and (min-width: 600px) {
+    .main {
+    min-width: 600px;
+    margin: 0 auto;
+    }
+}
+
 .section {
     margin-bottom: 1rem;
 }
