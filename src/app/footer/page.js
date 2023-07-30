@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 const Footer = () => {
     const router = useRouter() // Routes a user to another page
     const logUserOff = () => {
-        
+        localStorage.removeItem("Elder-data");
         router.push("/");
     }
     return (
