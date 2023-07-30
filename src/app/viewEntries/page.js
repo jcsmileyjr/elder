@@ -3,7 +3,7 @@ import styles from './viewEntries.module.css';
 import Header from '../components/header/header';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import Footer from '../footer/page';
+import Footer from '../components/footer/page';
 import Link from "next/link";
 
 /**
