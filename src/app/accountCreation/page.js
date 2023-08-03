@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation';
 import { useState, useEffect} from 'react';
 import { updateDatabase } from '../libs/updateDatabase';
 import { ifDuplicatePhoneNumber } from '../libs/duplicatePhoneNumber';
+import Image from 'next/image';
+import PlusSign from '../plus-sign.png';
 
 const AccountCreation = () => {
     const router = useRouter() //  Use to relocate user to another page
@@ -12,6 +14,13 @@ const AccountCreation = () => {
     const [name, setName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [duplicateNumberError, setDuplicateNumberError] = useState(false);
+    const [dailyTasks, setDailyTasks] = useState([]);
+    const [currentDailyTasks, setCurrentDailyTasks] = useState("");
+    const [weeklyTasks, setWeeklyTasks] = useState([]);
+    const [currentWeeklyTasks, setCurrentWeeklyTasks] = useState("");
+    const [monthlyTasks, setMonthlyTasks] = useState([]);
+    const [currentMonthlyTasks, setCurrentMonthlyTasks] = useState("");
+
 
     // Creates a new elder account and relocate the user to the viewEntries page
     const createAccount = () => {
@@ -19,7 +28,20 @@ const AccountCreation = () => {
             "elderName": name,
             "phoneNumber" : phoneNumber,
             "activities" : [],
-            "essentialTasks" : []
+            "essentialTasks" : [
+                {
+                    "type":"Daily",
+                    "tasks": dailyTasks,
+                },
+                {
+                    "type":"Weekly",
+                    "tasks": weeklyTasks,
+                },
+                {
+                    "type":"Monthly",
+                    "tasks": monthlyTasks,
+                }
+            ]
         }
 
         // Check if the number is already use. If so, throw an error. If not, proceed to save in app state and the pretend database
@@ -50,10 +72,31 @@ const AccountCreation = () => {
         }
     }
 
+    /**
+     * Add text to a array of text
+     * Display below the section
+     * In the createAccount function: When "Continue" button is pressed and the array isn't empty, add it to the new elder object
+     */
+    const addDailyTask = () => {
+        setDailyTasks([...dailyTasks, currentDailyTasks]);
+        setCurrentDailyTasks("");
+    }
+
+    const addWeeklyTask = () => {
+        setWeeklyTasks([...weeklyTasks, currentWeeklyTasks]);
+        setCurrentWeeklyTasks("");
+    }
+
+    const addMonthlyTask = () => {
+        setMonthlyTasks([...monthlyTasks, currentMonthlyTasks]);
+        setCurrentMonthlyTasks("");
+    }
+
+    //console.log("tasks", dailyTasks.length);
     return (
         <div className={styles.page}>
             <Header />
-            <main>
+            <main className={styles.main}>
                 <div className={styles.section}>
                     <label htmlFor='nameInput' className={styles.label}>Elder's name</label>
                     <input onChange={(e) => setName(e.target.value)} className={styles.inputfield} id='nameInput' type="text" />
@@ -71,6 +114,60 @@ const AccountCreation = () => {
                     {duplicateNumberError &&
                         <p className={`${styles.informationText} ${styles.errorMessage}`}>Number already used. Choose another</p>
                     }
+                </div>
+                <div className={styles.section}>
+                    <h3 className={styles.tasksTitle}>Essential Tasks</h3>
+                    <p className={`${styles.informationText} ${styles.taskInformation}`}>Keeping it short and to the point is always better</p>
+
+                    {/* Daily Essential Tasks */}
+                    <h4 className={styles.tasksTime}>Daily</h4>
+                    <div className={styles.inputContainer}>
+                        <button className={styles.buttonImage} onClick={() => addDailyTask() }>
+                            <Image src={PlusSign}  width={30} height={30} alt="Plus icon to add text" />
+                        </button>
+                        <textarea type="text" value={currentDailyTasks} onChange={(e) => setCurrentDailyTasks(e.target.value)} className={`${styles.inputfield} ${styles.taskInputs}`} />
+                    </div>
+                    <ul>
+                        {dailyTasks.length > 0 &&                            
+                            dailyTasks.map( (tasks, index) => (
+                                <li className={styles.taskStyles} key={index + 'dailytask'}>{tasks}</li>
+                            ))
+                        }
+                    </ul>
+
+                    {/* Weekly Essential Tasks */}
+                    <h4 className={styles.tasksTime}>Weekly</h4>
+                    <div className={styles.inputContainer}>
+                        <button className={styles.buttonImage} onClick={() => addWeeklyTask() }>
+                            <Image src={PlusSign}  width={30} height={30} alt="Plus icon to add text" />
+                        </button>
+                        <textarea type="text" value={currentWeeklyTasks} onChange={(e) => setCurrentWeeklyTasks(e.target.value)} className={`${styles.inputfield} ${styles.taskInputs}`} />
+                    </div>
+
+                    <ul>
+                        {weeklyTasks.length > 0 &&                            
+                            weeklyTasks.map( (tasks, index) => (
+                                <li className={styles.taskStyles} key={index + 'weeklytask'}>{tasks}</li>
+                            ))
+                        }
+                    </ul>
+
+                    {/* Monthly Essential Tasks */}
+                    <h4 className={styles.tasksTime}>Monthly</h4>
+                    <div className={styles.inputContainer}>
+                        <button className={styles.buttonImage} onClick={() => addMonthlyTask() }>
+                            <Image src={PlusSign}  width={30} height={30} alt="Plus icon to add text" />
+                        </button>
+                        <textarea type="text" value={currentMonthlyTasks} onChange={(e) => setCurrentMonthlyTasks(e.target.value)} className={`${styles.inputfield} ${styles.taskInputs}`} />
+                    </div>
+
+                    <ul>
+                        {monthlyTasks.length > 0 &&                            
+                            monthlyTasks.map( (tasks, index) => (
+                                <li className={styles.taskStyles} key={index + 'monthlytask'}>{tasks}</li>
+                            ))
+                        }
+                    </ul>
                 </div>
                 <div className={styles.doneButtonContainer}>
                     <button type="button" className={`${styles.entryButton} ${styles.goBackLink}`} onClick={() => router.push("/")}> Go back</button>
