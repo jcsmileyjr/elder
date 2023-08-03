@@ -21,13 +21,27 @@ const AccountCreation = () => {
     const [monthlyTasks, setMonthlyTasks] = useState([]);
     const [currentMonthlyTasks, setCurrentMonthlyTasks] = useState("");
 
+
     // Creates a new elder account and relocate the user to the viewEntries page
     const createAccount = () => {
         const newElder = {
             "elderName": name,
             "phoneNumber" : phoneNumber,
             "activities" : [],
-            "essentialTasks" : []
+            "essentialTasks" : [
+                {
+                    "type":"Daily",
+                    "tasks": dailyTasks,
+                },
+                {
+                    "type":"Weekly",
+                    "tasks": weeklyTasks,
+                },
+                {
+                    "type":"Monthly",
+                    "tasks": monthlyTasks,
+                }
+            ]
         }
 
         // Check if the number is already use. If so, throw an error. If not, proceed to save in app state and the pretend database
@@ -78,7 +92,7 @@ const AccountCreation = () => {
         setCurrentMonthlyTasks("");
     }
 
-    console.log("tasks", dailyTasks.length);
+    //console.log("tasks", dailyTasks.length);
     return (
         <div className={styles.page}>
             <Header />
