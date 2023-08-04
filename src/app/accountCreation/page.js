@@ -72,27 +72,30 @@ const AccountCreation = () => {
         }
     }
 
-    /**
-     * Add text to a array of text
-     * Display below the section
-     * In the createAccount function: When "Continue" button is pressed and the array isn't empty, add it to the new elder object
-     */
+    //Add text to a array of Essential daily tasks
     const addDailyTask = () => {
-        setDailyTasks([...dailyTasks, currentDailyTasks]);
-        setCurrentDailyTasks("");
+        if(currentDailyTasks !== "") {
+            setDailyTasks([...dailyTasks, currentDailyTasks]);
+            setCurrentDailyTasks("");
+        }
     }
 
+     //Add text to a array of Essential weekly tasks
     const addWeeklyTask = () => {
-        setWeeklyTasks([...weeklyTasks, currentWeeklyTasks]);
-        setCurrentWeeklyTasks("");
+        if(currentWeeklyTasks !== "") {
+            setWeeklyTasks([...weeklyTasks, currentWeeklyTasks]);
+            setCurrentWeeklyTasks("");
+        }
     }
 
+     //Add text to a array of Essential monthly tasks
     const addMonthlyTask = () => {
-        setMonthlyTasks([...monthlyTasks, currentMonthlyTasks]);
-        setCurrentMonthlyTasks("");
+        if(currentMonthlyTasks !== "") {
+            setMonthlyTasks([...monthlyTasks, currentMonthlyTasks]);
+            setCurrentMonthlyTasks("");
+        }
     }
 
-    //console.log("tasks", dailyTasks.length);
     return (
         <div className={styles.page}>
             <Header />
