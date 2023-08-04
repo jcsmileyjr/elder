@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation';
 import Footer from '../components/footer/page';
 import Image from 'next/image';
 import Cheveron from '../angle-bottom-icon.png';
+import Plus from '../plus.png';
+import Minus from '../minus.png';
 
 /**
  * Componenet that displays an user's app enrty.
@@ -34,8 +36,8 @@ export default function ViewEntries() {
   const [entries, setEntries] = useState([]); // App's state that holds an array of entries (objects)
   const [displayedContent, setDisplayedContent] = useState("interactions"); // App's state to display either interactions or essential tasks
   const [essentialShowDaily, setEssentialShowDaily] = useState(true); // App's state to collaspe the essential daily tasks section
-  const [essentialShowWeekly, setEssentialShowWeekly] = useState(true); // App's state to collaspe the essential weekly tasks section
-  const [essentialShowMonthly, setEssentialShowMonthly] = useState(true); // App's state to collaspe the essential monthly tasks section
+  const [essentialShowWeekly, setEssentialShowWeekly] = useState(false); // App's state to collaspe the essential weekly tasks section
+  const [essentialShowMonthly, setEssentialShowMonthly] = useState(false); // App's state to collaspe the essential monthly tasks section
 
   useEffect(() => {
     // Load either the log in account's data or route the user back to the logIn screen
@@ -63,7 +65,7 @@ export default function ViewEntries() {
   }
 
   /**
-   * Either hides or shows an Essenial frequncy section
+   * Either hides or shows an Essenial frequncy section and icon
    * @param {string} frequncy : Either daily, weekly, monnthly
    * @returns true/false
    */
@@ -71,6 +73,23 @@ export default function ViewEntries() {
     if(frequncy === "Daily") return essentialShowDaily;
     if(frequncy === "Weekly") return essentialShowWeekly;
     if(frequncy === "Monthly") return essentialShowMonthly;
+  }
+
+  /**
+   * 
+   * @param {boolean} showHide : True or False  
+   * @returns Returns an Image of a show or minus icon to represent a possbile collaspe section of the UI
+   */
+  const CollaspeIcon = ({showHide}) => {
+    if(showHide){
+      return (
+        <Image className={styles.cheveonStyle} src={Plus} width={15} height={15} alt="test" />
+      )
+    }else {
+      return (
+        <Image className={styles.cheveonStyle} src={Minus} width={15} height={15} alt="test" />
+      )
+    }
   }
 
   return (
@@ -104,7 +123,7 @@ export default function ViewEntries() {
             entries.essentialTasks.map( (frequncy, index) =>
              (
               <div key={index} className={styles.essentials}>
-                <p className={styles.taskHeader} onClick={() => collapseEssentialTaskFrequency(frequncy.type)}>{frequncy.type} <Image className={styles.cheveonStyle} src={Cheveron} width={13} height={10} alt="test" /> </p>
+                <p className={styles.taskHeader} onClick={() => collapseEssentialTaskFrequency(frequncy.type)}>{frequncy.type} <CollaspeIcon showHide={isCollapse(frequncy.type)} /> </p>
                 {isCollapse(frequncy.type) &&
                   <ul>
                     {
