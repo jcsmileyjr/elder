@@ -33,7 +33,13 @@ const CreateEntry = () => {
     // Updates the message property of the user's new entry from the textbox field
     const updateMessage = (e) => {
         newEntry.message = e.target.value;
-        enableButton();
+
+        const regexTest = new RegExp(/[a-zA-Z]/);
+        if (regexTest.test(newEntry.message)) {
+            enableButton();
+        } else {
+            setShowDoneButton(false)
+        }
     }
 
     // Updates the writer property of the user's new entry from a input field
