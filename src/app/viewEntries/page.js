@@ -83,11 +83,11 @@ export default function ViewEntries() {
   const CollaspeIcon = ({showHide}) => {
     if(showHide){
       return (
-        <Image className={styles.cheveonStyle} src={Plus} width={15} height={15} alt="test" />
-      )
-    }else {
-      return (
         <Image className={styles.cheveonStyle} src={Minus} width={15} height={15} alt="test" />
+        )
+      }else {
+        return (
+        <Image className={styles.cheveonStyle} src={Plus} width={15} height={15} alt="test" />
       )
     }
   }
