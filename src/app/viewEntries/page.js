@@ -83,11 +83,11 @@ export default function ViewEntries() {
   const CollaspeIcon = ({showHide}) => {
     if(showHide){
       return (
-        <Image className={styles.cheveonStyle} src={Minus} width={15} height={15} alt="test" />
+        <span className={styles.expand}>Click to Hide <Image className={styles.cheveonStyle} src={Minus} width={15} height={15} alt="test" /></span>
         )
       }else {
         return (
-        <Image className={styles.cheveonStyle} src={Plus} width={15} height={15} alt="test" />
+          <span className={styles.expand}>Click to Expand<Image className={styles.cheveonStyle} src={Plus} width={15} height={15} alt="test" /></span>
       )
     }
   }
@@ -123,7 +123,11 @@ export default function ViewEntries() {
             entries.essentialTasks.map( (frequncy, index) =>
              (
               <div key={index} className={styles.essentials}>
-                <p className={styles.taskHeader} onClick={() => collapseEssentialTaskFrequency(frequncy.type)}>{frequncy.type} <CollaspeIcon showHide={isCollapse(frequncy.type)} /> </p>
+                <p className={styles.taskHeader} onClick={() => collapseEssentialTaskFrequency(frequncy.type)}>
+                  {frequncy.type} 
+                  <span className={styles.expand}><CollaspeIcon showHide={isCollapse(frequncy.type)} /></span>
+                   
+                  </p>
                 {isCollapse(frequncy.type) &&
                   <ul>
                     {

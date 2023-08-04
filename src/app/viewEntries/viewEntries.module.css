@@ -173,6 +173,7 @@
     color: #1CB5E0;
     display: flex;
     align-items: center;
+    justify-content: space-between;
   }
   
   .tasks {
@@ -188,6 +189,13 @@
 
   .cheveonStyle {
     margin-left: 5px;
+    vertical-align: bottom;
+  }
+
+  .expand {
+    font-weight: normal;
+    color: black;
+    font-size: .9rem;
   }
   
   .essentials {
