@@ -4,7 +4,8 @@ import Header from '../components/header/header';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Footer from '../components/footer/page';
-import Link from "next/link";
+import Image from 'next/image';
+import Cheveron from '../angle-bottom-icon.png';
 
 /**
  * Componenet that displays an user's app enrty.
@@ -32,6 +33,9 @@ export default function ViewEntries() {
   const router = useRouter() // Routes a user to another page
   const [entries, setEntries] = useState([]); // App's state that holds an array of entries (objects)
   const [displayedContent, setDisplayedContent] = useState("interactions"); // App's state to display either interactions or essential tasks
+  const [essentialShowDaily, setEssentialShowDaily] = useState(true); // App's state to collaspe the essential daily tasks section
+  const [essentialShowWeekly, setEssentialShowWeekly] = useState(true); // App's state to collaspe the essential weekly tasks section
+  const [essentialShowMonthly, setEssentialShowMonthly] = useState(true); // App's state to collaspe the essential monthly tasks section
 
   useEffect(() => {
     // Load either the log in account's data or route the user back to the logIn screen
@@ -47,6 +51,27 @@ export default function ViewEntries() {
 
     loadPastInteractions();
   }, [])
+
+  /**
+   * Set true or false if an Essenial frequncy section should be collapse
+   * @param {string} frequncy : Either daily, weekly, monnthly
+   */
+  const collapseEssentialTaskFrequency = (frequncy) => {
+    if(frequncy === "Daily") setEssentialShowDaily(!essentialShowDaily);
+    if(frequncy === "Weekly") setEssentialShowWeekly(!essentialShowWeekly);
+    if(frequncy === "Monthly") setEssentialShowMonthly(!essentialShowMonthly);
+  }
+
+  /**
+   * Either hides or shows an Essenial frequncy section
+   * @param {string} frequncy : Either daily, weekly, monnthly
+   * @returns true/false
+   */
+  const isCollapse = (frequncy) => {
+    if(frequncy === "Daily") return essentialShowDaily;
+    if(frequncy === "Weekly") return essentialShowWeekly;
+    if(frequncy === "Monthly") return essentialShowMonthly;
+  }
 
   return (
     <div className={styles.page}>
@@ -76,16 +101,19 @@ export default function ViewEntries() {
           )}
 
           {displayedContent === "essentials" &&  entries.length !== 0 &&
-            entries.essentialTasks.map( (frequncy, index) => (
+            entries.essentialTasks.map( (frequncy, index) =>
+             (
               <div key={index} className={styles.essentials}>
-                <p className={styles.taskHeader}>{frequncy.type}</p>
-                <ul>
-                  {
-                    frequncy.tasks.map((task, index) => (
-                      <li key={index}  className={styles.tasks}>{task}</li>
-                    ))
-                  }
-                </ul>
+                <p className={styles.taskHeader} onClick={() => collapseEssentialTaskFrequency(frequncy.type)}>{frequncy.type} <Image className={styles.cheveonStyle} src={Cheveron} width={13} height={10} alt="test" /> </p>
+                {isCollapse(frequncy.type) &&
+                  <ul>
+                    {
+                      frequncy.tasks.map((task, index) => (
+                        <li key={index}  className={styles.tasks}>{task}</li>
+                      ))
+                    }
+                  </ul>
+                }
               </div>
             ))            
           }
