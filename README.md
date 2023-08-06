@@ -1,34 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Keeping Up
 
-## Getting Started
+### The Challenge
+This web app's end goal is to allow multiple people to contribute to the care of a loved one. 
 
-First, run the development server:
+### Images of app in use
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+![Image of UI created](/src/app/README-images/landing-page.PNG);
+![Image of UI created](/src/app/README-images/entries.PNG);
+![Image of UI created](/src/app/README-images/essential-tasks.PNG);
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Upcoming soon
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+**Version 2:** The current version is setup for one care giver using the device local storage for the backend. The next iteration will have a dedicated online backend to allow multiple care givers to interact on the same account. 
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### How to run in development(Windows with NPM)
+1. Clone the repo.
+2. Open a terminal and navigate directory "elder"
+3. Type npm install
+4. When finisedh, type "npm run dev"
+5. Use the test account "1112223333" or "4445556666" to walkthrough the web app.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+### Built with
+- Nextjs (React)
+- Semantic HTML5 markup
+- CSS Flexbox
+- Javascript 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Author
+- Website - [JC Smiley](https://www.jcsmileyjr.com)
+- Twitter - [@JCSmiley4](https://twitter.com/JCSmiley4)
+- LinkedIn - [jcsmileyjr](https://www.linkedin.com/in/jcsmileyjr/)
