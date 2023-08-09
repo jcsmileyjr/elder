@@ -1,5 +1,10 @@
+import dummyData from './dummyData.json';
 
-
+/**
+ * Takes a 10 digit phone number and compare array of elder objects phone number property to ensure its not a duplicate.
+ * @param {string} phoneNumber 
+ * @returns true or false
+ */
 const ifDuplicatePhoneNumber = (phoneNumber) => {
     let parseData; // varible to hold the pretend database inital data
 
@@ -9,8 +14,7 @@ const ifDuplicatePhoneNumber = (phoneNumber) => {
       localStorage.setItem("Elder-test-data", JSON.stringify(dummyData));
       parseData = dummyData;
     } else {
-      let previousSavedData = localStorage.getItem("Elder-test-data");
-      parseData = JSON.parse(previousSavedData);
+      parseData = previousTestData;
     }
 
     // Check if the phone number is already being used by an object in the array of elders
