@@ -47,6 +47,14 @@
     text-transform: uppercase;
 }
 
+.firstReminder {
+    margin-bottom: .5rem;
+}
+
+.specialInstruction {
+    color: #000046;
+}
+
 /*Essential Tasks*/
 .tasksTitle {
     margin-bottom: .5rem;
