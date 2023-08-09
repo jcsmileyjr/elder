@@ -9,7 +9,7 @@ const Header = ({elderName="Broken Account", children}) => {
           <div className={styles.navbar}>
             {elderName !== "Broken Account" &&
               <>
-                <p className={styles.appTitle}><Link className={styles.link} href="/"><span className={styles.appNamePrimary}> Keeping </span><span className={styles.appNameSecondary}> Up </span></Link></p>
+                <p className={styles.appTitle}><Link className={styles.link} href="/viewEntries"><span className={styles.appNamePrimary}> Keeping </span><span className={styles.appNameSecondary}> Up </span></Link></p>
                 <p className={styles.elderName}>{elderName}</p>              
               </>
             }
