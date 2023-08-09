@@ -63,10 +63,6 @@
     align-items: center;
 }
 
-.taskInputs {
-    
-}
-
 .taskStyles {
     margin-bottom: 0.25rem;
     font-size: .9rem;
@@ -80,8 +76,7 @@
 
 /*Done Button*/
 .entryButton {
-    flex: 1;
-    min-width: 40%;
+    min-width: 150px;
     margin-top: .5rem;    
     font-size: 1rem;
     margin: auto;
@@ -100,6 +95,7 @@
 
 .entryButton:disabled {
     opacity: .5;
+    cursor: not-allowed;
 }
 
 .doneButtonStyle {
@@ -107,6 +103,7 @@
     background: -webkit-linear-gradient(to right, #1CB5E0, #000046);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #1CB5E0, #000046); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     border: 2px solid #527992;
+    margin-bottom: 1rem;
 }
 
 .goBackButonSyle {
@@ -119,11 +116,18 @@
     border: 2px solid rgba(175,70,0,1);
 }
 
-.goBackLink {
-    color: red;
-    border: none;
-    font-size: x-large;
-}
+.goBackButonSyle {
+    background: rgb(175,70,0);
+    background: -moz-linear-gradient(90deg, rgba(175,70,0,0.5691526610644257) 0%, rgba(207,46,21,0.9024859943977591) 30%, rgba(207,46,21,1) 72%);
+    background: -webkit-linear-gradient(90deg, rgba(175,70,0,0.5691526610644257) 0%, rgba(207,46,21,0.9024859943977591) 30%, rgba(207,46,21,1) 72%);
+    background: linear-gradient(90deg, rgba(175,70,0,0.5691526610644257) 0%, rgba(207,46,21,0.9024859943977591) 30%, rgba(207,46,21,1) 72%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#af4600",endColorstr="#cf2e15",GradientType=1);
+    min-width: 150px;
+    border: 2px solid rgba(175,70,0,1);
+    font-size: medium;
+    padding: .25rem;
+    margin-bottom: 1rem;
+  }
 
 .doneButtonContainer {
     display: flex;

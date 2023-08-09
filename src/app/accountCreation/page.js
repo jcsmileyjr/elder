@@ -100,6 +100,7 @@ const AccountCreation = () => {
         <div className={styles.page}>
             <Header />
             <main className={styles.main}>
+                <button type="button" className={`${styles.entryButton} ${styles.goBackButonSyle}`} onClick={() => router.push("/")}> Go back</button>
                 <div className={styles.section}>
                     <label htmlFor='nameInput' className={styles.label}>Elder's name</label>
                     <input onChange={(e) => setName(e.target.value)} className={styles.inputfield} id='nameInput' type="text" />
@@ -173,7 +174,6 @@ const AccountCreation = () => {
                     </ul>
                 </div>
                 <div className={styles.doneButtonContainer}>
-                    <button type="button" className={`${styles.entryButton} ${styles.goBackLink}`} onClick={() => router.push("/")}> Go back</button>
                     <button onClick={() => createAccount()} disabled={enabledDoneButton()} className={`${styles.entryButton} ${styles.doneButtonStyle}`} type='button'>Continue</button>
                 </div>
             </main>
