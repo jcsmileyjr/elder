@@ -45,7 +45,7 @@ const Home = () => {
                     {logInError && 
                       <p className={`${styles.numbersOnly} ${logInError ? styles.logInError:''}`}>No account Found</p>
                     }
-                    <button aria-disabled={logInData === ""} disabled={logInData === ""} onClick={() => logIn()} className={` ${styles.entryButton} ${logInData === "" ? styles.disableButton : ''} `} type="button">
+                    <button aria-disabled={logInData.length < 10} disabled={logInData.length < 10} onClick={() => logIn()} className={` ${styles.entryButton} ${logInData === "" ? styles.disableButton : ''} `} type="button">
                         Log In
                     </button>
                     <p className={styles.loginInstructions}>Log into an existing account</p>
