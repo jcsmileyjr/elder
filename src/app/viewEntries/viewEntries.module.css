@@ -195,11 +195,13 @@
   .expand {
     font-weight: normal;
     color: black;
-    font-size: .9rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
   }
   
   .essentials {
-    margin-bottom: .5rem;
+    margin-bottom: 1rem;
   }
   
   .highlight {

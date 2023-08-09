@@ -16,7 +16,7 @@ const getElder = (phoneNumber) => {
         let previousSavedData = localStorage.getItem("Elder-test-data"); // TODO: Swap with a real database call
         parseData = JSON.parse(previousSavedData)
     }
-console.log("Log-in data", parseData);
+
     let foundIndex = parseData.findIndex((data) => {
         return data.phoneNumber === phoneNumber;
     })
