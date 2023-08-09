@@ -102,15 +102,11 @@
 }
 
 .entryButton:disabled {
-  color: white;
-  background-color: #527992;
-  box-shadow: rgba(0,0,0,0) 0 8px 15px;
-  background: linear-gradient(45deg, black, lightgray);
-  border: black
+  opacity: .5;
 }
 
 .entryButton:hover:disabled {
-  opacity: .8;
+  opacity: .5;
   cursor:not-allowed;
 }
 
