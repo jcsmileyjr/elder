@@ -81,6 +81,7 @@ const CreateEntry = () => {
         <div className={styles.page}>
             <Header elderName={entries.elderName} />
             <main className={styles.main}>
+                <button type="button" className={`${styles.entryButton} ${styles.goBackButonSyle} ${styles.goBackButtonFullWidth}`} onClick={() => router.push("/viewEntries")}> Go back</button>
                 <p className={styles.title}>Create New Entry</p>
                 <div className={styles.section}>
                     <label htmlFor="inputDate" className={styles.label}>Date of new Entry</label>
@@ -96,16 +97,13 @@ const CreateEntry = () => {
                 </div>
                 <div className={styles.section}>
                     {!showDoneButton &&
-                        <div className={styles.backButtonContainer}>
-                            <button type="button" className={`${styles.entryButton} ${styles.goBackButonSyle} ${styles.goBackButtonFullWidth}`} onClick={() => router.push("/viewEntries")}> Go back</button>
-                            <p className={styles.noInfoMessage}>No information has been added. Must fill out the entire form to show the <span className={styles.noBreakWord}>"DONE" button.</span> </p>
+                        <div className={styles.backButtonContainer}>                            
+                            <p className={styles.noInfoMessage}>No information has been added. Must fill out the entire form to show the <span className={styles.noBreakWord}><span className={styles.doneWord}>"DONE"</span> button.</span> </p>
                         </div>
                     }
 
                     {showDoneButton &&
-                        <div className={styles.doneButtonContainer}>
-                            
-                            <button type="button" className={`${styles.entryButton} ${styles.goBackLink}`} onClick={() => router.push("/viewEntries")}> Go back</button>
+                        <div className={styles.doneButtonContainer}>                            
                             <button onClick={() => saveInteraction()} type="button" className={`${styles.entryButton} ${styles.doneButtonStyle}`}>DONE</button>
                             <label className={styles.doneLabel}>Click <span className={styles.entrybuttonMessage}>DONE</span> when Finished</label>
                         </div>

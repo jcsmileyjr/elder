@@ -100,6 +100,7 @@ const AccountCreation = () => {
         <div className={styles.page}>
             <Header />
             <main className={styles.main}>
+                <button type="button" className={`${styles.entryButton} ${styles.goBackButonSyle}`} onClick={() => router.push("/")}> Go back</button>
                 <div className={styles.section}>
                     <label htmlFor='nameInput' className={styles.label}>Elder's name</label>
                     <input onChange={(e) => setName(e.target.value)} className={styles.inputfield} id='nameInput' type="text" />
@@ -110,7 +111,7 @@ const AccountCreation = () => {
                     <input value={phoneNumber} className={styles.inputfield} id='phoneNumberInput' type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxLength={"10"} required placeholder="Example: 9012223333" onChange={(e)=> setPhoneNumber(e.target.value)} onInput={(e)=> e.target.value = e.target.value.replace(/[^0-9]/g, '')} />
                     {!duplicateNumberError &&
                         <>
-                            <p className={styles.informationText}>Used to load the account.</p>
+                            <p className={styles.informationText}>Used to log into the account.</p>
                             <p className={styles.informationText}>Numbers only.</p>                        
                         </>
                     }
@@ -120,7 +121,9 @@ const AccountCreation = () => {
                 </div>
                 <div className={styles.section}>
                     <h3 className={styles.tasksTitle}>Essential Tasks</h3>
-                    <p className={`${styles.informationText} ${styles.taskInformation}`}>Keeping it short and to the point is always better</p>
+                    <p className={`${styles.informationText} ${styles.taskInformation} ${styles.firstReminder} ${styles.specialInstruction}`}>Write a reminder and then click the "Plus" icon to add it. <Image src={PlusSign}  width={15} height={15} alt="" /></p> 
+                    <p className={`${styles.informationText} ${styles.taskInformation} ${styles.firstReminder}`}>Create reminders for others to use as a guide when visiting the beloved.</p>
+                    <p className={`${styles.informationText} ${styles.taskInformation} `}>Keeping it short and to the point is always better.</p>
 
                     {/* Daily Essential Tasks */}
                     <h4 className={styles.tasksTime}>Daily</h4>
@@ -173,7 +176,6 @@ const AccountCreation = () => {
                     </ul>
                 </div>
                 <div className={styles.doneButtonContainer}>
-                    <button type="button" className={`${styles.entryButton} ${styles.goBackLink}`} onClick={() => router.push("/")}> Go back</button>
                     <button onClick={() => createAccount()} disabled={enabledDoneButton()} className={`${styles.entryButton} ${styles.doneButtonStyle}`} type='button'>Continue</button>
                 </div>
             </main>

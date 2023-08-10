@@ -5,9 +5,10 @@ This web app's end goal is to allow multiple people to contribute to the care of
 
 ### Images of app in use
 
-![Image of UI created](/src/app/README-images/landing-page.PNG);
-![Image of UI created](/src/app/README-images/entries.PNG);
-![Image of UI created](/src/app/README-images/essential-tasks.PNG);
+![Image of UI Log in Page](/src/app/README-images/log-in.PNG);
+![Image of UI's primary content page care givers entries section](/src/app/README-images/entries.PNG);
+![Image of UI's primary content page essential task section](/src/app/README-images/essential-tasks-2.PNG);
+![Image of UI's create entry page](/src/app/README-images/create-entry.PNG);
 
 ### Upcoming soon
 

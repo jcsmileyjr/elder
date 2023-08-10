@@ -40,10 +40,6 @@
   font-weight: bold;
 }
 
-.entryButton:disabled {
-  opacity: .5;
-}
-
 .inputfield {
   display: block;
   margin-top: .5rem;
@@ -70,6 +66,12 @@
   letter-spacing: .5px;
 }
 
+.loginInstructions {
+  text-align: center;
+  margin-top: .5rem;
+  font-size: .8rem;
+}
+
 .entryButton, .accountButton {
   width: 75%;
   align-self: center;
@@ -87,19 +89,27 @@
   background: #000046;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #1CB5E0, #000046);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #1CB5E0, #000046); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border: 1px solid #1CB5E0;
 }
 
 .entryButton:hover {
-  color: white;
-  background-color: #527992;
-  box-shadow: rgba(0,0,0,0) 0 8px 15px;
-  background: linear-gradient(45deg, black, lightgray);
+  opacity: .65;
 }
 
 .entryButton:active {
   box-shadow: none;
   transform: translateY(0);
 }
+
+.entryButton:disabled {
+  opacity: .5;
+}
+
+.entryButton:hover:disabled {
+  opacity: .5;
+  cursor:not-allowed;
+}
+
 
 .entryButtonBorder {
   padding-bottom: 0.75rem;
@@ -111,10 +121,18 @@
 .accountButton {
   background: #4e54c8;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #8f94fb, #4e54c8);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #8f94fb, #4e54c8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
+  background: linear-gradient(to right, #8f94fb, #4e54c8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
+  border: 1px solid #8f94fb;  
   width: 180px;
   margin-bottom: 1.5rem;
   margin-top: 0.75rem;
+}
+
+.accountButton:hover {
+  background: #000046;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #1CB5E0, #000046);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #1CB5E0, #000046); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border: 1px solid #1CB5E0;
 }
 
 
