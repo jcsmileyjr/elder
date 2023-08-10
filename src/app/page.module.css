@@ -128,6 +128,13 @@
   margin-top: 0.75rem;
 }
 
+.accountButton:hover {
+  background: #000046;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #1CB5E0, #000046);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #1CB5E0, #000046); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border: 1px solid #1CB5E0;
+}
+
 
 @media screen and (max-height: 650px) {
   .accountButton {
