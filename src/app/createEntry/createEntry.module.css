@@ -18,7 +18,7 @@
   .title {
     text-align: center;
     font-weight: bold;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
     text-decoration: underline;
     text-decoration-color: #527992;
   }
@@ -158,10 +158,6 @@
   }
 
   @media screen and (min-width: 600px) {
-    /* .doneButtonContainer {
-      gap: 1.5rem;
-    } */
-
     .backButtonContainer {
       margin: 0 2rem;
     }
@@ -189,4 +185,16 @@
 
   .noBreakWord {
     white-space:nowrap;
+  }
+
+  .informationText {
+    color: gray;
+    font-size: .9rem;
+    margin-bottom: .5rem;
+  }
+
+  @media screen and (min-width: 600px) {
+    .informationText {
+      margin: 0 3rem .5rem 3rem;
+    }
   }

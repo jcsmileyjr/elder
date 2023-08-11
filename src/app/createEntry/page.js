@@ -83,6 +83,7 @@ const CreateEntry = () => {
             <main className={styles.main}>
                 <button type="button" className={`${styles.entryButton} ${styles.goBackButonSyle} ${styles.goBackButtonFullWidth}`} onClick={() => router.push("/viewEntries")}> Go back</button>
                 <p className={styles.title}>Create New Entry</p>
+                <p className={`${styles.informationText}`}>Communicate to others "what you did today for/with your love one".</p>
                 <div className={styles.section}>
                     <label htmlFor="inputDate" className={styles.label}>Date of new Entry</label>
                     <input id="inputDate" type="date" className={styles.inputfield} onChange={(e) => updateDate(e)}></input>                
