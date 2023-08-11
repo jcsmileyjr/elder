@@ -43,3 +43,12 @@ Data flow flow for "Account creation" and "Interaction entry creation"
             }
         ]
     }
+
+  ### Common development flow
+  * Clone the repo and naviate to the "elder" folder
+  * In the terminal, start app with "npm run dev"
+  * Each page has a two part setup, "page.js" (HTML & React) and "pagename.module.css" (CSS)
+  * There is a components folder for multi-page elments like the Header, Footer, and common use buttons
+  * Images are set at the top layer of the repo (but I have a README images folder, lol)
+  * Brand colors are based around a dark and light blue accents with a white background and black/gray color for common text
+  * Data is stored and retrived from local-storage. If the local storage isn't there, then testing data from dummyData.json

@@ -18,7 +18,7 @@ This web app's end goal is to allow multiple people to contribute to the care of
 1. Clone the repo.
 2. Open a terminal and navigate directory "elder"
 3. Type npm install
-4. When finisedh, type "npm run dev"
+4. When finised, type "npm run dev"
 5. Use the test account "1112223333" or "4445556666" to walkthrough the web app.
 
 
