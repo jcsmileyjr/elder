@@ -51,7 +51,10 @@ const CreateEntry = () => {
     // Save the user enter interation to the current elder object in localstorage
     const saveInteraction = () => {
         // new random ID
-        newEntry.entryID = uuidv4();
+        const randomID = uuidv4();
+        newEntry.entryID = randomID;
+        newEntry._id = randomID;
+        newEntry._type = "activities"
 
         // Get the current elder info
         let previousSavedData = localStorage.getItem("Elder-data");
