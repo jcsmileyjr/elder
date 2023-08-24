@@ -6,7 +6,7 @@ import Image from 'next/image';
 import OldCouple1 from "./elderly-couple-1.png";
 import { getElder } from './libs/logIn';
 import Header from "./components/header/header";
-import client from './client';
+import client from './libs/api/client';
 
 // Log in page
 const Home = () => {
@@ -19,8 +19,8 @@ const Home = () => {
    * When the "Load" button is press, check if the entered phone number is registered to an account. If found, 
    * then route user to the viewEntries screen. If not found, display error message.
    */
-  const logIn = () => {
-    if(getElder(logInData)) {
+  const logIn = async () => {
+    if(await getElder(logInData)) {
       setLogInError(false);
       setLogInData("");
       router.push("/viewEntries")
@@ -28,15 +28,6 @@ const Home = () => {
       setLogInError(true);
     }
   }
-
-  const testApi = async () => {
-    const query = '*[_type =="elder"]';
-    let data = await client.fetch(query).then((elders) => {
-      return elders;
-    })
-    console.log(data);
-  }
-  testApi();
 
     return(
         <div className={styles.page}>
