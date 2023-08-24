@@ -6,6 +6,7 @@ import Image from 'next/image';
 import OldCouple1 from "./elderly-couple-1.png";
 import { getElder } from './libs/logIn';
 import Header from "./components/header/header";
+import client from './client';
 
 // Log in page
 const Home = () => {
@@ -27,6 +28,15 @@ const Home = () => {
       setLogInError(true);
     }
   }
+
+  const testApi = async () => {
+    const query = '*[_type =="elder"]';
+    let data = await client.fetch(query).then((elders) => {
+      return elders;
+    })
+    console.log(data);
+  }
+  testApi();
 
     return(
         <div className={styles.page}>
