@@ -23,29 +23,33 @@ const AccountCreation = () => {
 
 
     // Creates a new elder account and relocate the user to the viewEntries page
-    const createAccount = () => {
+    const createAccount = async () => {
         const newElder = {
             "elderName": name,
             "phoneNumber" : phoneNumber,
+            "_type": "elder",
             "activities" : [],
             "essentialTasks" : [
                 {
                     "type":"Daily",
+                    "_type": "essentialTasks",
                     "tasks": dailyTasks,
                 },
                 {
                     "type":"Weekly",
+                    "_type": "essentialTasks",
                     "tasks": weeklyTasks,
                 },
                 {
                     "type":"Monthly",
+                    "_type": "essentialTasks",
                     "tasks": monthlyTasks,
                 }
             ]
         }
 
         // Check if the number is already use. If so, throw an error. If not, proceed to save in app state and the pretend database
-        if (ifDuplicatePhoneNumber(phoneNumber)) {
+        if (await ifDuplicatePhoneNumber(phoneNumber)) {
             setDuplicateNumberError(true);
             setPhoneNumber("");
             return;

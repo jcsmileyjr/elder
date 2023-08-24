@@ -1,4 +1,3 @@
-import dummyData from './dummyData.json';
 import getAllElder from './api/getElder';
 
 /**
@@ -10,7 +9,7 @@ import getAllElder from './api/getElder';
 const getElder = async (phoneNumber) => {
     let parseData = await getAllElder();
     let enableLogin = false;
-
+console.log(parseData)
     let foundIndex = parseData.findIndex((data) => {
         return data.phoneNumber === phoneNumber;
     })
