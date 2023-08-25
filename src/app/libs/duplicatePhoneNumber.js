@@ -14,7 +14,7 @@ const ifDuplicatePhoneNumber = (phoneNumber) => {
       localStorage.setItem("Elder-test-data", JSON.stringify(dummyData));
       parseData = dummyData;
     } else {
-      parseData = previousTestData;
+      parseData = JSON.parse(previousTestData);
     }
 
     // Check if the phone number is already being used by an object in the array of elders
