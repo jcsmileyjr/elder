@@ -1,22 +1,11 @@
-import { createClient } from "@sanity/client";
-
-let envProjectId, envDataset, envToken;
-if (process.env.NODE_ENV === "development") {
-  envProjectId = process.env.NEXT_PUBLIC_SANITY_API_PROJECT_ID;
-  envDataset = process.env.NEXT_PUBLIC_SANITY_API_DATASET;
-  envToken = process.env.NEXT_PUBLIC_SANITY_API_WRITE_TOKEN;
-} else {
-  envProjectId = process.env.SANITY_API_PROJECT_ID;
-  envDataset = process.env.SANITY_API_DATASET;
-  token = process.env.SANITY_API_WRITE_TOKEN;
-}
+import {createClient}  from "@sanity/client";
 
 const client = createClient({
-  projectId: envProjectId,
-  dataset: envDataset,
-  token: envToken,
-  apiVersion: "2023-05-03",
-  useCdn: true, // `false` if you want to ensure fresh data
-});
+    projectId: process.env.NEXT_PUBLIC_SANITY_API_PROJECT_ID,
+    dataset: process.env.NEXT_PUBLIC_SANITY_API_DATASET,
+    token: process.env.NEXT_PUBLIC_SANITY_API_WRITE_TOKEN,
+    apiVersion: '2023-05-03',
+    useCdn: true // `false` if you want to ensure fresh data
+})
 
 export default client;
