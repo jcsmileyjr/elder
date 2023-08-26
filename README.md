@@ -13,17 +13,18 @@ This web app's end goal is to allow multiple people to contribute to the care of
 
 ### Product Roadmap
 
-**Version 1.0.0 Development (Completed)** Create a Next.js application that focuses on two primary features: allowing care-givers to share entries of their interactions with a loved one and creating new accounts. The data will be stored on their personal device. 
-
-**Version 1.1.0 UI/UX Testing (Completed)** UI & UX review by the members in the Code Connector and Learn Build Teach tech communities. 
-
-**Alpha Testing (In Progress)** Volunteers will use the app for 4-7 days while taking care of a loved one or pet. Evaluation will be based on ease of use, recognizing gaps in care, and most/impactful impactful UI control. 
-
-**Version 2.0.0 Develoment (Completed):** The next iteration will use Sanity.io as a headless CMS (dedicated online backend) to allow multiple care givers to interact on the same account. 
+**Beta Testing (TBD)** Groups of volunteers that are taking care of a loved one will use the app to share interactions. Evaluation will be based on ease of use, was the app impactful in communication, and was the quality of care given increased. 
 
 **Version 2.1.0 Develoment (In Development)** Use Jest to test each component from a care-giver perspective and an end to end user experience. 
 
-**Beta Testing"** Groups of volunteers that are taking care of a loved one will use the app to share interactions. Evaluation will be based on ease of use, was the app impactful in communication, and was the quality of care given increased. 
+**Version 2.0.0 Develoment (Completed):** The next iteration will use Sanity.io as a headless CMS (dedicated online backend) to allow multiple care givers to interact on the same account. 
+
+**Alpha Testing (In Progress)** Volunteers will use the app for 4-7 days while taking care of a loved one or pet. Evaluation will be based on ease of use, recognizing gaps in care, and most/impactful impactful UI control. 
+
+**Version 1.1.0 UI/UX Testing (Completed)** UI & UX review by the members in the Code Connector and Learn Build Teach tech communities. 
+
+**Version 1.0.0 Development (Completed)** Create a Next.js application that focuses on two primary features: allowing care-givers to share entries of their interactions with a loved one and creating new accounts. The data will be stored on their personal device. 
+
 
 ### How to run in development(Windows with NPM)
 1. Clone the repo.
