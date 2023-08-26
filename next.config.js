@@ -3,6 +3,6 @@ const nextConfig = {
     env: {
         NEXT_PUBLIC_SANITY_API_PROJECT_ID: process.env.NEXT_PUBLIC_SANITY_API_PROJECT_ID,
     }
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
