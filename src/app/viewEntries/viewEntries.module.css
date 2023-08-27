@@ -112,10 +112,16 @@
   }
   
   .content {
-    height: 75vh;
+    height: 50vh;
     overflow-y: auto;
     overflow: scroll;
     scrollbar-color: black; /*Works on firefox*/
+  }
+
+  @media screen and (min-height: 700px) {
+    .content {
+      height: 65vh;
+    }
   }
   
   /*Works on Chrome, Edge, and Safari*/
