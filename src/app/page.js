@@ -13,6 +13,7 @@ const Home = () => {
 
   const [logInData, setLogInData] = useState(""); // App's state to save the phone number entered by the user
   const [logInError, setLogInError] = useState(false); // App's state to show/hide the error message
+  const [insufficientNumbers, setInsufficientNumbers] = useState(true);
 
   /**
    * When the "Load" button is press, check if the entered phone number is registered to an account. If found, 
@@ -28,6 +29,19 @@ const Home = () => {
     }
   }
 
+  /**
+   * Function to check the number of digits inputted by the user.
+   * @param {number} e  - value inputted by the user in the input field
+   */
+  const checkSufficientNumbers = (e) => {
+    if(e.target.value.length === 10){
+      setInsufficientNumbers(false);
+    }else {
+      setInsufficientNumbers(true);
+      setLogInError(false);
+    }
+  }
+
     return(
         <div className={styles.page}>
             <Header />
@@ -37,9 +51,13 @@ const Home = () => {
                 </div>
                 <div className={`${styles.phoneNumberContainer} ${styles.entryButtonBorder}`}>
                     <label htmlFor="phoneNumber" className={styles.label}>Phone Number of the Beloved</label>
-                    <input type="tel" id="phoneNumber" className={styles.inputfield} pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxLength={"10"} required placeholder="Example: 9012223333" onChange={(e)=> setLogInData(e.target.value)} onInput={(e)=> e.target.value = e.target.value.replace(/[^0-9]/g, '')} ></input>
+                    <input type="tel" id="phoneNumber" className={styles.inputfield} pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxLength={"10"} required placeholder="Example: 9012223333" onChange={(e)=> {setLogInData(e.target.value); checkSufficientNumbers(e)}} onInput={(e)=> e.target.value = e.target.value.replace(/[^0-9]/g, '')} ></input>
                     {!logInError && 
-                      <p className={styles.numbersOnly}>Numbers Only </p>
+                      <p className={`${styles.numbersOnly} ${styles.correct}`}>Numbers Only </p>
+                    }
+
+                    {!logInError && 
+                      <p className={`${styles.numbersOnly} ${insufficientNumbers ? styles.error:styles.correct}`}>{insufficientNumbers ? "Must have 10 digits" : "Correct number of digits"}</p>
                     }
 
                     {logInError && 

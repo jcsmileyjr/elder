@@ -32,7 +32,16 @@
 
 .numbersOnly {
   margin-top: 0.5rem;
-  text-align: center;
+  margin-left: 3.2rem;
+  font-size: .9rem;
+}
+
+.error {
+  color: red
+}
+
+.correct {
+  color: green
 }
 
 .logInError {
