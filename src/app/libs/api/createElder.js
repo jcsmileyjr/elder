@@ -1,7 +1,7 @@
-import client from "./client";
+import writeClient from "./writeClient";
 
 const createElder = async (elder) => {
-    client.createOrReplace(elder).then((response) => {
+    writeClient.createOrReplace(elder).then((response) => {
         console.log("Elder created:", response)
     })
 }

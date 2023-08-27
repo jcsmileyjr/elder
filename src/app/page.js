@@ -6,7 +6,6 @@ import Image from 'next/image';
 import OldCouple1 from "./elderly-couple-1.png";
 import { getElder } from './libs/logIn';
 import Header from "./components/header/header";
-import client from './libs/api/client';
 
 // Log in page
 const Home = () => {

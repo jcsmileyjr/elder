@@ -1,8 +1,8 @@
-import client from "./client";
+import readClient from "./readClient";
 
 const getAllElder = async () => {
     const query = '*[_type =="elder"]';
-    return await client.fetch(query).then((elders) => {
+    return await readClient.fetch(query).then((elders) => {
         return elders;
     })
 }

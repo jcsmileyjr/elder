@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Footer from '../components/footer/page';
 import Image from 'next/image';
-import Cheveron from '../angle-bottom-icon.png';
 import Plus from '../plus.png';
 import Minus from '../minus.png';
 
