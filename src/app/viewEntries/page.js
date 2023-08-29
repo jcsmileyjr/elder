@@ -45,7 +45,7 @@ export default function ViewEntries() {
       if(previousSavedData === null){
         router.push("/")
       } else {
-        const parseData = JSON.parse(previousSavedData)
+        const parseData = JSON.parse(previousSavedData)        
         setEntries(parseData);
       }
     }
@@ -99,7 +99,7 @@ export default function ViewEntries() {
             <button onClick={() => router.push("/createEntry")} className={styles.entryButton} type="button">
               New Entry
             </button>
-            <p className={styles.entryButtonMessage}>Add a new entry briefly describing your interaction with TJ Smiley</p>
+            <p className={styles.entryButtonMessage}>Add a new entry briefly describing your interaction with {entries.elderName}</p>
           </div>
         }
       </Header>
