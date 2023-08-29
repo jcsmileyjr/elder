@@ -1,18 +1,39 @@
 # Keeping Up
 
 ### The Challenge
-This web app's end goal is to allow multiple people to contribute to the care of a loved one. 
+This web app's end goal is to allow multiple people to contribute to the care of a loved one. This is a Next.js app that use a Sanity.io headless CMS as a backend service. 
+
+**Click to view site** https://elder-two.vercel.app/
 
 ### Images of app in use
-
 ![Image of UI Log in Page](/src/app/README-images/log-in.PNG);
 ![Image of UI's primary content page care givers entries section](/src/app/README-images/entries.PNG);
 ![Image of UI's primary content page essential task section](/src/app/README-images/essential-tasks-2.PNG);
 ![Image of UI's create entry page](/src/app/README-images/create-entry.PNG);
 
-### Upcoming soon
+### Product Roadmap
 
-**Version 2:** The current version is setup for one care giver using the device local storage for the backend. The next iteration will have a dedicated online backend to allow multiple care givers to interact on the same account. 
+**Beta Testing (TBD)** Groups of volunteers that are taking care of a loved one will use the app to share interactions. Evaluation will be based on ease of use, was the app impactful in communication, and was the quality of care given increased. 
+
+**Version 2.2.0 Develoment (TBD)** Use Jest to test each component from a care-giver perspective and an end to end user experience. 
+
+**Version 2.1.0 Develoment (In Development)** UI & app functionality updates based on Alpha testing.
+1. Install app on device home-screen via PWA capablities
+2. Organize entries by date
+3. User can add a Medication to “Essential tasks”
+4. Quick ability to add a “Completed Medication” via New Entry
+5. User can add Appointments via New Entry
+6. User can edit an old Entry
+7. Add new essential tasks
+
+**Version 2.0.0 Develoment (Completed):** The next iteration will use Sanity.io as a headless CMS (dedicated online backend) to allow multiple care givers to interact on the same account. 
+
+**Alpha Testing (In Progress)** Volunteers will use the app for 4-7 days while taking care of a loved one or pet. Evaluation will be based on ease of use, recognizing gaps in care, and most/impactful impactful UI control. 
+
+**Version 1.1.0 UI/UX Testing (Completed)** UI & UX review by the members in the Code Connector and Learn Build Teach tech communities. 
+
+**Version 1.0.0 Development (Completed)** Create a Next.js application that focuses on two primary features: allowing care-givers to share entries of their interactions with a loved one and creating new accounts. The data will be stored on their personal device. 
+
 
 ### How to run in development(Windows with NPM)
 1. Clone the repo.
@@ -23,10 +44,11 @@ This web app's end goal is to allow multiple people to contribute to the care of
 
 
 ### Built with
-- Nextjs (React)
+- Next.js (React)
 - Semantic HTML5 markup
 - CSS Flexbox
 - Javascript 
+- Sanity.io (Headless CMS for the backend)
 
 ## Author
 - Website - [JC Smiley](https://www.jcsmileyjr.com)

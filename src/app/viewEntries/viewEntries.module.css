@@ -112,10 +112,16 @@
   }
   
   .content {
-    height: 75vh;
+    height: 50vh;
     overflow-y: auto;
     overflow: scroll;
     scrollbar-color: black; /*Works on firefox*/
+  }
+
+  @media screen and (min-height: 700px) {
+    .content {
+      height: 65vh;
+    }
   }
   
   /*Works on Chrome, Edge, and Safari*/
@@ -126,6 +132,38 @@
   /*Works on Chrome, Edge, and Safari*/
   .content::-webkit-scrollbar-thumb {
     background-color: #527992;
+  }
+
+  .interactions {
+    display: flex;
+
+    gap: 0.3rem;
+  }
+  
+  .labelColumn {
+    margin: .3rem 0;
+    padding:.5rem;
+  }
+
+  .interactionColor {
+    background-color: #527992;
+  }
+
+  .appointmentColor {
+    background-color: #13EDA4;
+  }
+
+  .labelText {
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  .medicationColor {
+    background-color: #E07D1D;
+  }
+
+  .interactionContent {
+    flex: 1;
   }
   
   .interactionDate {

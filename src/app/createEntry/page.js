@@ -26,7 +26,13 @@ const CreateEntry = () => {
 
     // Updates the date property of the user's new entry from a input field
     const updateDate = (e) => {
-        newEntry.date = moment(e.target.value).format('MMMM Do YYYY');
+        newEntry.date = moment(e.target.value).format('MMMM DD YYYY');
+        enableButton();
+    }
+
+    const updateLabel = (e = "Interaction") => {
+        console.log(e.target.value)
+        newEntry.label = e.target.value;
         enableButton();
     }
 
@@ -51,7 +57,14 @@ const CreateEntry = () => {
     // Save the user enter interation to the current elder object in localstorage
     const saveInteraction = () => {
         // new random ID
-        newEntry.entryID = uuidv4();
+        const randomID = uuidv4();
+        newEntry.entryID = randomID;
+        newEntry._id = randomID;
+        newEntry._type = "activities";
+
+        if(!newEntry.hasOwnProperty("label")){
+            newEntry.label = "Interaction"
+        }
 
         // Get the current elder info
         let previousSavedData = localStorage.getItem("Elder-data");
@@ -87,6 +100,14 @@ const CreateEntry = () => {
                 <div className={styles.section}>
                     <label htmlFor="inputDate" className={styles.label}>Date of new Entry</label>
                     <input id="inputDate" type="date" className={styles.inputfield} onChange={(e) => updateDate(e)}></input>                
+                </div>
+                <div className={styles.section}>
+                    <label htmlFor="inputLabel" className={styles.label}>Type of Entry</label>
+                    <select id="inputLabel" className={styles.inputfield} onChange={(e) => updateLabel(e)}>
+                        <option key="label1">Interaction</option>
+                        <option key="label2">Appointment</option>
+                        <option key="label3">Medication</option>
+                    </select>                
                 </div>
                 <div className={styles.section}>
                     <label htmlFor="inputMessage" className={styles.label}>Brief description of new Entry</label>

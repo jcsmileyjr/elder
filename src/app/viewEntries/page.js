@@ -3,9 +3,9 @@ import styles from './viewEntries.module.css';
 import Header from '../components/header/header';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import moment from 'moment'; // NPM module that converts date objects to strings
 import Footer from '../components/footer/page';
 import Image from 'next/image';
-import Cheveron from '../angle-bottom-icon.png';
 import Plus from '../plus.png';
 import Minus from '../minus.png';
 
@@ -20,10 +20,21 @@ import Minus from '../minus.png';
 const Interaction = ({entry}) => {
   return (
     <div className={styles.interactions}>
-      <p className={styles.interactionDate}>{entry.date}</p>
-      <p>{entry.message}</p>
-      <p className={styles.writerName}>{entry.writer}</p>
-      <h1/>
+      <div className={`${styles.labelColumn} ${entry.label==='Interaction'? styles.interactionColor: entry.label === 'Appointment'? styles.appointmentColor : styles.medicationColor}`}>
+
+      </div>
+      <div className={styles.interactionContent}>
+        <p className={styles.interactionDate}>{entry.date}</p>
+        {entry.label === "Appointment" &&
+          <p className={styles.labelText}>{entry.label}</p>
+        }
+        {entry.label === "Medication" &&
+          <p className={styles.labelText}>{entry.label} Given</p>
+        }
+        <p>{entry.message}</p>
+        <p className={styles.writerName}>{entry.writer}</p>
+        <h1/>
+      </div>
     </div>
   )
 }
@@ -34,6 +45,7 @@ const Interaction = ({entry}) => {
 export default function ViewEntries() {
   const router = useRouter() // Routes a user to another page
   const [entries, setEntries] = useState([]); // App's state that holds an array of entries (objects)
+  const [activities, setActivities] = useState([]); // App's state that holds a sorted array of date strings
   const [displayedContent, setDisplayedContent] = useState("interactions"); // App's state to display either interactions or essential tasks
   const [essentialShowDaily, setEssentialShowDaily] = useState(true); // App's state to collaspe the essential daily tasks section
   const [essentialShowWeekly, setEssentialShowWeekly] = useState(false); // App's state to collaspe the essential weekly tasks section
@@ -48,11 +60,25 @@ export default function ViewEntries() {
       } else {
         const parseData = JSON.parse(previousSavedData)
         setEntries(parseData);
+        setActivities(sortEntriesByDate(parseData.activities));   
       }
     }
 
     loadPastInteractions();
   }, [])
+
+  /**
+   * Function to sort the activities data by date
+   * @param {array of date strings} unsorted data
+   * @returns array of date strings sorted data
+   */
+  const sortEntriesByDate = (unsortedData) => {
+    let sortedData = unsortedData.sort((a, b) => {
+      return moment(b.date, 'MMMM Do YYYY') - moment(a.date, 'MMMM Do YYYY');
+    })
+    console.log(sortedData)
+    return sortedData
+  }
 
   /**
    * Set true or false if an Essenial frequncy section should be collapse
@@ -100,7 +126,7 @@ export default function ViewEntries() {
             <button onClick={() => router.push("/createEntry")} className={styles.entryButton} type="button">
               New Entry
             </button>
-            <p className={styles.entryButtonMessage}>Add a new entry briefly describing your interaction with TJ Smiley</p>
+            <p className={styles.entryButtonMessage}>Add a new entry briefly describing your interaction with {entries.elderName}</p>
           </div>
         }
       </Header>
@@ -114,7 +140,7 @@ export default function ViewEntries() {
             <h1>Loading</h1>
           }
           {displayedContent === "interactions"  &&  entries.length !== 0 &&       
-            entries.activities.map((interaction) => (              
+            activities.map((interaction) => (              
               <Interaction key={interaction.entryID} entry={interaction} />
             )
           )}
