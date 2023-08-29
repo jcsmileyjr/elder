@@ -76,7 +76,6 @@ export default function ViewEntries() {
     let sortedData = unsortedData.sort((a, b) => {
       return moment(b.date, 'MMMM Do YYYY') - moment(a.date, 'MMMM Do YYYY');
     })
-    console.log(sortedData)
     return sortedData
   }
 

@@ -1,9 +1,18 @@
 import {createClient}  from "@sanity/client";
 
+let permissions;
+if(process.env.NODE_ENV === 'development') {
+    console.log("DEV permissions")
+    permissions = process.env.NEXT_PUBLIC_SANITY_API_WRITE_TOKEN;
+}else {
+    console.log("PROD permissions")
+    permissions = process.env.SANITY_API_WRITE_TOKEN;
+}
+
 const writeClient = createClient({
     projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
     dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
-    token: process.env.NEXT_PUBLIC_SANITY_API_WRITE_TOKEN,
+    token: permissions,
     apiVersion: '2023-05-03',
     useCdn: false // `false` if you want to ensure fresh data
 })
