@@ -8,10 +8,14 @@ import getAllElder from "./api/getElder";
 const ifDuplicatePhoneNumber = async (phoneNumber) => {
   let parseData = await getAllElder();
 
-  // Check if the phone number is already being used by an object in the array of elders
-  let foundIndex = parseData.findIndex((data) => {
-      return data.phoneNumber === phoneNumber;
-  });
+  // Check if the test data is already saved. If not, save it. If so, use it.
+  let previousTestData = localStorage.getItem("Elder-test-data");
+  if (previousTestData === null) {
+    localStorage.setItem("Elder-test-data", JSON.stringify(dummyData));
+    parseData = dummyData;
+  } else {
+    parseData = JSON.parse(previousTestData);
+  }
 
   // If the number isn't found, return false. If found, return true
   if(foundIndex === -1) {
