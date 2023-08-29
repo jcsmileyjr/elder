@@ -15,7 +15,16 @@ This web app's end goal is to allow multiple people to contribute to the care of
 
 **Beta Testing (TBD)** Groups of volunteers that are taking care of a loved one will use the app to share interactions. Evaluation will be based on ease of use, was the app impactful in communication, and was the quality of care given increased. 
 
-**Version 2.1.0 Develoment (In Development)** Use Jest to test each component from a care-giver perspective and an end to end user experience. 
+**Version 2.2.0 Develoment (TBD)** Use Jest to test each component from a care-giver perspective and an end to end user experience. 
+
+**Version 2.1.0 Develoment (In Development)** UI & app functionality updates based on Alpha testing.
+1. Install app on device home-screen via PWA capablities
+2. Organize entries by date
+3. User can add a Medication to “Essential tasks”
+4. Quick ability to add a “Completed Medication” via New Entry
+5. User can add Appointments via New Entry
+6. User can edit an old Entry
+7. Add new essential tasks
 
 **Version 2.0.0 Develoment (Completed):** The next iteration will use Sanity.io as a headless CMS (dedicated online backend) to allow multiple care givers to interact on the same account. 
 
