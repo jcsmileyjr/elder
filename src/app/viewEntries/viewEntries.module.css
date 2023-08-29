@@ -133,6 +133,33 @@
   .content::-webkit-scrollbar-thumb {
     background-color: #527992;
   }
+
+  .interactions {
+    display: flex;
+
+    gap: 0.3rem;
+  }
+  
+  .labelColumn {
+    margin: .3rem 0;
+    padding:.5rem;
+  }
+
+  .interactionColor {
+    background-color: #527992;
+  }
+
+  .appointmentColor {
+    background-color: #13EDA4;
+  }
+
+  .medicationColor {
+    background-color: #E07D1D;
+  }
+
+  .interactionContent {
+    flex: 1;
+  }
   
   .interactionDate {
     font-weight: bold;

@@ -20,10 +20,13 @@ import Minus from '../minus.png';
 const Interaction = ({entry}) => {
   return (
     <div className={styles.interactions}>
-      <p className={styles.interactionDate}>{entry.date}</p>
-      <p>{entry.message}</p>
-      <p className={styles.writerName}>{entry.writer}</p>
-      <h1/>
+      <div className={`${styles.labelColumn} ${entry.label==='Interaction'? styles.interactionColor: entry.label === 'Appointment'? styles.appointmentColor : styles.medicationColor}`}></div>
+      <div className={styles.interactionContent}>
+        <p className={styles.interactionDate}>{entry.date}</p>
+        <p>{entry.message}</p>
+        <p className={styles.writerName}>{entry.writer}</p>
+        <h1/>
+      </div>
     </div>
   )
 }
@@ -65,6 +68,7 @@ export default function ViewEntries() {
     let sortedData = unsortedData.sort((a, b) => {
       return moment(b.date, 'MMMM Do YYYY') - moment(a.date, 'MMMM Do YYYY');
     })
+    console.log(sortedData)
     return sortedData
   }
 
