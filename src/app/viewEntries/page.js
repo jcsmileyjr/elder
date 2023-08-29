@@ -20,9 +20,17 @@ import Minus from '../minus.png';
 const Interaction = ({entry}) => {
   return (
     <div className={styles.interactions}>
-      <div className={`${styles.labelColumn} ${entry.label==='Interaction'? styles.interactionColor: entry.label === 'Appointment'? styles.appointmentColor : styles.medicationColor}`}></div>
+      <div className={`${styles.labelColumn} ${entry.label==='Interaction'? styles.interactionColor: entry.label === 'Appointment'? styles.appointmentColor : styles.medicationColor}`}>
+
+      </div>
       <div className={styles.interactionContent}>
         <p className={styles.interactionDate}>{entry.date}</p>
+        {entry.label === "Appointment" &&
+          <p className={styles.labelText}>{entry.label}</p>
+        }
+        {entry.label === "Medication" &&
+          <p className={styles.labelText}>{entry.label} Given</p>
+        }
         <p>{entry.message}</p>
         <p className={styles.writerName}>{entry.writer}</p>
         <h1/>

@@ -153,6 +153,11 @@
     background-color: #13EDA4;
   }
 
+  .labelText {
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
   .medicationColor {
     background-color: #E07D1D;
   }

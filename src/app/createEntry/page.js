@@ -105,7 +105,8 @@ const CreateEntry = () => {
                     <label htmlFor="inputLabel" className={styles.label}>Type of Entry</label>
                     <select id="inputLabel" className={styles.inputfield} onChange={(e) => updateLabel(e)}>
                         <option key="label1">Interaction</option>
-                        <option key="leabl2">Appointment</option>
+                        <option key="label2">Appointment</option>
+                        <option key="label3">Medication</option>
                     </select>                
                 </div>
                 <div className={styles.section}>
