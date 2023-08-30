@@ -3,10 +3,17 @@ import { createClient } from "@sanity/client";
 let permissions = process.env.SANITY_API_WRITE_TOKEN;
 console.log("permissions: ", process.env.SANITY_API_WRITE_TOKEN);
 if (process.env.NODE_ENV === "development") {
-  console.log("DEV permissions");
-  permissions = process.env.NEXT_PUBLIC_SANITY_API_WRITE_TOKEN;
+    permissions = process.env.NEXT_PUBLIC_SANITY_API_WRITE_TOKEN;
+    console.log("DEV permissions: ", process.env.NEXT_PUBLIC_SANITY_API_WRITE_TOKEN);
 } else {
   console.log("PROD permissions");
+}
+
+const apiKey = process.env.NEXT_PUBLIC_SANITY_API_WRITE_TOKEN
+if(!apiKey) {
+  console.log("API Key not found in environment variables")
+} else {
+  console.log("Length of the API key is: " + apiKey?.length)
 }
 
 const writeClient = createClient({
