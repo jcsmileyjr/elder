@@ -31,7 +31,6 @@ const CreateEntry = () => {
     }
 
     const updateLabel = (e = "Interaction") => {
-        console.log(e.target.value)
         newEntry.label = e.target.value;
         enableButton();
     }

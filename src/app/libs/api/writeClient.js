@@ -1,12 +1,11 @@
 import {createClient}  from "@sanity/client";
 
-let permissions;
+let permissions = process.env.SANITY_API_WRITE_TOKEN;
 if(process.env.NODE_ENV === 'development') {
     console.log("DEV permissions")
     permissions = process.env.NEXT_PUBLIC_SANITY_API_WRITE_TOKEN;
 }else {
     console.log("PROD permissions")
-    permissions = process.env.SANITY_API_WRITE_TOKEN;
 }
 
 const writeClient = createClient({

@@ -6,7 +6,6 @@ import getAllElder from "./api/getElder";
  * @returns true or false
  */
 const ifDuplicatePhoneNumber = async (phoneNumber) => {
-  console.log("Trying to force an backend update");
   let parseData = await getAllElder();
 
   // Check if the phone number is already being used by an object in the array of elders
