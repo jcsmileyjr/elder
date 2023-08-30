@@ -8,6 +8,7 @@ import Footer from '../components/footer/page';
 import Image from 'next/image';
 import Plus from '../plus.png';
 import Minus from '../minus.png';
+import List from '../list-icon.png';
 
 /**
  * Componenet that displays an user's app enrty.
@@ -35,6 +36,9 @@ const Interaction = ({entry}) => {
         <p className={styles.writerName}>{entry.writer}</p>
         <h1/>
       </div>
+      <button type='button'className={styles.editButtonContainer}>
+        <Image className={styles.editIconStyle} src={List} width={20} height={20} alt="Edit entry button" />
+      </button>
     </div>
   )
 }
