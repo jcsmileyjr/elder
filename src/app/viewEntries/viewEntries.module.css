@@ -239,6 +239,10 @@
   .editButtonContainer {
     border: none;
     background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-left: 0.2rem;
   }
 
   .expand {
