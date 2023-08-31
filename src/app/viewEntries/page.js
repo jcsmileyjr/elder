@@ -8,6 +8,7 @@ import Footer from '../components/footer/page';
 import Image from 'next/image';
 import Plus from '../plus.png';
 import Minus from '../minus.png';
+import List from '../list-icon.png';
 
 /**
  * Componenet that displays an user's app enrty.
@@ -16,8 +17,15 @@ import Minus from '../minus.png';
  * @param {string} entry.message = User's activity description of the event.
  * @param {string} entry.writter = Name of the user for the event.
  * @param {string} entry.entryID = random number assign to the event.
- */
+*/
 const Interaction = ({entry}) => {
+  const router = useRouter() // Routes a user to another page
+  
+  const editEntry = (selected) => { 
+    localStorage.setItem("Elder-edit-entry", JSON.stringify(selected.entryID));
+    router.push("/editEntry");
+  }
+
   return (
     <div className={styles.interactions}>
       <div className={`${styles.labelColumn} ${entry.label==='Interaction'? styles.interactionColor: entry.label === 'Appointment'? styles.appointmentColor : styles.medicationColor}`}>
@@ -35,9 +43,14 @@ const Interaction = ({entry}) => {
         <p className={styles.writerName}>{entry.writer}</p>
         <h1/>
       </div>
+      <button type='button'className={styles.editButtonContainer} onClick={() => editEntry(entry)}>
+        <Image className={styles.editIconStyle} src={List} width={20} height={20} alt="Edit entry button" />
+        Edit
+      </button>
     </div>
   )
 }
+
 
 /**
  * After a user's log in, displays a list of past entries/essential tasks and a button to add another entry. 
@@ -74,7 +87,7 @@ export default function ViewEntries() {
    */
   const sortEntriesByDate = (unsortedData) => {
     let sortedData = unsortedData.sort((a, b) => {
-      return moment(b.date, 'MMMM Do YYYY') - moment(a.date, 'MMMM Do YYYY');
+      return moment(b.date, 'MMMM DD YYYY') - moment(a.date, 'MMMM DD YYYY');
     })
     return sortedData
   }

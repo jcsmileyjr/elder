@@ -136,7 +136,7 @@
 
   .interactions {
     display: flex;
-
+    margin-bottom: 0.75rem;
     gap: 0.3rem;
   }
   
@@ -176,9 +176,10 @@
   
   .interactions h1 {
     border: 1px solid #527992;
-    width: 50%;
+    width: 100%;
     margin: auto;
     opacity: .4;
+    margin-top: 0.5rem;
   }
   
   .writerName {
@@ -190,11 +191,11 @@
     white-space: pre;
   }
   
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 600px) {  
     .interactions h1 {
       width: 80%;
     }
-  
+
     .content {
       min-width: 600px;
       margin: 0 auto;
@@ -228,6 +229,20 @@
   .cheveonStyle {
     margin-left: 5px;
     vertical-align: bottom;
+  }
+
+  .editIconStyle {
+    align-self: center;
+    margin-right: 1rem;
+  }
+
+  .editButtonContainer {
+    border: none;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-left: 0.2rem;
   }
 
   .expand {
