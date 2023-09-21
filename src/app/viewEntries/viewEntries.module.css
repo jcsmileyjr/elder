@@ -261,3 +261,9 @@
     color: #1CB5E0;
     text-decoration-color: #1CB5E0;
   }
+
+  .essentialTasksButtonStyle {
+    @media screen and (max-height: 700px) {
+      width: 60%;
+    }
+  }

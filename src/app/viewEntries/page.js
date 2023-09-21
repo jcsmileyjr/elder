@@ -141,6 +141,14 @@ export default function ViewEntries() {
             <p className={styles.entryButtonMessage}>Add a new entry briefly describing your interaction with {entries.elderName}</p>
           </div>
         }
+        {displayedContent === "essentials" &&
+          <div className={styles.entryContainer}>
+            <button onClick={() => router.push("/createTask")} className={`${styles.entryButton} ${displayedContent=== 'essentials' && styles.essentialTasksButtonStyle}`} type="button">
+              New Essenial Task
+            </button>
+            <p className={styles.entryButtonMessage}>Add a new essential task to help everyone be on the same page in taking care of {entries.elderName}</p>
+          </div>
+        }        
       </Header>
       <main className={styles.main}>
         <ul className={styles.contentTitleContainer}>
