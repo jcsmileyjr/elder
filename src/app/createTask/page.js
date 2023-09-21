@@ -31,7 +31,7 @@ const CreateTask = () => {
     useEffect(() => {
         let previousSavedData = localStorage.getItem("Elder-data");
         const parseData = JSON.parse(previousSavedData)
-        setEntries(parseData);
+        setEntries(parseData); // Need this to get the name of the care one
         
         let previousDailyTasks = parseData.essentialTasks.find(grouping => grouping.type === "Daily")
         setDailyTasks([...dailyTasks, previousDailyTasks.tasks]);
@@ -41,14 +41,6 @@ const CreateTask = () => {
 
         let previousMonthlyTasks = parseData.essentialTasks.find(grouping => grouping.type === "Monthly")
         setMonthlyTasks(previousMonthlyTasks.tasks);
-
-
-        // let test1 = parseData.essentialTasks.find(grouping => {if(grouping.type === "Daily"){return grouping.tasks}})
-        // setOldDailyTasks(test1.tasks) ;
-        // let test2 = parseData.essentialTasks.find(grouping => grouping.type === "Weekly")
-        // setOldWeeklyTasks(test2.tasks);
-        // let test3 = parseData.essentialTasks.find(grouping => grouping.type === "Monthly")
-        // setOldMonthlyTasks(test2.tasks);
     }, [])
 
     // Disable the Done button if there isn't 10 numbers for the phone number and at least one for name
@@ -99,22 +91,10 @@ const CreateTask = () => {
                     <textarea type="text" value={currentDailyTasks} onChange={(e) => setCurrentDailyTasks(e.target.value)} className={`${styles.inputfield} ${styles.taskInputs}`} />
                 </div>
 
-                {/* {oldDailyTasks.length > 0 &&
-                    <>
-                        <ul>
-                            {
-                                oldDailyTasks.map((task, index) => (
-                                    <li className={styles.taskStyles} key={index + 'olddailytask'}>{task}</li>
-                                ))                        
-
-                            }
-                        </ul>
-                    </>
-                } */}
                 <ul>
                     {dailyTasks.length > 0 &&                            
                         dailyTasks.map( (tasks, index) => (
-                            <li className={styles.taskStyles} key={index + 'dailytask'}>{tasks}</li>
+                            <li className={styles.taskStyles} key={index + 'dailytask'}>Task: {tasks}</li>
                         ))
                     }
                 </ul>

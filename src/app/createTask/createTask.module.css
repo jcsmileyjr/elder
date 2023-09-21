@@ -77,7 +77,8 @@ height: 75vh;
 .taskStyles {
     margin-bottom: 0.25rem;
     font-size: .9rem;
-    margin-left: 3.8rem;
+    margin-left: 2.8rem;
+    list-style-type: none;
 }
 
 .buttonImage {
