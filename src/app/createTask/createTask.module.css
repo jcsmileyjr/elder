@@ -1,0 +1,18 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem 0 2rem;
+    min-height: 100vh;
+    background-color: white;
+    color: #201E20;
+}
+
+/*Main Content*/
+.main {
+display: flex;
+flex-direction: column;
+height: 75vh;
+}
+
+
+
