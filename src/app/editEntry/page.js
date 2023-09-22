@@ -22,15 +22,18 @@ const EditEntry = () => {
     const [writerName, setWriterName] = useState("");
 
     useEffect(() => {
+        // Get the current elder object
         let previousSavedData = localStorage.getItem("Elder-data");
         const parseData = JSON.parse(previousSavedData)
         setEntries(parseData);
 
+        // Find the activity "to be edit" within the elder object
         let activityID = JSON.parse(localStorage.getItem("Elder-edit-entry"));
         let activityIndex = parseData.activities.findIndex((data) => {
             return data.entryID === activityID
         })
 
+        // Save to page state the activity, its's message, and it's writer
         setActivityToEdit(parseData.activities[activityIndex]);
         setMessage(parseData.activities[activityIndex].message);
         setWriterName(parseData.activities[activityIndex].writer);
@@ -42,6 +45,7 @@ const EditEntry = () => {
         enableButton();
     }
 
+    // Update the label (medication, etc.)
     const updateLabel = (e = "Interaction") => {
         newEntry.label = e.target.value;
         enableButton();
@@ -72,7 +76,7 @@ const EditEntry = () => {
         // new random ID
         const randomID = uuidv4();
         newEntry.entryID = randomID;
-        newEntry._id = randomID;
+        newEntry._key = randomID;
         newEntry._type = "activities";
         newEntry.message = message;
         newEntry.writer = writerName;
@@ -101,6 +105,7 @@ const EditEntry = () => {
 
         // Update the pretend database (Elder-test-data) with the now updated current elder
         updateDatabase(parseSavedData);
+        localStorage.removeItem("Elder-edit-entry");
         router.push('/viewEntries')
     }
 
@@ -130,9 +135,9 @@ const EditEntry = () => {
                 <div className={styles.section}>
                     <label htmlFor="inputLabel" className={styles.label}>Type of Entry</label>
                     <select id="inputLabel" className={styles.inputfield} onChange={(e) => updateLabel(e)}>
-                        <option key="label1" selected={activityToEdit.label === "Interaction"}>Interaction</option>
-                        <option key="label2" selected={activityToEdit.label === "Appointment"}>Appointment</option>
-                        <option key="label3" selected={activityToEdit.label === "Medication"}>Medication</option>
+                        <option key="label1" defaultValue={activityToEdit.label === "Interaction"}>Interaction</option>
+                        <option key="label2" defaultValue={activityToEdit.label === "Appointment"}>Appointment</option>
+                        <option key="label3" defaultValue={activityToEdit.label === "Medication"}>Medication</option>
                     </select>                
                 </div>
                 <div className={styles.section}>
