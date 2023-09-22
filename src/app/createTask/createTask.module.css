@@ -61,6 +61,8 @@ height: 75vh;
 /*Essential Tasks*/
 .tasksTitle {
     margin-bottom: .5rem;
+    text-align: center;
+    text-decoration: underline;
 }
 
 .tasksTime {

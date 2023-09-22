@@ -2,6 +2,8 @@
 import styles from './createTask.module.css';
 import Header from '../components/header/header';
 import { useState, useEffect} from 'react';
+import { updateDatabase} from '../libs/updateDatabase';
+import { useRouter } from 'next/navigation'
 import PlusSign from '../plus-sign.png';
 import Image from 'next/image';
 
@@ -9,13 +11,16 @@ import Image from 'next/image';
  * TODO
  * Get data for name in the Header component - done
  * Setup useState/useEffect to get current essential tasks - done
- * Setup the UI to add an essential task
- * Copy and tweak from accountCreation ability to add a Daily, weekly, monthly essentail tasks with content. 
+ * Setup the UI to add an essential task - done
+ * Copy and tweak from accountCreation ability to add a Daily, weekly, monthly essentail tasks with content. - done
+ * Find a way to update the database with the old and new content
  * 
- * Documentation
+ * Documentation: remove unused information, console.logs, add comments, etc.
  * @returns 
  */
 const CreateTask = () => {
+    const router = useRouter() //  Use to relocate user to another page
+
     const [entries, setEntries] = useState([]) // Get the current loved one data
     const [essentialTasks, setessentialTasks] = useState([]) // Current essential tasks for the love one
     const [dailyTasks, setDailyTasks] = useState([]);
@@ -34,7 +39,8 @@ const CreateTask = () => {
         setEntries(parseData); // Need this to get the name of the care one
         
         let previousDailyTasks = parseData.essentialTasks.find(grouping => grouping.type === "Daily")
-        setDailyTasks([...dailyTasks, previousDailyTasks.tasks]);
+        //setDailyTasks([...dailyTasks, previousDailyTasks.tasks]);
+        setDailyTasks(previousDailyTasks.tasks);
 
         let previousWeeklyTasks = parseData.essentialTasks.find(grouping => grouping.type === "Weekly")
         setWeeklyTasks(previousWeeklyTasks.tasks);
@@ -53,6 +59,7 @@ const CreateTask = () => {
         if(currentDailyTasks !== "") {
             setDailyTasks([...dailyTasks, currentDailyTasks]);
             setCurrentDailyTasks("");
+            console.log(dailyTasks);
         }
     }
 
@@ -61,6 +68,7 @@ const CreateTask = () => {
         if(currentWeeklyTasks !== "") {
             setWeeklyTasks([...weeklyTasks, currentWeeklyTasks]);
             setCurrentWeeklyTasks("");
+            console.log(weeklyTasks);
         }
     }
 
@@ -69,7 +77,58 @@ const CreateTask = () => {
         if(currentMonthlyTasks !== "") {
             setMonthlyTasks([...monthlyTasks, currentMonthlyTasks]);
             setCurrentMonthlyTasks("");
+            console.log(monthlyTasks);
         }
+    }
+
+    /**
+     * TODO
+     * Get the current elder
+     * Create an array of tasks
+     * Update the elder essenetial tasks
+     * Save the elder
+     * Move back to viewEntries page
+     * 
+     * Assign the elder a new array of tasks objects
+     */
+    const updateTasks = () => {
+        // Get the current elder info
+        let previousSavedData = localStorage.getItem("Elder-data");
+        let parseSavedData = JSON.parse(previousSavedData);
+
+        // let newEssentialTasksArray = [];
+        // newEssentialTasksArray.push(dailyTasks);
+        // newEssentialTasksArray.push(weeklyTasks);
+        // newEssentialTasksArray.push(monthlyTasks);
+
+        let newEssentialTasksArray = [
+            {
+                "type":"Daily",
+                "_type": "essentialTasks",
+                "tasks": dailyTasks,
+            },
+            {
+                "type":"Weekly",
+                "_type": "essentialTasks",
+                "tasks": weeklyTasks,
+            },
+            {
+                "type":"Monthly",
+                "_type": "essentialTasks",
+                "tasks": monthlyTasks,
+            }
+        ]
+
+        parseSavedData.essentialTasks = newEssentialTasksArray;
+
+        console.log(newEssentialTasksArray);
+
+        // Update the current elder information
+        localStorage.setItem("Elder-data", JSON.stringify(parseSavedData));
+
+        // Update the pretend database (Elder-test-data) with the now updated current elder
+        updateDatabase(parseSavedData);
+        router.push('/viewEntries')
     }
 
     return (
@@ -78,7 +137,7 @@ const CreateTask = () => {
             <main className={styles.main}>                
                 <div className={styles.section}>
                 <h3 className={styles.tasksTitle}>Create Essential Tasks</h3>
-                <p className={`${styles.informationText} ${styles.taskInformation} ${styles.firstReminder} ${styles.specialInstruction}`}>Write a reminder and then click the "Plus" icon to add it. <Image src={PlusSign}  width={15} height={15} alt="" /></p> 
+                <p className={`${styles.informationText} ${styles.taskInformation} ${styles.firstReminder} ${styles.specialInstruction}`}>Write a recurring task and then click the "Plus" icon to add it. <Image src={PlusSign}  width={15} height={15} alt="" /></p> 
                 <p className={`${styles.informationText} ${styles.taskInformation} ${styles.firstReminder}`}>Create reminders for others to use as a guide when visiting the beloved.</p>
                 <p className={`${styles.informationText} ${styles.taskInformation} `}>Keeping it short and to the point is always better.</p>
 
@@ -134,7 +193,7 @@ const CreateTask = () => {
                 </ul>
             </div>
             <div className={styles.doneButtonContainer}>
-                <button onClick={() => createAccount()} disabled={enabledDoneButton()} className={`${styles.entryButton} ${styles.doneButtonStyle}`} type='button'>Continue</button>
+                <button onClick={() => updateTasks()} disabled={enabledDoneButton()} className={`${styles.entryButton} ${styles.doneButtonStyle}`} type='button'>Continue</button>
             </div>                    
                 
             </main>
