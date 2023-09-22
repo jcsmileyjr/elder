@@ -1,12 +1,13 @@
 "use client"
 import styles from './accountCreation.module.css';
 import Header from '../components/header/header';
+import Image from 'next/image';
+import PlusSign from '../plus-sign.png';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect} from 'react';
 import { updateDatabase } from '../libs/updateDatabase';
 import { ifDuplicatePhoneNumber } from '../libs/duplicatePhoneNumber';
-import Image from 'next/image';
-import PlusSign from '../plus-sign.png';
+import {v4 as uuidv4} from 'uuid'; // NPM module that creates a random ID number
 
 const AccountCreation = () => {
     const router = useRouter() //  Use to relocate user to another page
@@ -24,26 +25,35 @@ const AccountCreation = () => {
 
     // Creates a new elder account and relocate the user to the viewEntries page
     const createAccount = async () => {
+        const dailyTaskID = uuidv4();
+        const weeklyTaskID = uuidv4();
+        const monthlyTaskID = uuidv4();
+        const elderID = uuidv4();
+        
         const newElder = {
             "elderName": name,
             "phoneNumber" : phoneNumber,
             "_type": "elder",
+            "_key": elderID,
             "activities" : [],
             "essentialTasks" : [
                 {
                     "type":"Daily",
                     "_type": "essentialTasks",
                     "tasks": dailyTasks,
+                    "_key":  dailyTaskID,
                 },
                 {
                     "type":"Weekly",
                     "_type": "essentialTasks",
                     "tasks": weeklyTasks,
+                    "_key":  weeklyTaskID,
                 },
                 {
                     "type":"Monthly",
                     "_type": "essentialTasks",
                     "tasks": monthlyTasks,
+                    "_key":  monthlyTaskID,
                 }
             ]
         }
@@ -56,7 +66,7 @@ const AccountCreation = () => {
         } else {
             setDuplicateNumberError(false);
             localStorage.setItem("Elder-data", JSON.stringify(newElder)); // Save for current use in app
-    
+    console.log(newElder)
             // Get the pretend database (Elder-test-data), add the new account, and save it.
             updateDatabase(newElder);
     

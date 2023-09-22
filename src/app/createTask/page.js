@@ -1,11 +1,12 @@
 "use client"
 import styles from './createTask.module.css';
 import Header from '../components/header/header';
+import PlusSign from '../plus-sign.png';
+import Image from 'next/image';
 import { useState, useEffect} from 'react';
 import { updateDatabase} from '../libs/updateDatabase';
 import { useRouter } from 'next/navigation'
-import PlusSign from '../plus-sign.png';
-import Image from 'next/image';
+import {v4 as uuidv4} from 'uuid'; // NPM module that creates a random ID number
 
 /**
  * App functionality to update an account's essential tasks
@@ -21,6 +22,7 @@ const CreateTask = () => {
     const [currentWeeklyTasks, setCurrentWeeklyTasks] = useState(""); // UI content enter by the author for weekly tasks
     const [monthlyTasks, setMonthlyTasks] = useState([]); // Array of monthly tasks
     const [currentMonthlyTasks, setCurrentMonthlyTasks] = useState(""); // UI content enter by the author for monthly tasks
+    const [isNewTasks, setIsNewTasks] = useState(false);
     
     useEffect(() => {
         // Get the current elder data
@@ -44,6 +46,7 @@ const CreateTask = () => {
         if(currentDailyTasks !== "") {
             setDailyTasks([...dailyTasks, currentDailyTasks]);
             setCurrentDailyTasks("");
+            setIsNewTasks(true);
         }
     }
 
@@ -52,6 +55,7 @@ const CreateTask = () => {
         if(currentWeeklyTasks !== "") {
             setWeeklyTasks([...weeklyTasks, currentWeeklyTasks]);
             setCurrentWeeklyTasks("");
+            setIsNewTasks(true);
         }
     }
 
@@ -60,42 +64,56 @@ const CreateTask = () => {
         if(currentMonthlyTasks !== "") {
             setMonthlyTasks([...monthlyTasks, currentMonthlyTasks]);
             setCurrentMonthlyTasks("");
+            setIsNewTasks(true);
         }
     }
 
     // Assign the elder a new array of tasks objects
-    const updateTasks = () => {
-        // Get the current elder info
-        let previousSavedData = localStorage.getItem("Elder-data");
-        let parseSavedData = JSON.parse(previousSavedData);
-
-        // Create a new array of essential tasks objects and add to the current elder data
-        let newEssentialTasksArray = [
-            {
-                "type":"Daily",
-                "_type": "essentialTasks",
-                "tasks": dailyTasks,
-            },
-            {
-                "type":"Weekly",
-                "_type": "essentialTasks",
-                "tasks": weeklyTasks,
-            },
-            {
-                "type":"Monthly",
-                "_type": "essentialTasks",
-                "tasks": monthlyTasks,
-            }
-        ]
-
-        parseSavedData.essentialTasks = newEssentialTasksArray;
-
-        // Update the current elder information within local storeage for direct app useage
-        localStorage.setItem("Elder-data", JSON.stringify(parseSavedData));
-
-        // Update the database with the now updated current elder
-        updateDatabase(parseSavedData);
-        router.push('/viewEntries')
+    const updateTasks = () => {        
+        if(isNewTasks === false) {
+            // Move author to previous screen without updating the database
+            router.push('/viewEntries');
+            return;
+        } else {
+            // Get the current elder info
+            let previousSavedData = localStorage.getItem("Elder-data");
+            let parseSavedData = JSON.parse(previousSavedData);
+    
+            // Create a new array of essential tasks objects and add to the current elder data
+            const dailyTaskID = uuidv4();
+            const weeklyTaskID = uuidv4();
+            const monthlyTaskID = uuidv4();
+            let newEssentialTasksArray = [
+                {
+                    "type":"Daily",
+                    "_type": "essentialTasks",
+                    "tasks": dailyTasks,
+                    "_key":  dailyTaskID,
+                },
+                {
+                    "type":"Weekly",
+                    "_type": "essentialTasks",
+                    "tasks": weeklyTasks,
+                    "_key":  weeklyTaskID,
+                },
+                {
+                    "type":"Monthly",
+                    "_type": "essentialTasks",
+                    "tasks": monthlyTasks,
+                    "_key":  monthlyTaskID,
+                }
+            ]
+    
+            parseSavedData.essentialTasks = newEssentialTasksArray;
+    
+            // Update the current elder information within local storeage for direct app useage
+            localStorage.setItem("Elder-data", JSON.stringify(parseSavedData));
+    
+            // Update the database with the now updated current elder
+            updateDatabase(parseSavedData);
+            router.push('/viewEntries');
+            setIsNewTasks(false);
+        }        
     }
 
     return (
