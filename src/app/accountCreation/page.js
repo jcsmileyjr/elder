@@ -28,11 +28,13 @@ const AccountCreation = () => {
         const dailyTaskID = uuidv4();
         const weeklyTaskID = uuidv4();
         const monthlyTaskID = uuidv4();
+        const elderID = uuidv4();
         
         const newElder = {
             "elderName": name,
             "phoneNumber" : phoneNumber,
             "_type": "elder",
+            "_key": elderID,
             "activities" : [],
             "essentialTasks" : [
                 {
@@ -64,7 +66,7 @@ const AccountCreation = () => {
         } else {
             setDuplicateNumberError(false);
             localStorage.setItem("Elder-data", JSON.stringify(newElder)); // Save for current use in app
-    
+    console.log(newElder)
             // Get the pretend database (Elder-test-data), add the new account, and save it.
             updateDatabase(newElder);
     
