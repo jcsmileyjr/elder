@@ -1,11 +1,12 @@
 "use client"
 import styles from './createTask.module.css';
 import Header from '../components/header/header';
+import PlusSign from '../plus-sign.png';
+import Image from 'next/image';
 import { useState, useEffect} from 'react';
 import { updateDatabase} from '../libs/updateDatabase';
 import { useRouter } from 'next/navigation'
-import PlusSign from '../plus-sign.png';
-import Image from 'next/image';
+import {v4 as uuidv4} from 'uuid'; // NPM module that creates a random ID number
 
 /**
  * App functionality to update an account's essential tasks
@@ -79,21 +80,27 @@ const CreateTask = () => {
             let parseSavedData = JSON.parse(previousSavedData);
     
             // Create a new array of essential tasks objects and add to the current elder data
+            const dailyTaskID = uuidv4();
+            const weeklyTaskID = uuidv4();
+            const monthlyTaskID = uuidv4();
             let newEssentialTasksArray = [
                 {
                     "type":"Daily",
                     "_type": "essentialTasks",
                     "tasks": dailyTasks,
+                    "_key":  dailyTaskID,
                 },
                 {
                     "type":"Weekly",
                     "_type": "essentialTasks",
                     "tasks": weeklyTasks,
+                    "_key":  weeklyTaskID,
                 },
                 {
                     "type":"Monthly",
                     "_type": "essentialTasks",
                     "tasks": monthlyTasks,
+                    "_key":  monthlyTaskID,
                 }
             ]
     
