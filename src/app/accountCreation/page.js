@@ -76,7 +76,7 @@ const AccountCreation = () => {
         }
     }
 
-    //Add text to a array of Essential daily tasks
+    //Add a new task to a array of Essential daily tasks
     const addDailyTask = () => {
         if(currentDailyTasks !== "") {
             setDailyTasks([...dailyTasks, currentDailyTasks]);
@@ -84,7 +84,7 @@ const AccountCreation = () => {
         }
     }
 
-     //Add text to a array of Essential weekly tasks
+     //Add a new task to a array of Essential weekly tasks
     const addWeeklyTask = () => {
         if(currentWeeklyTasks !== "") {
             setWeeklyTasks([...weeklyTasks, currentWeeklyTasks]);
@@ -92,7 +92,7 @@ const AccountCreation = () => {
         }
     }
 
-     //Add text to a array of Essential monthly tasks
+     //Add a new task to a array of Essential monthly tasks
     const addMonthlyTask = () => {
         if(currentMonthlyTasks !== "") {
             setMonthlyTasks([...monthlyTasks, currentMonthlyTasks]);

@@ -1,7 +1,7 @@
 "use client"
 import styles from './editEntry.module.css';
 import { useState, useEffect} from 'react';
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 import {v4 as uuidv4} from 'uuid'; // NPM module that creates a random ID number
 import moment from 'moment'; // NPM module that converts date objects to strings
 import Header from '../components/header/header';
@@ -12,7 +12,7 @@ import { updateDatabase} from '../libs/updateDatabase';
  * @returns 
  */
 const EditEntry = () => {
-    const router = useRouter() //  Use to relocate user to another page
+    const router = useRouter(); //  Use to relocate user to another page
 
     const [newEntry, setNewEntry] = useState({}); // Object to be updated and added to the array of objects displayed on the main page
     const [showDoneButton, setShowDoneButton] = useState(false); // Boolean to display either the "Done" button or "Not Completed" button
