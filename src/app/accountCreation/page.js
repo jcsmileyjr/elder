@@ -8,6 +8,7 @@ import { useState, useEffect} from 'react';
 import { updateDatabase } from '../libs/updateDatabase';
 import { ifDuplicatePhoneNumber } from '../libs/duplicatePhoneNumber';
 import {v4 as uuidv4} from 'uuid'; // NPM module that creates a random ID number
+import moment from 'moment'; // NPM module that converts date objects to strings
 
 const AccountCreation = () => {
     const router = useRouter() //  Use to relocate user to another page
@@ -21,6 +22,10 @@ const AccountCreation = () => {
     const [currentWeeklyTasks, setCurrentWeeklyTasks] = useState("");
     const [monthlyTasks, setMonthlyTasks] = useState([]);
     const [currentMonthlyTasks, setCurrentMonthlyTasks] = useState("");
+    const [medications, setMedications] = useState([]);
+    const [currentMedicationName, setCurrentMedicationName]  = useState("");
+    const [currentMedicationNote, setCurrentMedicationNote]  = useState("");
+    const [currentMedicationRefillDate, setCurrentMedicationRefillDate]  = useState("");
 
 
     // Creates a new elder account and relocate the user to the viewEntries page
@@ -36,6 +41,7 @@ const AccountCreation = () => {
             "_type": "elder",
             "_key": elderID,
             "activities" : [],
+            "medications" : medications,
             "essentialTasks" : [
                 {
                     "type":"Daily",
@@ -54,8 +60,8 @@ const AccountCreation = () => {
                     "_type": "essentialTasks",
                     "tasks": monthlyTasks,
                     "_key":  monthlyTaskID,
-                }
-            ]
+                },
+            ],
         }
 
         // Check if the number is already use. If so, throw an error. If not, proceed to save in app state and the pretend database
@@ -110,8 +116,26 @@ const AccountCreation = () => {
         }
     }
 
+    // Add a new medication object to an array of Essential Medication tasks
     const addMedication = () => {
-        console.log("added")
+        const medicationID = uuidv4();
+console.log("added medication")
+        if(currentMedicationName !== "" && currentMedicationNote !== "" && currentMedicationRefillDate !== "") {
+            let medication = {
+                medicationName : currentMedicationName,
+                medicationNote : currentMedicationNote,
+                medicationRefillDate : currentMedicationRefillDate,
+                _key : medicationID,
+            }
+console.log(medication)            
+            setMedications([...medications, medication])
+        }
+    }
+
+    // Updates the date property of the medication refill date
+    const updateDate = (e) => {
+        let date = moment(e.target.value).format('MMMM DD YYYY');
+        setCurrentMedicationRefillDate(date);
     }
 
     return (
@@ -202,7 +226,7 @@ const AccountCreation = () => {
                         <div className={styles.medicationContainer}>
                             <>
                                 <label htmlFor="medicationName" className={styles.label}>Name of Medication</label>
-                                <input type="text" id="medicationName" value={currentMonthlyTasks} onChange={(e) => setCurrentMonthlyTasks(e.target.value)} className={`${styles.inputfield} ${styles.taskInputs}`} />
+                                <input type="text" id="medicationName" value={currentMedicationName} onChange={(e) => setCurrentMedicationName(e.target.value)} className={`${styles.inputfield} ${styles.taskInputs}`} />
                             </>
                             <>
                                 <label htmlFor="refillDate" className={styles.label}>Refill Date</label>
@@ -210,11 +234,18 @@ const AccountCreation = () => {
                             </>
                             <>
                                 <label htmlFor="medicationNotes" className={styles.label}>Notes</label>
-                                <textarea id="medicationNotes" type="text" value={currentMonthlyTasks} onChange={(e) => setCurrentMonthlyTasks(e.target.value)} className={`${styles.inputfield} ${styles.taskInputs}`} />
+                                <textarea id="medicationNotes" type="text" value={currentMedicationNote} onChange={(e) => setCurrentMedicationNote(e.target.value)} className={`${styles.inputfield} ${styles.taskInputs}`} />
                             </>
                         
                         </div>
-                    </div>                    
+                    </div> 
+                    <ul>
+                        {medications.length > 0 &&                            
+                            medications.map( (med, index) => (
+                                <li className={styles.taskStyles} key={index + 'medtask'}>Medication Name {med.medicationName}</li>
+                            ))
+                        }
+                    </ul>                   
                 </div>
                 <div className={styles.doneButtonContainer}>
                     <button onClick={() => createAccount()} disabled={enabledDoneButton()} className={`${styles.entryButton} ${styles.doneButtonStyle}`} type='button'>Continue</button>
