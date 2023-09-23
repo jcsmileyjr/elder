@@ -66,7 +66,7 @@ const AccountCreation = () => {
         } else {
             setDuplicateNumberError(false);
             localStorage.setItem("Elder-data", JSON.stringify(newElder)); // Save for current use in app
-    console.log(newElder)
+   
             // Get the pretend database (Elder-test-data), add the new account, and save it.
             updateDatabase(newElder);
     
@@ -108,6 +108,10 @@ const AccountCreation = () => {
             setMonthlyTasks([...monthlyTasks, currentMonthlyTasks]);
             setCurrentMonthlyTasks("");
         }
+    }
+
+    const addMedication = () => {
+        console.log("added")
     }
 
     return (
@@ -188,6 +192,29 @@ const AccountCreation = () => {
                             ))
                         }
                     </ul>
+
+                    {/* Medication Essential Tasks */}
+                    <h4 className={styles.tasksTime}>Medication</h4>
+                    <div className={styles.inputContainer}>
+                        <button className={styles.buttonImage} onClick={() => addMedication() }>
+                            <Image src={PlusSign}  width={30} height={30} alt="Plus icon to add text" />
+                        </button>
+                        <div className={styles.medicationContainer}>
+                            <>
+                                <label htmlFor="medicationName" className={styles.label}>Name of Medication</label>
+                                <input type="text" id="medicationName" value={currentMonthlyTasks} onChange={(e) => setCurrentMonthlyTasks(e.target.value)} className={`${styles.inputfield} ${styles.taskInputs}`} />
+                            </>
+                            <>
+                                <label htmlFor="refillDate" className={styles.label}>Refill Date</label>
+                                <input id="refillDate" type="date" className={styles.inputfield} onChange={(e) => updateDate(e)}></input>                             
+                            </>
+                            <>
+                                <label htmlFor="medicationNotes" className={styles.label}>Notes</label>
+                                <textarea id="medicationNotes" type="text" value={currentMonthlyTasks} onChange={(e) => setCurrentMonthlyTasks(e.target.value)} className={`${styles.inputfield} ${styles.taskInputs}`} />
+                            </>
+                        
+                        </div>
+                    </div>                    
                 </div>
                 <div className={styles.doneButtonContainer}>
                     <button onClick={() => createAccount()} disabled={enabledDoneButton()} className={`${styles.entryButton} ${styles.doneButtonStyle}`} type='button'>Continue</button>
