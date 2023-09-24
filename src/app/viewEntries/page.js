@@ -63,7 +63,7 @@ export default function ViewEntries() {
   const [essentialShowDaily, setEssentialShowDaily] = useState(true); // App's state to collaspe the essential daily tasks section
   const [essentialShowWeekly, setEssentialShowWeekly] = useState(false); // App's state to collaspe the essential weekly tasks section
   const [essentialShowMonthly, setEssentialShowMonthly] = useState(false); // App's state to collaspe the essential monthly tasks section
-  const [essentialShowMedication, setEssentialShowMedication] = useState(false); // App's state to collaspe the essential task's Medication section
+  const [essentialShowMedication, setEssentialShowMedication] = useState(true); // App's state to collaspe the essential task's Medication section
 
   useEffect(() => {
     // Load either the log in account's data or route the user back to the logIn screen
