@@ -206,6 +206,7 @@ console.log(parseData)
                           <p className={styles.medsNote}><span className={styles.medTitle}>Medication Refill Date: </span><span className={styles.nowrap}>{med.medicationRefillDate}</span> </p>
                         </div>
                         <p className={styles.medsNote}><span className={styles.medTitle}>Notes:</span> {med.medicationNote}</p>
+                        <h1 className={styles.medBorder}/>
                       </>
                     ))
                   

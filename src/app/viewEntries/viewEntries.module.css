@@ -174,7 +174,7 @@
     margin: .5rem 0;
   }
   
-  .interactions h1 {
+  .interactions h1, .medBorder {
     border: 1px solid #527992;
     width: 100%;
     margin: auto;
@@ -192,7 +192,7 @@
   }
   
   @media screen and (min-width: 600px) {  
-    .interactions h1 {
+    .interactions h1, .medBorder {
       width: 80%;
     }
 
@@ -302,4 +302,8 @@
     @media screen and (max-height: 700px) {
       width: 60%;
     }
+  }
+
+  .medBorder {
+    margin-bottom: 1rem;
   }

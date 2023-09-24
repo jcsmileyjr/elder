@@ -7,6 +7,7 @@ import { useState, useEffect} from 'react';
 import { updateDatabase} from '../libs/updateDatabase';
 import { useRouter } from 'next/navigation'
 import {v4 as uuidv4} from 'uuid'; // NPM module that creates a random ID number
+import moment from 'moment'; // NPM module that converts date objects to strings
 
 /**
  * App functionality to update an account's essential tasks
@@ -22,7 +23,12 @@ const CreateTask = () => {
     const [currentWeeklyTasks, setCurrentWeeklyTasks] = useState(""); // UI content enter by the author for weekly tasks
     const [monthlyTasks, setMonthlyTasks] = useState([]); // Array of monthly tasks
     const [currentMonthlyTasks, setCurrentMonthlyTasks] = useState(""); // UI content enter by the author for monthly tasks
+    const [medications, setMedications] = useState([]);
+    const [currentMedicationName, setCurrentMedicationName]  = useState("");
+    const [currentMedicationNote, setCurrentMedicationNote]  = useState("");
+    const [currentMedicationRefillDate, setCurrentMedicationRefillDate]  = useState("");
     const [isNewTasks, setIsNewTasks] = useState(false);
+    const [isNewMed, setIsNewMed] = useState(false);
     
     useEffect(() => {
         // Get the current elder data
@@ -39,6 +45,8 @@ const CreateTask = () => {
 
         let previousMonthlyTasks = parseData.essentialTasks.find(grouping => grouping.type === "Monthly")
         setMonthlyTasks(previousMonthlyTasks.tasks);
+
+        setMedications(parseData.medications);
     }, [])
 
     //Add a new task to a array of Essential daily tasks
@@ -67,6 +75,27 @@ const CreateTask = () => {
             setIsNewTasks(true);
         }
     }
+
+    // Add a new medication object to an array of Essential Medication tasks
+    const addMedication = () => {
+        const medicationID = uuidv4();
+        if(currentMedicationName !== "" && currentMedicationNote !== "" && currentMedicationRefillDate !== "") {
+            let medication = {
+                medicationName : currentMedicationName,
+                medicationNote : currentMedicationNote,
+                medicationRefillDate : currentMedicationRefillDate,
+                _key : medicationID,
+            }                      
+            setMedications([...medications, medication])
+            setIsNewMed(true);
+        }
+    }
+
+    // Updates the date property of the medication refill date
+    const updateDate = (e) => {
+        let date = moment(e.target.value).format('MMMM DD YYYY');
+        setCurrentMedicationRefillDate(date);
+    }    
 
     // Assign the elder a new array of tasks objects
     const updateTasks = () => {        
@@ -105,6 +134,10 @@ const CreateTask = () => {
             ]
     
             parseSavedData.essentialTasks = newEssentialTasksArray;
+
+            if(isNewMed) {
+                parseSavedData.medications = medications;
+            }
     
             // Update the current elder information within local storeage for direct app useage
             localStorage.setItem("Elder-data", JSON.stringify(parseSavedData));
@@ -176,6 +209,36 @@ const CreateTask = () => {
                         ))
                     }
                 </ul>
+
+                {/* Medication Essential Tasks */}
+                <h4 className={styles.tasksTime}>Medication</h4>
+                <div className={styles.inputContainer}>
+                    <button className={styles.buttonImage} onClick={() => addMedication() }>
+                        <Image src={PlusSign}  width={30} height={30} alt="Plus icon to add text" />
+                    </button>
+                    <div className={styles.medicationContainer}>
+                        <>
+                            <label htmlFor="medicationName" className={styles.label}>Name of Medication</label>
+                            <input type="text" id="medicationName" value={currentMedicationName} onChange={(e) => setCurrentMedicationName(e.target.value)} className={`${styles.inputfield} ${styles.taskInputs}`} />
+                        </>
+                        <>
+                            <label htmlFor="refillDate" className={styles.label}>Refill Date</label>
+                            <input id="refillDate" type="date" className={styles.inputfield} onChange={(e) => updateDate(e)}></input>                             
+                        </>
+                        <>
+                            <label htmlFor="medicationNotes" className={styles.label}>Notes</label>
+                            <textarea id="medicationNotes" type="text" value={currentMedicationNote} onChange={(e) => setCurrentMedicationNote(e.target.value)} className={`${styles.inputfield} ${styles.taskInputs}`} />
+                        </>
+                    
+                    </div>
+                </div> 
+                <ul>
+                    {medications.length > 0 &&                            
+                        medications.map( (med, index) => (
+                            <li className={styles.taskStyles} key={index + 'medtask'}><span className={styles.medTitle}>Medication Name </span> {med.medicationName}</li>
+                        ))
+                    }
+                </ul>                 
             </div>
 
             {/* Continue Button */}
