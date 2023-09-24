@@ -119,15 +119,13 @@ const AccountCreation = () => {
     // Add a new medication object to an array of Essential Medication tasks
     const addMedication = () => {
         const medicationID = uuidv4();
-console.log("added medication")
         if(currentMedicationName !== "" && currentMedicationNote !== "" && currentMedicationRefillDate !== "") {
             let medication = {
                 medicationName : currentMedicationName,
                 medicationNote : currentMedicationNote,
                 medicationRefillDate : currentMedicationRefillDate,
                 _key : medicationID,
-            }
-console.log(medication)            
+            }           
             setMedications([...medications, medication])
         }
     }
