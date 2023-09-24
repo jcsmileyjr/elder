@@ -63,6 +63,7 @@ export default function ViewEntries() {
   const [essentialShowDaily, setEssentialShowDaily] = useState(true); // App's state to collaspe the essential daily tasks section
   const [essentialShowWeekly, setEssentialShowWeekly] = useState(false); // App's state to collaspe the essential weekly tasks section
   const [essentialShowMonthly, setEssentialShowMonthly] = useState(false); // App's state to collaspe the essential monthly tasks section
+  const [essentialShowMedication, setEssentialShowMedication] = useState(true); // App's state to collaspe the essential task's Medication section
 
   useEffect(() => {
     // Load either the log in account's data or route the user back to the logIn screen
@@ -73,7 +74,8 @@ export default function ViewEntries() {
       } else {
         const parseData = JSON.parse(previousSavedData)
         setEntries(parseData);
-        setActivities(sortEntriesByDate(parseData.activities));   
+        setActivities(sortEntriesByDate(parseData.activities)); 
+console.log(parseData)          
       }
     }
 
@@ -100,6 +102,7 @@ export default function ViewEntries() {
     if(frequncy === "Daily") setEssentialShowDaily(!essentialShowDaily);
     if(frequncy === "Weekly") setEssentialShowWeekly(!essentialShowWeekly);
     if(frequncy === "Monthly") setEssentialShowMonthly(!essentialShowMonthly);
+    if(frequncy === "Medication") setEssentialShowMedication(!essentialShowMedication);
   }
 
   /**
@@ -111,6 +114,7 @@ export default function ViewEntries() {
     if(frequncy === "Daily") return essentialShowDaily;
     if(frequncy === "Weekly") return essentialShowWeekly;
     if(frequncy === "Monthly") return essentialShowMonthly;
+    if(frequncy === "Medication") return essentialShowMedication;
   }
 
   /**
@@ -165,7 +169,7 @@ export default function ViewEntries() {
             )
           )}
 
-          {displayedContent === "essentials" &&  entries.length !== 0 &&
+          {displayedContent === "essentials" &&  entries.length !== 0 &&            
             entries.essentialTasks.map( (frequncy, index) =>
              (
               <div key={index} className={styles.essentials}>
@@ -185,6 +189,30 @@ export default function ViewEntries() {
                 }
               </div>
             ))            
+          }
+
+          {displayedContent === "essentials" &&  entries.length !== 0 &&
+            <div className={styles.essentials}>
+                <p className={`${styles.medsHeader}`} onClick={() => collapseEssentialTaskFrequency("Medication")}>
+                  {"Medication"} 
+                  <span className={styles.expand}><CollaspeIcon showHide={isCollapse("Medication")} /></span>
+                   
+                </p>
+                {isCollapse("Medication") &&                                        
+                    entries.medications.map((med, index) => (
+                      <>
+                        <div className={` ${styles.mobileMedicationDisplay}`} key={'med' + index}>
+                          <p className={styles.meds}><span className={styles.medTitle}>Medication Name:</span> {med.medicationName}</p>
+                          <p className={styles.medsNote}><span className={styles.medTitle}>Medication Refill Date: </span><span className={styles.nowrap}>{med.medicationRefillDate}</span> </p>
+                        </div>
+                        <p className={styles.medsNote}><span className={styles.medTitle}>Notes:</span> {med.medicationNote}</p>
+                        <h1 className={styles.medBorder}/>
+                      </>
+                    ))
+                  
+                }
+            </div>
+
           }
         </section>
       </main>

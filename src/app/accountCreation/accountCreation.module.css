@@ -144,3 +144,10 @@
     margin-top: 1.5rem 0;
 }
 
+.medicationContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.2rem;
+}
+
