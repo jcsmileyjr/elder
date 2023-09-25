@@ -161,3 +161,14 @@ height: 75vh;
     font-weight: bold;
 }
 
+.plusSignError {
+    font-size: .8rem;
+    color: red;
+    font-weight: bold;
+    margin-left: 2.8rem;
+}
+
+.redAsterisk {
+    color: red;
+}
+

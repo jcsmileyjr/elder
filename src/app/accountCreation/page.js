@@ -173,6 +173,9 @@ const AccountCreation = () => {
                         </button>
                         <textarea type="text" value={currentDailyTasks} onChange={(e) => setCurrentDailyTasks(e.target.value)} className={`${styles.inputfield} ${styles.taskInputs}`} />
                     </div>
+                    {currentDailyTasks.length > 0 &&
+                        <p className={styles.plusSignError}>Click the "Plus Sign" to add the task</p>
+                    }
                     <ul>
                         {dailyTasks.length > 0 &&                            
                             dailyTasks.map( (tasks, index) => (
@@ -189,6 +192,9 @@ const AccountCreation = () => {
                         </button>
                         <textarea type="text" value={currentWeeklyTasks} onChange={(e) => setCurrentWeeklyTasks(e.target.value)} className={`${styles.inputfield} ${styles.taskInputs}`} />
                     </div>
+                    {currentWeeklyTasks.length > 0 &&
+                        <p className={styles.plusSignError}>Click the "Plus Sign" to add the task</p>
+                    }
 
                     <ul>
                         {weeklyTasks.length > 0 &&                            
@@ -206,7 +212,9 @@ const AccountCreation = () => {
                         </button>
                         <textarea type="text" value={currentMonthlyTasks} onChange={(e) => setCurrentMonthlyTasks(e.target.value)} className={`${styles.inputfield} ${styles.taskInputs}`} />
                     </div>
-
+                    {currentMonthlyTasks.length > 0 &&
+                        <p className={styles.plusSignError}>Click the "Plus Sign" to add the task</p>
+                    }
                     <ul>
                         {monthlyTasks.length > 0 &&                            
                             monthlyTasks.map( (tasks, index) => (
@@ -223,7 +231,7 @@ const AccountCreation = () => {
                         </button>
                         <div className={styles.medicationContainer}>
                             <>
-                                <label htmlFor="medicationName" className={styles.label}>Name of Medication</label>
+                                <label htmlFor="medicationName" className={styles.label}>Name of Medication <span className={styles.redAsterisk}>*</span></label>
                                 <input type="text" id="medicationName" value={currentMedicationName} onChange={(e) => setCurrentMedicationName(e.target.value)} className={`${styles.inputfield} ${styles.taskInputs}`} />
                             </>
                             <>
@@ -231,12 +239,15 @@ const AccountCreation = () => {
                                 <input id="refillDate" type="date" className={styles.inputfield} onChange={(e) => updateDate(e)}></input>                             
                             </>
                             <>
-                                <label htmlFor="medicationNotes" className={styles.label}>Notes</label>
+                                <label htmlFor="medicationNotes" className={styles.label}>Notes <span className={styles.redAsterisk}>*</span></label>
                                 <textarea id="medicationNotes" type="text" value={currentMedicationNote} onChange={(e) => setCurrentMedicationNote(e.target.value)} className={`${styles.inputfield} ${styles.taskInputs}`} />
                             </>
                         
                         </div>
                     </div> 
+                    {currentMedicationName.length > 0 && currentMedicationNote.length > 0 &&
+                        <p className={styles.plusSignError}>Click the "Plus Sign" to add the task</p>
+                    }
                     <ul>
                         {medications.length > 0 &&                            
                             medications.map( (med, index) => (
