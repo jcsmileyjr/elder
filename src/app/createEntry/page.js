@@ -17,6 +17,7 @@ const CreateEntry = () => {
     const [newEntry, setNewEntry] = useState({}); // Object to be updated and added to the array of objects displayed on the main page
     const [showDoneButton, setShowDoneButton] = useState(false); // Boolean to display either the "Done" button or "Not Completed" button
     const [entries, setEntries] = useState([]); // App's state that holds an array of entries (objects)
+    const [medicationLabel, setMedicationLabel] = useState(false); 
 
     useEffect(() => {
         let previousSavedData = localStorage.getItem("Elder-data");
@@ -30,9 +31,12 @@ const CreateEntry = () => {
         enableButton();
     }
 
-    const updateLabel = (e = "Interaction") => {
+    const updateLabel = (e = "Interaction") => {        
+        setMedicationLabel(e.target.value); // Display the medications if its choosen
+         
         newEntry.label = e.target.value;
         enableButton();
+
     }
 
     // Updates the message property of the user's new entry from the textbox field
@@ -106,7 +110,17 @@ const CreateEntry = () => {
                         <option key="label1">Interaction</option>
                         <option key="label2">Appointment</option>
                         <option key="label3">Medication</option>
-                    </select>                
+                    </select>    
+                    {medicationLabel === 'Medication' &&
+                        <>
+                            <p className={styles.medicationNamesHeader}>Current Medications</p>
+                            <ul>
+                                {entries.medications.map((med, index) => (
+                                    <li className={styles.medNameStyle}>{med.medicationName}</li>
+                                ))}
+                            </ul>                        
+                        </>
+                    }           
                 </div>
                 <div className={styles.section}>
                     <label htmlFor="inputMessage" className={styles.label}>Brief description of new Entry</label>
