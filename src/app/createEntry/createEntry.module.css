@@ -198,3 +198,14 @@
       margin: 0 3rem .5rem 3rem;
     }
   }
+
+  .medNameStyle {
+    list-style-type: none;
+    font-weight: bold;
+  }
+
+  .medicationNamesHeader {
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+    text-decoration: underline;
+  }
