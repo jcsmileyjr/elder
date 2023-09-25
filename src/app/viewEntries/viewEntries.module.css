@@ -307,3 +307,28 @@
   .medBorder {
     margin-bottom: 1rem;
   }
+
+  .blnkFormContainer {
+    max-width: 600px;
+  }
+
+  .blankFormHeader {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  .blankFormStyle {
+    margin-top: .5rem;
+    line-height: 1.25rem;
+  }
+
+  .blankFormHighlightedText {
+    text-decoration: underline;
+    /* text-decoration-color: #000046; */
+    color:#000046;
+    /* font-weight: 600; */
+  }
+
+  .blankFormHighlightedWord {
+    font-weight: bold;
+  }

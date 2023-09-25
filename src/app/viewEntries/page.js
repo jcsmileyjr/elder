@@ -163,13 +163,23 @@ console.log(parseData)
           {entries === undefined &&
             <h1>Loading</h1>
           }
-          {displayedContent === "interactions"  &&  entries.length !== 0 &&       
+
+          {displayedContent === "interactions" && activities.length === 0 && 
+            <div className={styles.blnkFormContainer}>
+              <p className={styles.blankFormHeader}>Start caring for your love one</p>
+              <p className={styles.blankFormStyle}><span className={styles.blankFormHighlightedWord}>Step 1:</span> Click on the words <span className={styles.blankFormHighlightedText}>"Essential Tasks"</span> to learn about anything important to do or know right now!</p>
+              <p className={styles.blankFormStyle}><span className={styles.blankFormHighlightedWord}>Step 2:</span> Click on the words <span className={styles.blankFormHighlightedText}>"New Entry"</span> to share & document with others your interaction with the loved one.</p>
+              <p className={styles.blankFormStyle}>Examples are: you gave a specific medication, y'all went to the park, you cleaned their home, you share a future doctor appointment, etc.</p>
+            </div>
+          }
+
+          {displayedContent === "interactions" &&       
             activities.map((interaction) => (              
               <Interaction key={interaction.entryID} entry={interaction} />
             )
           )}
 
-          {displayedContent === "essentials" &&  entries.length !== 0 &&            
+          {displayedContent === "essentials" &&            
             entries.essentialTasks.map( (frequncy, index) =>
              (
               <div key={index} className={styles.essentials}>
@@ -191,7 +201,7 @@ console.log(parseData)
             ))            
           }
 
-          {displayedContent === "essentials" &&  entries.length !== 0 &&
+          {displayedContent === "essentials" &&
             <div className={styles.essentials}>
                 <p className={`${styles.medsHeader}`} onClick={() => collapseEssentialTaskFrequency("Medication")}>
                   {"Medication"} 
@@ -212,7 +222,6 @@ console.log(parseData)
                   
                 }
             </div>
-
           }
         </section>
       </main>
