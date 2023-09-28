@@ -1,0 +1,28 @@
+{
+    "name":"Keeping up",
+    "short_name":"Elder",
+    "description" : "An app that allows multiple people to contribute to the care of a loved one.",
+    "icons": [
+        {
+          "src": "/icons/android-chrome-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png",
+          "purpose": "any maskable"
+        },
+        {
+          "src": "/icons/apple-touch-icon.png",
+          "sizes": "180x180",
+          "type": "image/png"
+        },
+        {
+          "src": "/icons/android-chrome-512x512.png",
+          "sizes": "512x512",
+          "type": "image/png"
+        }
+      ],
+    "theme_color":"#1CB5E0",
+    "background_color":"#ffffff",
+    "scope" : "https://elder-two.vercel.app/",
+    "start_url" : "https://elder-two.vercel.app/",
+    "display":"browser"
+}

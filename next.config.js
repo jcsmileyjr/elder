@@ -1,4 +1,9 @@
 /** @type {import('next').NextConfig} */
+
+const withPWA = require('next-pwa')({
+    dest: 'public', 
+})
+
 const nextConfig = {
     env: {
         NEXT_PUBLIC_SANITY_API_PROJECT_ID: process.env.NEXT_PUBLIC_SANITY_API_PROJECT_ID,
@@ -6,4 +11,7 @@ const nextConfig = {
     }
 };
 
-module.exports = nextConfig;
+//module.exports = nextConfig;
+module.exports = withPWA({
+    nextConfig
+})
