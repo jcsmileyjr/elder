@@ -47,7 +47,7 @@ const Home = () => {
             <Header />
             <main className={styles.main}>
                 <div className={styles.logos}>
-                  <Image src={OldCouple1} width={250} height={150} alt="Elderly man and woman siting on a couch with floating hearts" />
+                  <Image priority={false} src={OldCouple1} width={250} height={150} alt="Elderly man and woman siting on a couch with floating hearts" />
                 </div>
                 <div className={`${styles.phoneNumberContainer} ${styles.entryButtonBorder}`}>
                     <label htmlFor="phoneNumber" className={styles.label}>Phone Number of the Beloved</label>
