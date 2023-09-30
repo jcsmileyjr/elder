@@ -6,7 +6,7 @@ import Head from 'next/head';
 const Header = ({elderName="Broken Account", children}) => {
     return(
         <header className={styles.header}>
-                      <Head>
+            <Head>
               <meta name="application-name" content="Keeping Up" />
               <meta name="apple-mobile-web-app-capable" content="yes" />
               <meta name="apple-mobile-web-app-status-bar-style" content="default" />
