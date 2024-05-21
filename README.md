@@ -1,7 +1,7 @@
 # Keeping Up
 
 ### The Challenge
-A full-stack app that allows multiple people to contribute to the care of a loved one. Developed using TypeScript, Next.js, and TailwindCSS for the frontend, while integrated with Sanity.io (CMS database) and tested with Jest.
+A full-stack app that allows multiple people to contribute to the care of a loved one. Developed using Next.js and TailwindCSS for the frontend, while integrated with Sanity.io (CMS database) and tested with Jest.
 
 **Click to view site** https://elder-two.vercel.app/
 
